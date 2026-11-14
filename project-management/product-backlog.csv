@@ -1,0 +1,22 @@
+task_id,task_description,priority,estimated_effort,acceptance_criteria,dependencies,status
+BL-01,Define fictional business problem and scope,Must,3h,Charter separates portfolio delivery from model release,None,Complete
+BL-02,Author seven internally consistent policy sections,Must,5h,1500–2500 words with stable policy IDs,BL-01,Complete
+BL-03,Define quality gates and classification precedence,Must,3h,"Four labels, separate criticality, exact thresholds",BL-01,Complete
+BL-04,Author 30 balanced cases and references,Must,6h,10/5/5/5/5 categories and full acceptance fields,BL-02;BL-03,Complete
+BL-05,Author identified synthetic candidate responses,Must,3h,One synthetic_fixture response per case,BL-04,Complete
+BL-06,Assign simulated labels and rationales,Must,4h,Every case has a policy-grounded simulated_review rationale,BL-05;BL-03,Complete
+BL-07,Implement structural dataset validation,Must,6h,Reject invalid fields and duplicate missing or orphaned records,BL-04;BL-06,Complete
+BL-08,Implement metrics and release-gate calculations,Must,5h,Exact thresholds and category metrics use actual CSV,BL-07,Complete
+BL-09,Generate offline HTML and Markdown reports,Must,6h,Dashboard exposes 30 case rationales and synthetic disclosure,BL-08,Complete
+BL-10,Add regression and failure-path tests,Must,6h,Built-in unittest passes negative and boundary cases,BL-07;BL-09,Complete
+BL-11,Prepare Label Studio XML and task generator,Must,4h,Valid bindings and 30 unannotated portable case IDs,BL-04;BL-05,Complete
+BL-12,Verify optional Label Studio runtime,Should,4h,Actual task import and interface verified or limitation documented,BL-11,Complete
+BL-13,Create risk register and communication plan,Must,3h,At least ten risks with owners and a proposed schedule,BL-01,Complete
+BL-14,Prepare four-week roadmap and assumed budget,Must,3h,Hypothetical effort costs and decision gates clearly labeled,BL-01;BL-13,Complete
+BL-15,Create executive status and release recommendation,Must,3h,Metrics agree with report and no-go is explicit,BL-09;BL-13,Complete
+BL-16,Write README case study and résumé bullets,Must,4h,Truthful narrative and reproduction commands,BL-15,Complete
+BL-17,Execute final artifact and consistency checks,Must,4h,Required files XML JSON hashes links and tests checked,BL-10;BL-11;BL-16,Complete
+BL-18,Capture genuine dashboard render evidence,Should,2h,Local dashboard rendered in actual browser,BL-09,Complete
+BL-19,Obtain policy owner and sponsor approval,Future,4h,Real equivalent roles approve source and scope,BL-01;BL-02,Proposed; not performed
+BL-20,Evaluate actual model and adjudicate independent labels,Future,20h,Separate versioned model dataset and independent review record,BL-19;BL-10,Proposed; not performed
+BL-21,Run bounded-pilot readiness and adoption review,Future,14h,All gates met and monitoring rollback and decision owners recorded,BL-20;BL-15,Proposed; not performed

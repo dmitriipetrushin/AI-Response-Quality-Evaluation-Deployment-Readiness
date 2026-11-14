@@ -1,0 +1,29 @@
+<View>
+  <Header value="Synthetic portfolio demonstration — Northstar Business Services (fictional)"/>
+  <Header value="Case"/>
+  <Text name="case_id" value="$test_id"/>
+  <Header value="Question"/>
+  <Text name="question" value="$question"/>
+  <Header value="Relevant policy context"/>
+  <Text name="policy_context" value="$policy_context"/>
+  <Header value="Reference answer"/>
+  <Text name="reference_answer" value="$reference_answer"/>
+  <Header value="Acceptance criteria"/>
+  <Text name="acceptance_criteria" value="$acceptance_criteria"/>
+  <Header value="Candidate response — synthetic_fixture"/>
+  <Text name="candidate" value="$candidate_response"/>
+  <Header value="Primary classification — select exactly one"/>
+  <Choices name="classification" toName="candidate" choice="single-radio" required="true">
+    <Choice value="Correct"/>
+    <Choice value="Partially correct"/>
+    <Choice value="Incorrect"/>
+    <Choice value="Unsupported"/>
+  </Choices>
+  <Header value="Critical failure"/>
+  <Choices name="critical_failure" toName="candidate" choice="single-radio" required="true">
+    <Choice value="Yes"/>
+    <Choice value="No"/>
+  </Choices>
+  <TextArea name="reviewer_comments" toName="candidate" rows="4" required="true"
+            placeholder="Explain the classification and critical-failure decision with policy references."/>
+</View>

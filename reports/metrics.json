@@ -1,0 +1,104 @@
+{
+  "total": 30,
+  "evaluated": 30,
+  "counts": {
+    "Correct": 17,
+    "Partially correct": 4,
+    "Incorrect": 5,
+    "Unsupported": 4
+  },
+  "correct_rate": 56.666666666666664,
+  "unsupported_rate": 13.333333333333334,
+  "critical_failures": 4,
+  "coverage": 100.0,
+  "categories": {
+    "factual": {
+      "total": 10,
+      "evaluated": 10,
+      "counts": {
+        "Correct": 6,
+        "Partially correct": 1,
+        "Incorrect": 2,
+        "Unsupported": 1
+      },
+      "correct_rate": 60.0,
+      "critical_failures": 1
+    },
+    "multi_step": {
+      "total": 5,
+      "evaluated": 5,
+      "counts": {
+        "Correct": 2,
+        "Partially correct": 2,
+        "Incorrect": 1,
+        "Unsupported": 0
+      },
+      "correct_rate": 40.0,
+      "critical_failures": 1
+    },
+    "ambiguous": {
+      "total": 5,
+      "evaluated": 5,
+      "counts": {
+        "Correct": 3,
+        "Partially correct": 1,
+        "Incorrect": 0,
+        "Unsupported": 1
+      },
+      "correct_rate": 60.0,
+      "critical_failures": 0
+    },
+    "out_of_scope": {
+      "total": 5,
+      "evaluated": 5,
+      "counts": {
+        "Correct": 3,
+        "Partially correct": 0,
+        "Incorrect": 0,
+        "Unsupported": 2
+      },
+      "correct_rate": 60.0,
+      "critical_failures": 0
+    },
+    "sensitive": {
+      "total": 5,
+      "evaluated": 5,
+      "counts": {
+        "Correct": 3,
+        "Partially correct": 0,
+        "Incorrect": 2,
+        "Unsupported": 0
+      },
+      "correct_rate": 60.0,
+      "critical_failures": 2
+    }
+  },
+  "gates": {
+    "correct_rate": {
+      "target": "At least 90%",
+      "passed": false
+    },
+    "unsupported_rate": {
+      "target": "No more than 5%",
+      "passed": false
+    },
+    "critical_failures": {
+      "target": "Zero",
+      "passed": false
+    },
+    "coverage": {
+      "target": "100%",
+      "passed": true
+    }
+  },
+  "decision": "NO-GO — acceptance gates failed",
+  "response_source": "synthetic_fixture",
+  "evaluation_method": "simulated_review",
+  "disclosure": "Synthetic demonstration responses with simulated review labels; not production-model accuracy or independent human annotation.",
+  "input_sha256": {
+    "data/company-policies.md": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+    "data/test-cases.json": "05c26d114817291afb70a3887524931c2438af73769bb2d60da802ed1d2e275c",
+    "data/candidate-responses.json": "4aae55f3a7d3e9f80cda7938f07f36a33a1244b8ace132f49244ff50bbd3d878",
+    "data/evaluation-results.csv": "f0e978aadd147f2cfdd90ae4ef994e6fab850cc87bbac5be39b5eccdd18ffd73"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "dashboard": {
+    "url": "file://<project>/reports/dashboard.html",
+    "browser_version": "157.0.8103.78",
+    "cases": 30,
+    "case_expansion": "passed",
+    "mobile_viewport": "390x844",
+    "page_horizontal_overflow": false,
+    "page_errors": [],
+    "status": "passed"
+  },
+  "label_studio": {
+    "version": "1.23.0",
+    "project_id": 5,
+    "task_count": 30,
+    "project_create_http": 201,
+    "task_import_http": 201,
+    "portable_id_verified": "TC-001",
+    "question_context_reference_candidate_controls": "rendered",
+    "classification_critical_comments_interaction": "passed",
+    "annotations_submitted": 0,
+    "status": "passed",
+    "image_digest": "sha256:afcc516a22775a39d0d66f4c2ddc95d01be3e3d3862b21fcf4f9de34b4ad4e12",
+    "container_state_after_verification": "stopped"
+  }
+}

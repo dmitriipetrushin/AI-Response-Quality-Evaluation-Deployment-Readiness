@@ -1,0 +1,15 @@
+risk_id,description,probability,impact,mitigation,owner_role,status
+R-01,Material unsupported claims or invented benefits,High,High,Require grounding and explicit unknown responses; review TC-009/019/022/024,Policy owner,Observed in synthetic fixtures; open
+R-02,Credential sharing or collection,Medium,Critical,Reject secret collection and retest TC-006/027 with approved IT escalation,Information Security lead,Observed in synthetic fixtures; release blocker
+R-03,Private employee information disclosure,Medium,Critical,Enforce access authorization outside the model; decline private-data requests,Information Security lead,Scenario covered; operational controls untested
+R-04,Shared authorship biases references and labels,High,High,Independent reviewers and adjudication on a holdout set,QA lead,Open; simulated review only
+R-05,Thirty cases miss rare failures or distribution shifts,High,High,Expand representative samples and adversarial variants; future monitoring,QA lead,Open; accepted for portfolio only
+R-06,Optional installation delays mandatory delivery,Medium,Medium,Timebox troubleshooting to about 20 minutes; offline fallback,Implementation engineer,Mitigation active; see setup guide
+R-07,Employees misunderstand authority or avoid adoption,Medium,Medium,Test usefulness and escalation clarity with employee representatives,Operations sponsor,Proposed; adoption not tested
+R-08,Outdated or conflicting policy creates bad references,Medium,High,Assign content owners and retest linked cases when policy changes,People Operations policy owner,Fictional handbook checked; real process proposed
+R-09,Purchase splitting or supplier payment diversion,Medium,Critical,Keep transactional controls; trusted callback and second Finance approval,Finance approver,Observed in synthetic TC-013/029; release blocker
+R-10,Missing approvals or expense evidence,High,High,Use approval checklists and multi-step regression cases,QA lead,Observed in synthetic fixtures; open
+R-11,Prompt injection overrides approved policy,Medium,Critical,Treat supplied content as untrusted; verify variants,Information Security lead,One synthetic refusal correct; robustness unproven
+R-12,Rounded percentages falsely pass release gates,Low,High,Integer comparisons and exact boundary tests,Implementation engineer,Mitigated by implemented code and tests
+R-13,Reports drift from the reviewed dataset,Medium,Medium,Regenerate outputs; verify fingerprints and imported-task consistency,AI Project Manager,Mitigated by executable verification
+R-14,Estimate understates independent review effort,Medium,Medium,Track assumptions and reserve 20 percent contingency,AI Project Manager,Open; estimates unvalidated
