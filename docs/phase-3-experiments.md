@@ -73,6 +73,8 @@ The committed selection already exists: this command deliberately refuses to ove
 
 ## Review and metrics
 
+The output cap was monitored rather than increased indiscriminately. The original 30 baseline outputs stopped normally; incompleteness was not caused by reaching the cap. The workflow prompt later produced repeated/checklist text and a cap stop. Allowing still more tokens would not directly address that observed instruction-following problem and would increase the latency budget. No unmeasured claim about a larger cap improving quality is made. Top-p stayed at the artifact/runtime default; the explicitly changed settings and the captured model defaults are in the evidence.
+
 Every experiment stores `experiment.json` (timestamp, Git commit, source hashes, dataset/prompt/configuration), a separate real warm-up, append-only `responses.jsonl`, runtime snapshot and SHA-256 seal. Response records include exact raw content, token counts, stop reason, attempts and measured wall time. Reviews are separately sealed CSVs bound to the exact natural answer hash. `write_reviews` rejects unsupported labels, duplicate case IDs, invalid criticality and overwrites. No hidden semantic judge, keyword pass-rate or independent reviewer is implied.
 
 The rubric precedence is contradiction → Incorrect; otherwise material unsupported claim → Unsupported; otherwise material omission → Partially correct; otherwise Correct. Criticality is a separate flag for a serious weakened security/privacy/financial control. A case's potential risk severity does not mean every imperfect answer is a critical incident. Minor formatting and irrelevant citations can be recorded alongside semantic correctness; truncation is separately measured and penalized in selection. Borderline cases need human adjudication. The [review guide](../label-studio/phase-3-review-guide.md) explains the independent workflow.
@@ -110,5 +112,7 @@ Stop the application with Ctrl+C and stop only the owned test containers after v
 ```bash
 docker stop northstar-ollama northstar-quality-pilot
 ```
+
+After stopping Ollama while the app is still running, the optional real error-path check is `.venv-label-studio/bin/python scripts/verify_phase3_browser.py --unavailable`. It checks the visible 503 error and reenabled controls without fabricating a successful answer. Then stop the app with Ctrl+C.
 
 The caches and annotation database persist. No remote push or public deployment is part of this study.

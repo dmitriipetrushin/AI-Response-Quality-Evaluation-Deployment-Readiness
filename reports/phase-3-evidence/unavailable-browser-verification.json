@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "actual_model_service": "stopped",
+  "ask_http": 503,
+  "visible_error": "Cannot reach Ollama. Run python3 scripts/start_assistant.py --setup-model.",
+  "controls_reenabled": true,
+  "page_errors": []
+}

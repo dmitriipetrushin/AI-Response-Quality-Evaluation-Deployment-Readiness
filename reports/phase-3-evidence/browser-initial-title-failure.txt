@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/user/PortfolioProject1/scripts/verify_phase3_browser.py", line 188, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/home/user/PortfolioProject1/scripts/verify_phase3_browser.py", line 157, in main
+    assert created.status==201,created.text()[:400]
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: {"id":"1c17ea77-37a2-440f-9eff-27bda183e095","status_code":400,"version":"1.23.0","detail":"Validation error","exc_info":null,"validation_errors":{"title":["Ensure this field has no more than 50 characters."]}}

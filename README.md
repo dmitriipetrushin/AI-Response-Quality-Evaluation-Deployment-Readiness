@@ -3,7 +3,7 @@
 
 **Dmitry Petrushin · Independent portfolio simulation**
 
-**Now includes [Phase 2 — Real AI Model Integration](#phase-2--real-ai-model-integration): a working local Qwen2.5 3B assistant, 30 actual responses, and provisional quality findings.** Start with `python3 scripts/start_assistant.py --open`; see the [setup guide](docs/local-model-setup.md).
+**Now includes Phase 3: five prompt variants, three local model configurations across Qwen and Llama, a frozen 100-case benchmark and validation-based selection. The original `qwen2.5:3b` profile is retained; no candidate met the predeclared replacement rule.** See the [Phase 3 case study](portfolio/phase-3-case-study.md), [interactive comparison](reports/phase-3-dashboard.html) and [reproduction guide](docs/phase-3-experiments.md). Start with `python3 scripts/start_assistant.py --open`.
 
 A reproducible quality-assurance pilot showing how an AI Project Manager can turn a business question into requirements, risk controls, evaluation evidence, and a deployment recommendation. The fictional Northstar Business Services wants to understand whether an internal-policy assistant could enter a controlled pilot.
 
@@ -15,7 +15,7 @@ Start with the [results dashboard](reports/dashboard.html), [case study](portfol
 
 Employee-policy answers can invent benefits, miss required approvals, or mishandle sensitive requests. The objective is to establish a reviewable decision process before any assistant deployment: define authoritative knowledge, expected behavior, proposed acceptance gates, critical risks, and a reproducible decision pack.
 
-The scope includes a 2,019-word fictional handbook with seven policy IDs, exactly 30 cases, one synthetic response and simulated review per case, offline reporting, automated checks, Label Studio integration artifacts, and a complete management pack. Model training, enterprise integration, real employee data, external publishing, and production operation are outside scope.
+The original Phase-1 scope includes a 2,019-word fictional handbook with seven policy IDs, exactly 30 cases, one synthetic response and simulated review per case, offline reporting, automated checks, Label Studio integration artifacts, and a complete management pack. Phase 2 adds actual inference; Phase 3 expands evaluation to 100 cases. Model training, enterprise integration, real employee data, external publishing, and production operation are outside scope.
 
 ## Project manager responsibilities demonstrated
 
@@ -223,3 +223,44 @@ The committed real run is in [actual responses](data/real-model-responses.json),
 The [implementation plan](project-management/phase-2-implementation-plan.md), [risk assessment](project-management/phase-2-risk-assessment.md), [acceptance criteria](project-management/phase-2-acceptance-criteria.md), and [executive report](project-management/phase-2-executive-report.md) separate technical delivery from business release readiness. The [completion record](reports/phase-2-completion-report.md) links actual test, inference, browser, and import evidence.
 
 A real model exposed issues the authored fixtures could only illustrate: fluent nonanswers, missed clarifications, incomplete approval routes, and a nonexistent citation. Full policy context did not guarantee complete answers. A startup connection reset also led to explicit transient-connection handling and a regression test. Cold and warm latency needed separate reporting. The decisive management lesson is to require actual outputs and traceable review before making a deployment recommendation, while treating provisional labels as unresolved evidence rather than approval.
+
+# Phase 3 — LLM Optimization and Comparative Evaluation
+
+The completed study retains **`qwen2.5:3b` / baseline prompt**. None of the alternatives met the predeclared replacement rule. This is an evidence-based retention decision, **not a claimed model-quality improvement**. All labels are provisional agent-assisted judgments, with **no independent human validation**. Deployment remains **NO-GO**.
+
+| Metric | Historical Phase 2 | Phase 3 selected profile |
+|---|---:|---:|
+| Correct | 46.7% (14/30) | 48.0% (48/100) |
+| Unsupported | 6.7% (2/30) | 3.0% (3/100) |
+| Critical failures | 0 observed | 3 provisional findings |
+| Mean latency | 4.89 s | 5.40 s |
+| Cases | 30 | 100 |
+
+**These columns use different case sets and cannot establish improvement.** The pooled 100 includes exposed development/validation questions. On the same original 30 questions, all selected-profile answers remain byte-identical: 14 Correct, two Unsupported, no critical findings. On the same **30 held-out questions**, selected and separately rerun baseline both scored **12/30 Correct (40.0%)**, zero Unsupported and one provisional critical failure. Their mean times were 4.63 and 4.67 seconds; this small timing difference is not an optimization gain. The nominal held-out Wilson 95% interval is 24.6–57.7%, conditional on provisional labels and independent-case assumptions, not a population guarantee.
+
+The final 100 classifications are 48 Correct, 36 Partially correct, 13 Incorrect and three Unsupported. Correct ≥85% and zero-critical targets fail. Unsupported ≤3%, mean ≤10 seconds and ≥100 cases pass provisionally. Expanded questions exposed tax-inclusive Finance-approval bypass, weakened external-sharing authorization and a replacement equipment route missing mandatory IT approval. No real purchase, disclosure or financial loss occurred.
+
+Five frozen prompts were screened on 12 development failures. Full validation compared baseline, workflow and uncertainty prompts plus **`qwen3:4b-instruct-2507-q4_K_M`** and **`llama3.2:3b`** with the workflow prompt. All three comparison models are Q4_K_M; Qwen and Llama provide two upstream families. The generic `qwen3:4b` received only a separate thinking-compatibility probe and is excluded from matched accuracy. Qwen3 Instruct improved validation Correct count to 23/30 but introduced three Unsupported answers and averaged 26.2 seconds, so it was rejected. The 4,096-context and temperature-0.3 ablations were also rejected as defaults.
+
+The unchanged fictional handbook fits full context. No retrieval service was added without a demonstrated context bottleneck. The runner adds split locks, immutable raw-output/review seals, bounded format repair, exact model/dataset/configuration provenance, measured latency/resources, independent technical checks and explicit provisional-review status. The app shows its prompt profile and retains a baseline rollback. The core uses only Python's standard library. Measurements used an Intel i5-13420H, 15.34 GiB RAM, CPU inference and four threads; other hardware will differ.
+
+Evidence and reproduction:
+
+- [Interactive experiment dashboard](reports/phase-3-dashboard.html): model/prompt/split filters, category/difficulty breakdowns, resources, critical examples and matched candidate improvements/regressions.
+- [Complete comparison](reports/phase-3-comparison.md), [machine-readable metrics](reports/phase-3-metrics.json) and [CSV export](reports/phase-3-comparison.csv).
+- [Frozen dataset](data/phase-3/dataset/manifest.json), [selection](experiments/phase-3/selection.json), [failure analysis](reports/phase-3-failure-analysis.md) and [review notes](quality-assurance/phase-3-review-notes.md).
+- [Detailed case study](portfolio/phase-3-case-study.md), [reproduction guide](docs/phase-3-experiments.md) and [completion evidence](reports/phase-3-completion-report.md).
+- [Label Studio human-review guide](label-studio/phase-3-review-guide.md): 100 actual answers in separate unannotated tasks; imported tasks are not human reviews.
+
+```bash
+python3 scripts/start_assistant.py --open
+python3 scripts/start_assistant.py --config config/assistant-baseline.json --open
+python3 scripts/phase3_experiments.py compare val-baseline val-workflow val-uncertainty val-qwen3-instruct val-llama
+python3 scripts/phase3_reports.py
+python3 scripts/generate_report.py
+python3 -m unittest discover -s tests -v
+python3 -m unittest tests.integration_real_model tests.integration_phase3 -v
+python3 scripts/verify_phase3.py
+```
+
+First-time startup adds `--setup-model`. Current automated evidence records **88 passing unit tests**, also with site packages disabled, and **two passing live integration tests** (four real questions). Browser/annotation evidence and teardown status are recorded in the completion report. Original data, reports, screenshots and Label Studio projects are preserved. The benchmark contains authored, nonrandom scenarios with shared-author reference/review bias; independent validation and operational controls remain prerequisites for any pilot.

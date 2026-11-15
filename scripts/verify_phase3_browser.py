@@ -18,7 +18,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 APP = 'http://127.0.0.1:8000'
 LS = 'http://127.0.0.1:8087'
-TITLE = 'Phase 3 — Selected real local model — independent review pending'
+TITLE = 'Phase 3 — Real model — human review pending'
 
 
 def fingerprint(value):
@@ -28,6 +28,7 @@ def fingerprint(value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--label-studio', action='store_true')
+    parser.add_argument('--unavailable', action='store_true', help='Verify the actual UI error path after Ollama is stopped.')
     args = parser.parse_args()
     evidence = ROOT/'reports/phase-3-evidence'
     selection = json.loads((ROOT/'experiments/phase-3/selection.json').read_text())
@@ -39,9 +40,25 @@ def main():
         context = browser.new_context(viewport={'width':1440,'height':1100}, locale='en-US')
         page = context.new_page(); errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
+        if args.unavailable:
+            page.goto(APP,wait_until='networkidle')
+            page.locator('#service-status').filter(has_text='Local model unavailable').wait_for()
+            page.locator('#question').fill('How many annual leave days are available?')
+            with page.expect_response(lambda r:r.url.endswith('/api/ask'),timeout=30000) as event:
+                page.locator('#ask-button').click()
+            assert event.value.status==503
+            page.locator('#error').wait_for(state='visible')
+            assert page.locator('#error').inner_text()
+            assert page.locator('#ask-button').is_enabled() and page.locator('#question').is_enabled()
+            assert page.locator('#answer-panel').is_hidden() and not errors
+            page.screenshot(path=str(evidence/'app-model-unavailable.png'),full_page=True)
+            outcome={'status':'passed','actual_model_service':'stopped','ask_http':503,
+                'visible_error':page.locator('#error').inner_text(),'controls_reenabled':True,'page_errors':errors}
+            (evidence/'unavailable-browser-verification.json').write_text(json.dumps(outcome,indent=2)+'\n')
+            browser.close();print(json.dumps(outcome,indent=2));return
         page.goto(APP, wait_until='networkidle')
         page.locator('#service-status').filter(has_text='Local model ready').wait_for()
-        question = 'How many annual leave days does the handbook provide?'
+        question = 'An urgent supplier email gives new bank details and a new callback number. Should I update them now?'
         page.locator('#question').fill(question)
         with page.expect_response(lambda r:r.url.endswith('/api/ask') and r.request.method=='POST', timeout=240000) as event:
             page.locator('#ask-button').click()
@@ -56,10 +73,10 @@ def main():
         assert selection['config']['model'] in page.locator('#answer-meta').inner_text()
         assert 'Profile: '+selection['config']['prompt_version'] in page.locator('#answer-meta').inner_text()
         citations = page.locator('#citations details')
-        if citations.count():
-            citations.first.locator('summary').click()
-            page.wait_for_function("!document.querySelector('#citations pre').textContent.startsWith('Loading')")
-            assert 'POL-' in citations.first.inner_text()
+        assert citations.count()>0, 'The live citation-expansion check requires an actual cited answer.'
+        citations.first.locator('summary').click()
+        page.wait_for_function("!document.querySelector('#citations pre').textContent.startsWith('Loading')")
+        assert 'POL-' in citations.first.inner_text()
         page.screenshot(path=str(evidence/'app-desktop.png'), full_page=True)
         page.set_viewport_size({'width':390,'height':844})
         assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
@@ -75,6 +92,10 @@ def main():
             assert page.locator('#experiment-rows tr').count() == len(metrics['experiments'])
             page.locator('#split-filter').select_option('validation')
             assert page.locator('#experiment-rows tr').count() == 5
+            page.locator('#prompt-filter').select_option('structured')
+            assert page.locator('#experiment-rows tr').count() == 0
+            assert 'No experiments match' in page.locator('#resource-summary').inner_text()
+            page.locator('#prompt-filter').select_option('')
             page.locator('#model-filter').select_option('llama3.2:3b')
             assert page.locator('#experiment-rows tr').count() == 1
             assert 'llama3.2:3b' in page.locator('#resource-summary').inner_text()
@@ -113,7 +134,10 @@ def main():
                 for pid in ids:
                     r=context.request.get(LS+f'/api/projects/{pid}/export?exportType=JSON&download_all_tasks=true')
                     assert r.ok,(pid,r.status)
-                    output[str(pid)]=fingerprint(r.json())
+                    project=context.request.get(LS+f'/api/projects/{pid}/').json()
+                    tasks=sorted(r.json(),key=lambda t:t['id'])
+                    output[str(pid)]=fingerprint({'project':{k:project.get(k) for k in ['id','title','description','label_config']},
+                        'tasks':[{k:t.get(k) for k in ['id','data','annotations','predictions']} for t in tasks]})
                 return output
             old=projects(); historical=[x['id'] for x in old if x['title']!=TITLE]
             before=snapshot(historical)
@@ -145,7 +169,7 @@ def main():
             page.goto(LS+f'/projects/{project_id}/data?task={task_ids[0]}',wait_until='domcontentloaded')
             page.get_by_text('Actual model answer',exact=True).wait_for(timeout=60000)
             for label in ['Correct','Partially correct','Incorrect','Unsupported','Yes','No','Low','Medium','High','Critical']:
-                page.get_by_text(re.compile('^'+re.escape(label)+r'(?:\s*\[\d+\])?$')).filter(visible=True).first.wait_for()
+                page.get_by_text(re.compile('^'+re.escape(label)+r'(?:\s*\[[^\]]+\])?$')).filter(visible=True).first.wait_for()
             page.get_by_placeholder(re.compile('Explain the decision')).fill('UI smoke check only; no independent annotation submitted.')
             page.screenshot(path=str(evidence/'label-studio-phase3.png'),full_page=True)
             after=snapshot(historical); assert before==after,'Historical exports changed'
@@ -155,6 +179,7 @@ def main():
                 'tasks':100,'annotations_submitted':0,'tasks_with_annotations':0,'controls_rendered':True,
                 'historical_project_ids':historical,'historical_export_sha256_before':before,
                 'historical_export_sha256_after':after,'exact_response_bindings_verified':100}
+            results['label_studio']['fingerprint_scope']='Project ID/title/description/label config; exported task IDs/data/annotations/predictions. Dynamic timestamps excluded.'
         browser.close()
     (evidence/'browser-verification.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({k:v.get('status') for k,v in results.items() if isinstance(v,dict)},indent=2))

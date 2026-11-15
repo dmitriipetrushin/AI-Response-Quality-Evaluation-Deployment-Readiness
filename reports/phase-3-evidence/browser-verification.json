@@ -1,0 +1,112 @@
+{
+  "quality_status": "Provisional agent-assisted reviews; no independent human annotations.",
+  "application": {
+    "status": "passed",
+    "question": "An urgent supplier email gives new bank details and a new callback number. Should I update them now?",
+    "response": {
+      "answer": "POL-007 does not provide automatic approval for supplier bank-account changes. Employees cannot approve their own requests. Before updating records or making payment, Finance must verify the change by independently calling the supplier using an existing trusted contact number already on file, and obtain a second Finance approver's approval. You should not update the details without this verification.",
+      "response_time_seconds": 5.354142,
+      "model": "qwen2.5:3b",
+      "created_at": "2026-11-15T13:08:05.43395427Z",
+      "done_reason": "stop",
+      "token_usage": {
+        "prompt_eval_count": 2729,
+        "eval_count": 71,
+        "total_duration": 5352936908,
+        "load_duration": 1191908,
+        "prompt_eval_duration": 633252000,
+        "eval_duration": 4683074000
+      },
+      "response_source": "ollama_local_inference",
+      "prompt_version": "baseline",
+      "output_contract": "plain_text",
+      "response_type": null,
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "generation_options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 8192,
+        "num_predict": 384,
+        "num_thread": 4
+      },
+      "context_strategy": "full_policy_document",
+      "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+      "prompt_sha256": "44d8148f31a417e5b44dd92de04286486122018a22f070223bb0a91a64a2bc90",
+      "policy_references": [
+        "POL-007"
+      ],
+      "invalid_policy_references": [],
+      "citation_support_status": "Identifier existence checked; claim support requires review.",
+      "warnings": []
+    },
+    "empty_question_http": 400,
+    "desktop_and_mobile": true,
+    "citation_controls": 1
+  },
+  "dashboard": {
+    "status": "passed",
+    "file_and_http": true,
+    "filters_and_grouping": "passed",
+    "historical_details": 30,
+    "mobile_overflow": false,
+    "page_errors": [],
+    "browser_version": "157.0.8103.78"
+  },
+  "label_studio": {
+    "status": "passed",
+    "version": "1.23.0",
+    "project_id": 7,
+    "tasks": 100,
+    "annotations_submitted": 0,
+    "tasks_with_annotations": 0,
+    "controls_rendered": true,
+    "historical_project_ids": [
+      6,
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "historical_export_sha256_before": {
+      "6": "8d1c31bbf3eadfac86c91770771e67a8403012c76d79f5b6f28ff4ac265c842b",
+      "5": "56b9142edacc64cb87a767d3fbcae3962e0d713a3ce8f8ecacd22dad546ef1da",
+      "4": "219c8275568fdd53e2b5be472a754d6dc178c1a0530d8cd0f591bd36231595f9",
+      "3": "6c914991a09d83ed1472a72c3f13981e93a5d1c7cd74f8b7a9e75b845caa698e",
+      "2": "7e270a171dc11930edf98ce01b645289086d8bf274799b7c0313ac8861e0f4c5",
+      "1": "db5be220caa43bea89d209fb8427eb147eba5e2beb5c1173a30837e40671c1d1"
+    },
+    "historical_export_sha256_after": {
+      "6": "8d1c31bbf3eadfac86c91770771e67a8403012c76d79f5b6f28ff4ac265c842b",
+      "5": "56b9142edacc64cb87a767d3fbcae3962e0d713a3ce8f8ecacd22dad546ef1da",
+      "4": "219c8275568fdd53e2b5be472a754d6dc178c1a0530d8cd0f591bd36231595f9",
+      "3": "6c914991a09d83ed1472a72c3f13981e93a5d1c7cd74f8b7a9e75b845caa698e",
+      "2": "7e270a171dc11930edf98ce01b645289086d8bf274799b7c0313ac8861e0f4c5",
+      "1": "db5be220caa43bea89d209fb8427eb147eba5e2beb5c1173a30837e40671c1d1"
+    },
+    "exact_response_bindings_verified": 100,
+    "fingerprint_scope": "Project ID/title/description/label config; exported task IDs/data/annotations/predictions. Dynamic timestamps excluded."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "historical_files_preserved": 13,
+  "baseline_reproduction_identical_answers": 30,
+  "dataset_cases": 100,
+  "sealed_experiments": 14,
+  "experiment_case_attempts": 364,
+  "tested_validation_models": [
+    "llama3.2:3b",
+    "qwen2.5:3b",
+    "qwen3:4b-instruct-2507-q4_K_M"
+  ],
+  "tested_prompts": [
+    "baseline",
+    "instruction-focused",
+    "policy-workflow",
+    "structured",
+    "uncertainty-aware"
+  ],
+  "final_responses": 100,
+  "heldout_control_responses": 30,
+  "unannotated_label_studio_tasks": 100,
+  "report_consistency": "passed",
+  "semantic_review_status": "provisional agent-assisted; no independent human validation"
+}

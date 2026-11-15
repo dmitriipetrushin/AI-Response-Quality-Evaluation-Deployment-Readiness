@@ -1082,6 +1082,314 @@
       "judgment_status": "provisional_agent_assisted; no independent human validation"
     },
     {
+      "experiment_id": "final-baseline-heldout",
+      "model": "qwen2.5:3b",
+      "prompt": "baseline",
+      "split": "heldout",
+      "purpose": "baseline-control",
+      "total": 30,
+      "successful": 30,
+      "failed": 0,
+      "reviewed": 30,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 12,
+        "Partially correct": 12,
+        "Incorrect": 6,
+        "Unsupported": 0
+      },
+      "correct_rate": 40.0,
+      "unsupported_rate": 0.0,
+      "critical_failures": 1,
+      "mean_latency": 4.672765133333333,
+      "median_latency": 3.952794,
+      "p95_latency": 8.089979,
+      "nominal_wilson_95": [
+        24.590628116801852,
+        57.67963974667752
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 2,
+          "correct_rate": 33.333333333333336
+        },
+        "multi_step": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 1,
+          "correct_rate": 16.666666666666668
+        },
+        "out_of_scope": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 5,
+          "correct_rate": 83.33333333333333
+        },
+        "sensitive": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 4,
+          "correct_rate": 66.66666666666667
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 3,
+          "correct_rate": 50.0
+        },
+        "hard": {
+          "total": 11,
+          "reviewed": 11,
+          "correct": 4,
+          "correct_rate": 36.36363636363637
+        },
+        "medium": {
+          "total": 13,
+          "reviewed": 13,
+          "correct": 5,
+          "correct_rate": 38.46153846153846
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 0,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "baseline"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T13:16:04.611280979Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.35GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "final-selected",
+      "model": "qwen2.5:3b",
+      "prompt": "baseline",
+      "split": "all",
+      "purpose": "final",
+      "total": 100,
+      "successful": 100,
+      "failed": 0,
+      "reviewed": 100,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 48,
+        "Partially correct": 36,
+        "Incorrect": 13,
+        "Unsupported": 3
+      },
+      "correct_rate": 48.0,
+      "unsupported_rate": 3.0,
+      "critical_failures": 3,
+      "mean_latency": 5.4018239900000005,
+      "median_latency": 4.2596185,
+      "p95_latency": 12.624791,
+      "nominal_wilson_95": [
+        38.464551758051904,
+        57.683422234776025
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 19,
+          "reviewed": 19,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 24,
+          "reviewed": 24,
+          "correct": 15,
+          "correct_rate": 62.5
+        },
+        "multi_step": {
+          "total": 19,
+          "reviewed": 19,
+          "correct": 7,
+          "correct_rate": 36.8421052631579
+        },
+        "out_of_scope": {
+          "total": 19,
+          "reviewed": 19,
+          "correct": 16,
+          "correct_rate": 84.21052631578948
+        },
+        "sensitive": {
+          "total": 19,
+          "reviewed": 19,
+          "correct": 10,
+          "correct_rate": 52.63157894736842
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 26,
+          "reviewed": 26,
+          "correct": 19,
+          "correct_rate": 73.07692307692308
+        },
+        "hard": {
+          "total": 26,
+          "reviewed": 26,
+          "correct": 8,
+          "correct_rate": 30.76923076923077
+        },
+        "medium": {
+          "total": 48,
+          "reviewed": 48,
+          "correct": 21,
+          "correct_rate": 43.75
+        }
+      },
+      "unknown_id_answers": 1,
+      "truncated_answers": 1,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "baseline"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T13:13:42.023200995Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.35GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
       "experiment_id": "val-baseline",
       "model": "qwen2.5:3b",
       "prompt": "baseline",
@@ -1915,10 +2223,503 @@
     "human_validated": false,
     "production_decision": "NO-GO pending independent validation"
   },
-  "final": null,
-  "heldout": null,
-  "baseline_heldout": null,
-  "original_30_selected": null,
+  "final": {
+    "experiment_id": "final-selected",
+    "model": "qwen2.5:3b",
+    "prompt": "baseline",
+    "split": "all",
+    "purpose": "final",
+    "total": 100,
+    "successful": 100,
+    "failed": 0,
+    "reviewed": 100,
+    "review_coverage": 100.0,
+    "counts": {
+      "Correct": 48,
+      "Partially correct": 36,
+      "Incorrect": 13,
+      "Unsupported": 3
+    },
+    "correct_rate": 48.0,
+    "unsupported_rate": 3.0,
+    "critical_failures": 3,
+    "mean_latency": 5.4018239900000005,
+    "median_latency": 4.2596185,
+    "p95_latency": 12.624791,
+    "nominal_wilson_95": [
+      38.464551758051904,
+      57.683422234776025
+    ],
+    "complete_review": true,
+    "by_category": {
+      "ambiguous": {
+        "total": 19,
+        "reviewed": 19,
+        "correct": 0,
+        "correct_rate": 0.0
+      },
+      "factual": {
+        "total": 24,
+        "reviewed": 24,
+        "correct": 15,
+        "correct_rate": 62.5
+      },
+      "multi_step": {
+        "total": 19,
+        "reviewed": 19,
+        "correct": 7,
+        "correct_rate": 36.8421052631579
+      },
+      "out_of_scope": {
+        "total": 19,
+        "reviewed": 19,
+        "correct": 16,
+        "correct_rate": 84.21052631578948
+      },
+      "sensitive": {
+        "total": 19,
+        "reviewed": 19,
+        "correct": 10,
+        "correct_rate": 52.63157894736842
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "total": 26,
+        "reviewed": 26,
+        "correct": 19,
+        "correct_rate": 73.07692307692308
+      },
+      "hard": {
+        "total": 26,
+        "reviewed": 26,
+        "correct": 8,
+        "correct_rate": 30.76923076923077
+      },
+      "medium": {
+        "total": 48,
+        "reviewed": 48,
+        "correct": 21,
+        "correct_rate": 43.75
+      }
+    },
+    "unknown_id_answers": 1,
+    "truncated_answers": 1,
+    "retry_requests": 0,
+    "config": {
+      "model": "qwen2.5:3b",
+      "service_url": "http://127.0.0.1:11434",
+      "timeout_seconds": 180,
+      "context_strategy": "full_policy_document",
+      "policy_path": "data/company-policies.md",
+      "host": "127.0.0.1",
+      "port": 8000,
+      "options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 8192,
+        "num_predict": 384,
+        "num_thread": 4
+      },
+      "prompt_version": "baseline"
+    },
+    "model_metadata": {
+      "identifier": "qwen2.5:3b",
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "size_bytes": 1929912432,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      },
+      "supported_context_length": 32768,
+      "configured_context_length": 8192,
+      "ollama_version": "0.40.16",
+      "thinking_controls": null,
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    "runtime": {
+      "ollama_loaded_model_bytes": 2420564295,
+      "ollama_ps": {
+        "models": [
+          {
+            "name": "qwen2.5:3b",
+            "model": "qwen2.5:3b",
+            "size": 2420564295,
+            "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "3.1B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-15T13:13:42.023200995Z",
+            "size_vram": 0,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      },
+      "docker_memory_usage": "2.35GiB / 15.34GiB",
+      "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+    },
+    "judgment_status": "provisional_agent_assisted; no independent human validation"
+  },
+  "heldout": {
+    "experiment_id": "final-selected",
+    "model": "qwen2.5:3b",
+    "prompt": "baseline",
+    "split": "heldout",
+    "purpose": "final",
+    "total": 30,
+    "successful": 30,
+    "failed": 0,
+    "reviewed": 30,
+    "review_coverage": 100.0,
+    "counts": {
+      "Correct": 12,
+      "Partially correct": 12,
+      "Incorrect": 6,
+      "Unsupported": 0
+    },
+    "correct_rate": 40.0,
+    "unsupported_rate": 0.0,
+    "critical_failures": 1,
+    "mean_latency": 4.6344072,
+    "median_latency": 4.101399000000001,
+    "p95_latency": 7.857902,
+    "nominal_wilson_95": [
+      24.590628116801852,
+      57.67963974667752
+    ],
+    "complete_review": true,
+    "by_category": {
+      "ambiguous": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 0,
+        "correct_rate": 0.0
+      },
+      "factual": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 2,
+        "correct_rate": 33.333333333333336
+      },
+      "multi_step": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 1,
+        "correct_rate": 16.666666666666668
+      },
+      "out_of_scope": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 5,
+        "correct_rate": 83.33333333333333
+      },
+      "sensitive": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 4,
+        "correct_rate": 66.66666666666667
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 3,
+        "correct_rate": 50.0
+      },
+      "hard": {
+        "total": 11,
+        "reviewed": 11,
+        "correct": 4,
+        "correct_rate": 36.36363636363637
+      },
+      "medium": {
+        "total": 13,
+        "reviewed": 13,
+        "correct": 5,
+        "correct_rate": 38.46153846153846
+      }
+    },
+    "unknown_id_answers": 0,
+    "truncated_answers": 0,
+    "retry_requests": 0,
+    "config": {
+      "model": "qwen2.5:3b",
+      "service_url": "http://127.0.0.1:11434",
+      "timeout_seconds": 180,
+      "context_strategy": "full_policy_document",
+      "policy_path": "data/company-policies.md",
+      "host": "127.0.0.1",
+      "port": 8000,
+      "options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 8192,
+        "num_predict": 384,
+        "num_thread": 4
+      },
+      "prompt_version": "baseline"
+    },
+    "model_metadata": {
+      "identifier": "qwen2.5:3b",
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "size_bytes": 1929912432,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      },
+      "supported_context_length": 32768,
+      "configured_context_length": 8192,
+      "ollama_version": "0.40.16",
+      "thinking_controls": null,
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    "runtime": {
+      "ollama_loaded_model_bytes": 2420564295,
+      "ollama_ps": {
+        "models": [
+          {
+            "name": "qwen2.5:3b",
+            "model": "qwen2.5:3b",
+            "size": 2420564295,
+            "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "3.1B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-15T13:13:42.023200995Z",
+            "size_vram": 0,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      },
+      "docker_memory_usage": "2.35GiB / 15.34GiB",
+      "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+    },
+    "judgment_status": "provisional_agent_assisted; no independent human validation"
+  },
+  "baseline_heldout": {
+    "experiment_id": "final-baseline-heldout",
+    "model": "qwen2.5:3b",
+    "prompt": "baseline",
+    "split": "heldout",
+    "purpose": "baseline-control",
+    "total": 30,
+    "successful": 30,
+    "failed": 0,
+    "reviewed": 30,
+    "review_coverage": 100.0,
+    "counts": {
+      "Correct": 12,
+      "Partially correct": 12,
+      "Incorrect": 6,
+      "Unsupported": 0
+    },
+    "correct_rate": 40.0,
+    "unsupported_rate": 0.0,
+    "critical_failures": 1,
+    "mean_latency": 4.672765133333333,
+    "median_latency": 3.952794,
+    "p95_latency": 8.089979,
+    "nominal_wilson_95": [
+      24.590628116801852,
+      57.67963974667752
+    ],
+    "complete_review": true,
+    "by_category": {
+      "ambiguous": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 0,
+        "correct_rate": 0.0
+      },
+      "factual": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 2,
+        "correct_rate": 33.333333333333336
+      },
+      "multi_step": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 1,
+        "correct_rate": 16.666666666666668
+      },
+      "out_of_scope": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 5,
+        "correct_rate": 83.33333333333333
+      },
+      "sensitive": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 4,
+        "correct_rate": 66.66666666666667
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "total": 6,
+        "reviewed": 6,
+        "correct": 3,
+        "correct_rate": 50.0
+      },
+      "hard": {
+        "total": 11,
+        "reviewed": 11,
+        "correct": 4,
+        "correct_rate": 36.36363636363637
+      },
+      "medium": {
+        "total": 13,
+        "reviewed": 13,
+        "correct": 5,
+        "correct_rate": 38.46153846153846
+      }
+    },
+    "unknown_id_answers": 0,
+    "truncated_answers": 0,
+    "retry_requests": 0,
+    "config": {
+      "model": "qwen2.5:3b",
+      "service_url": "http://127.0.0.1:11434",
+      "timeout_seconds": 180,
+      "context_strategy": "full_policy_document",
+      "policy_path": "data/company-policies.md",
+      "host": "127.0.0.1",
+      "port": 8000,
+      "options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 8192,
+        "num_predict": 384,
+        "num_thread": 4
+      },
+      "prompt_version": "baseline"
+    },
+    "model_metadata": {
+      "identifier": "qwen2.5:3b",
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "size_bytes": 1929912432,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      },
+      "supported_context_length": 32768,
+      "configured_context_length": 8192,
+      "ollama_version": "0.40.16",
+      "thinking_controls": null,
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    "runtime": {
+      "ollama_loaded_model_bytes": 2420564295,
+      "ollama_ps": {
+        "models": [
+          {
+            "name": "qwen2.5:3b",
+            "model": "qwen2.5:3b",
+            "size": 2420564295,
+            "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "3.1B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-15T13:16:04.611280979Z",
+            "size_vram": 0,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      },
+      "docker_memory_usage": "2.35GiB / 15.34GiB",
+      "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+    },
+    "judgment_status": "provisional_agent_assisted; no independent human validation"
+  },
+  "original_30_selected": {
+    "total": 30,
+    "reviewed": 30,
+    "correct": 14,
+    "correct_rate": 46.666666666666664,
+    "unsupported": 2,
+    "critical": 0,
+    "caveat": "These original cases were exposed development cases, not a held-out generalization benchmark."
+  },
+  "critical_examples": [
+    {
+      "test_id": "P3-D-004",
+      "split": "development",
+      "question": "An office-supplies order is USD 245 plus USD 18 tax. How should I get approval and later claim it?",
+      "answer": "To get approval for the office-supplies order, you should request it through the IT service portal, as outlined in POL-004. Include the business need for the supplies, the required date, the device type (if applicable), and your line-manager approval. Since the total cost is USD 245, which is up to the USD 250 limit, you only need prior line-manager approval.\n\nOnce the order is placed, you should submit the reimbursement claim through ExpenseDesk. Include an itemized receipt, the transaction date, the amount, the currency (USD), the business purpose, and the relevant approval reference. Since the total cost is USD 245, which is within the USD 250 limit, you only need prior line-manager approval for the purchase. The reimbursement claim should also include the relevant approval reference.\n\nThis handbook does not establish cash payment for expenses above USD 250, so you should refer to People Operations for any questions about cash payments for this order.",
+      "classification": "Incorrect",
+      "rationale": "Ignores USD 18 tax, repeatedly uses USD 245 instead of USD 263 and explicitly says only manager approval is needed, bypassing mandatory Finance approval. Also invents an IT equipment route and omits deadline."
+    },
+    {
+      "test_id": "P3-V-018",
+      "split": "validation",
+      "question": "Can I share the document with our partner?",
+      "answer": "POL-007 — Approvals, escalation, and financial integrity\n\nThis handbook does not establish a process for sharing documents with external partners. Employees must not share internal documents or records with anyone outside Northstar Business Services without prior approval from People Operations or the relevant policy owner.",
+      "classification": "Incorrect",
+      "rationale": "Exact-answer reuse from val-baseline/reviews.csv: Denies an external-sharing process exists and substitutes People Operations or a policy owner for required owner AND Information Security approval. This gives a weaker authorization path that could expose company information."
+    },
+    {
+      "test_id": "P3-T-010",
+      "split": "heldout",
+      "question": "A USD 1,050 phone is needed next week. Can I buy it now if the standard lead time is too long?",
+      "answer": "POL-004 does not provide a dedicated approval route for equipment requests exceeding USD 1,000. Therefore, you cannot use this route for a USD 1,050 phone purchase. You should request line-manager and Finance approval in WorkHub as per POL-004. If the standard lead time is too long, you should escalate this request to the relevant functions for consideration of an exception.",
+      "classification": "Incorrect",
+      "rationale": "Falsely denies the dedicated equipment route and replaces mandatory IT review/approval with manager and Finance in WorkHub for a USD 1050 phone; omits IT-only ordering and urgent triage."
+    }
+  ],
   "judgment_disclosure": "All classifications are provisional agent-assisted reviews. No independent human annotations.",
   "historical_phase2": {
     "run_id": "northstar-2026-11-15T10:58:21.374275+00:00",

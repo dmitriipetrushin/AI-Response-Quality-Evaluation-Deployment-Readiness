@@ -101,3 +101,8 @@ The recommendation is **NO-GO** for a controlled business pilot because the Corr
 Full context did not guarantee reliable reasoning or complete answers. Citation validation caught an impossible identifier but could not establish semantic support. Cold/warm latency separation and a transient-startup connection-error regression test improved the handover. Future work needs independent review, broader holdout and adversarial cases, corrected clarification and approval behavior, operational latency goals, and named business/security approvals. Those are prerequisites for a real pilot, not claims of work already completed here.
 
 Start the local assistant with `python3 scripts/start_assistant.py --open` from the project root; first-time setup adds `--setup-model`. See [setup instructions](../docs/local-model-setup.md), [actual run report](../reports/real-model-evaluation.md), [phase-2 executive report](../project-management/phase-2-executive-report.md), and [completion evidence](../reports/phase-2-completion-report.md).
+
+
+## Phase 3 continuation
+
+The [Phase 3 comparative case study](phase-3-case-study.md) adds 100 frozen cases, five prompt variants, Qwen/Llama comparisons, held-out execution controls and sealed real-inference evidence. No candidate qualified to replace the baseline. On the new pooled 100, provisional results were 48% Correct, 3% Unsupported and three critical findings; the original 30 outputs remained identical. The pooled score is not a measured gain over the historical sample. The held-out selected/control score was 40% Correct on the same 30 questions. Deployment remains NO-GO pending independent human validation and remediation.

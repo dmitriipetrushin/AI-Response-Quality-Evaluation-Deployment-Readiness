@@ -1,0 +1,8 @@
+{
+  "required_artifacts": 33,
+  "policy_words": 2019,
+  "label_studio_tasks": 30,
+  "reports_fresh": true,
+  "presentation_metrics_consistent": true,
+  "local_markdown_links_valid": true
+}

@@ -1,0 +1,11 @@
+{
+  "baseline_inputs_unchanged": true,
+  "questions_attempted": 30,
+  "actual_answers": 30,
+  "failed_requests": 0,
+  "provisional_reviews": 30,
+  "model_digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+  "shared_prompt_verified": true,
+  "label_studio_actual_tasks": 30,
+  "status": "passed"
+}

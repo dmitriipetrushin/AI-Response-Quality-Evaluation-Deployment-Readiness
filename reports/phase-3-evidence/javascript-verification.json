@@ -1,0 +1,5 @@
+{
+  "node_cli_available": false,
+  "node_syntax_probe": "Unavailable: executable not installed (exit 127).",
+  "fallback": "Actual Chrome execution and filter interactions passed in browser-verification.json; no page errors. No Node dependency added."
+}

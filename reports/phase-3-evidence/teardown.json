@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-11-15T13:10:38.982323+00:00",
+  "owned_containers": {
+    "northstar-ollama": "exited",
+    "northstar-quality-pilot": "exited"
+  },
+  "loopback_ports_accepting_connections": {
+    "8000": false,
+    "8087": false,
+    "11434": false
+  },
+  "application_shutdown": "SIGINT; server socket closed",
+  "model_cache_retained": true,
+  "label_studio_container_retained": true,
+  "status": "passed"
+}

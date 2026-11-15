@@ -1,0 +1,5 @@
+{
+  "application": "passed",
+  "dashboard": "passed",
+  "label_studio": "passed"
+}

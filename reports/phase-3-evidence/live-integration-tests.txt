@@ -1,0 +1,7 @@
+test_two_required_questions_generate_actual_answers (tests.integration_real_model.LiveInferenceTests.test_two_required_questions_generate_actual_answers) ... ok
+test_selected_recipe_generates_real_answers (tests.integration_phase3.SelectedLiveInferenceTests.test_selected_recipe_generates_real_answers) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 14.941s
+
+OK

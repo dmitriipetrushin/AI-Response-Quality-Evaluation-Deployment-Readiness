@@ -16,18 +16,24 @@ def collect(root=ROOT):
  final=next((s for s in items if s['experiment_id']=='final-selected' and s['purpose']=='final' and s['split']=='all'),None)
  control=next((s for s in items if s['experiment_id']=='final-baseline-heldout' and s['purpose']=='baseline-control' and s['split']=='heldout'),None)
  held=summarize(final['experiment_id'],root,only_split='heldout') if final else None
- historical_subset=None
+ historical_subset=None;critical_examples=[]
  if final:
   metadata,rows=read_experiment(final['experiment_id'],root);reviews=read_reviews(final['experiment_id'],rows,root)
   old_ids={c['test_id'] for c in json.loads((root/'data/test-cases.json').read_text())}
   subset=[r for r in reviews if r['test_id'] in old_ids]
+  by_id={r['test_id']:r for r in rows}
+  for review in reviews:
+   if review['critical_failure']=='true':
+    row=by_id[review['test_id']]
+    critical_examples.append({'test_id':row['test_id'],'split':row['split'],'question':row['question'],
+     'answer':row['response']['answer'],'classification':review['classification'],'rationale':review['rationale']})
   historical_subset={'total':30,'reviewed':len(subset),'correct':sum(r['classification']=='Correct' for r in subset),
    'correct_rate':100*sum(r['classification']=='Correct' for r in subset)/30,
    'unsupported':sum(r['classification']=='Unsupported' for r in subset),'critical':sum(r['critical_failure']=='true' for r in subset),
    'caveat':'These original cases were exposed development cases, not a held-out generalization benchmark.'}
  return {'dataset_version':manifest['version'],'dataset_sha256':digest(manifest),'case_count':manifest['total'],
          'experiments':items,'selection':selection,'final':final,'heldout':held,'baseline_heldout':control,
-         'original_30_selected':historical_subset,'judgment_disclosure':'All classifications are provisional agent-assisted reviews. No independent human annotations.',
+         'original_30_selected':historical_subset,'critical_examples':critical_examples,'judgment_disclosure':'All classifications are provisional agent-assisted reviews. No independent human annotations.',
          'historical_phase2':json.loads((root/'reports/real-model-metrics.json').read_text())}
 
 
@@ -52,8 +58,32 @@ def paired_examples(payload,root=ROOT):
  return examples
 
 
+def validation_examples(payload,root=ROOT):
+ """Matched same-prompt examples from candidates, never claimed as selected/held-out gains."""
+ ids={s['experiment_id'] for s in payload['experiments']}
+ if not {'val-workflow','val-qwen3-instruct'}<=ids:return []
+ _,before_rows=read_experiment('val-workflow',root);_,after_rows=read_experiment('val-qwen3-instruct',root)
+ before_reviews={r['test_id']:r for r in read_reviews('val-workflow',before_rows,root)}
+ after_reviews={r['test_id']:r for r in read_reviews('val-qwen3-instruct',after_rows,root)}
+ old={r['test_id']:r for r in before_rows};rank={'Correct':3,'Partially correct':2,'Incorrect':0,'Unsupported':0}
+ result=[];counts={'improvement':0,'regression':0}
+ for row in after_rows:
+  tid=row['test_id']
+  if tid not in before_reviews or tid not in after_reviews:continue
+  a=before_reviews[tid]['classification'];b=after_reviews[tid]['classification']
+  if rank[a]==rank[b]:continue
+  change='improvement' if rank[b]>rank[a] else 'regression'
+  if counts[change]>=2:continue
+  counts[change]+=1
+  result.append({'test_id':tid,'question':row['question'],'before_classification':a,'after_classification':b,
+   'change':change,'baseline_answer':old[tid]['response']['answer'],'selected_answer':row['response']['answer'],
+   'before_source':'Validation: Qwen2.5 3B / policy-workflow','after_source':'Validation: Qwen3 Instruct 4B / policy-workflow (not selected)',
+   'rationale':after_reviews[tid]['rationale'],'dataset_status':'Matched validation question used for selection; not a selected-profile or held-out improvement.'})
+ return result
+
+
 def generate(root=ROOT):
- root=Path(root);payload=collect(root);examples=paired_examples(payload,root)
+ root=Path(root);payload=collect(root);examples=paired_examples(payload,root)+validation_examples(payload,root)
  report=root/'reports';report.mkdir(exist_ok=True)
  (report/'phase-3-metrics.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
  fields=['experiment_id','model','prompt','split','total','successful','reviewed','correct_rate','unsupported_rate','critical_failures','mean_latency','median_latency','p95_latency','unknown_id_answers','truncated_answers','retry_requests']
@@ -87,25 +117,36 @@ def generate(root=ROOT):
    lines += [f'### Selected configuration by {title.lower()}', '', f'| {title} | Cases | Correct | Correct % |', '|---|---:|---:|---:|']
    lines += [f"| {name} | {s['total']} | {s['correct']} | {fmt(s['correct_rate'])} |" for name,s in final[key].items()]
    lines += ['']
+ if payload['critical_examples']:
+  lines+=['## Critical findings in the final 100 (provisional)','','These are judgments about generated advice, not claims that a real purchase, disclosure or loss occurred.','']
+  for issue in payload['critical_examples']:
+   lines += [f"### {issue['test_id']} / {issue['split']}",'',issue['question'],'','Actual answer:',issue['answer'],'','Provisional rationale: '+issue['rationale'],'']
  lines += ['## Engineering targets and uncertainty','',
  'Phase-3 engineering targets are Correct ≥85%, Unsupported ≤3%, zero critical failures, mean latency ≤10 seconds, and at least 100 cases. The original Phase-1/2 business-quality target was 90% Correct; the historical reports keep that threshold. Meeting either target set provisionally does not authorize deployment.','',
  'Nominal Wilson intervals assume independent Bernoulli observations and condition on the provisional labels. The questions are a nonrandom agent-authored set within the same fictional handbook; the intervals are illustrative uncertainty summaries, not validated population-accuracy guarantees. The same agent authored references and reviewed outputs. No independent human validation or reviewer agreement is claimed.','',
  'Loaded-model bytes come from Ollama /api/ps, while container memory is separately sampled with docker stats. Neither is a guaranteed process-RSS/VRAM peak. CPU execution, four inference threads, seed 42, nominal temperature 0 and Q4_K_M quantization are documented in the individual records. Context/temperature ablations are explicitly identified; models have different tokenizers and the same token cap does not mean the same word budget. Warm-up/cold loading is recorded separately and excluded from timed case means.','',
  'The full handbook fits the context window. Retrieval was not added: the observed failures primarily involve interpretation, instruction following and omitted workflow details, and section retrieval could omit cross-policy requirements. This is a feasibility-based scope decision, not an unmeasured claim that retrieval would perform worse.','',
  '**Deployment recommendation: NO-GO pending adequate independent human review, broader representative/adversarial coverage, operational controls and approval.** Continue development according to the observed improvement/regression evidence; no production rollout or real employee outcome is claimed.','',
- '## Improvement and regression examples on the original exposed cases','']
+ '## Improvement and regression examples on matched questions','','Markdown presentation trims line-ending whitespace; sealed raw records retain every generated character. HTML preserves answer whitespace through character references.','']
  for ex in examples:
-  lines += [f"### {ex['test_id']} · {ex['change']} ({ex['before_classification']} → {ex['after_classification']})",'',ex['question'],'','Baseline:',ex['baseline_answer'],'','Selected:',ex['selected_answer'],'','Provisional rationale: '+ex['rationale'],'']
- (report/'phase-3-comparison.md').write_text('\n'.join(lines)+'\n')
+  lines += [f"### {ex['test_id']} · {ex['change']} ({ex['before_classification']} → {ex['after_classification']})",'',ex['dataset_status'],'',ex['question'],'',ex.get('before_source','Phase-2 baseline')+':',ex['baseline_answer'],'',ex.get('after_source','Selected profile')+':',ex['selected_answer'],'','Provisional rationale: '+ex['rationale'],'']
+ (report/'phase-3-comparison.md').write_text('\n'.join(line.rstrip() for line in '\n'.join(lines).split('\n'))+'\n')
  e=html.escape
+ render_answer=lambda value:e(value).replace('\n','&#10;')
  cases_html=''
+ critical_html=''
+ if payload['critical_examples']:
+  critical_html='<section><h2>Critical findings in the final 100</h2><p>Provisional judgments about generated advice; no actual purchase, disclosure or loss occurred.</p>'
+  for issue in payload['critical_examples']:
+   critical_html+=f'<details><summary>{e(issue["test_id"])} / {e(issue["split"])}</summary><p>{e(issue["question"])}</p><p class="answer">{render_answer(issue["answer"])}</p><p>{e(issue["rationale"])}</p></details>'
+  critical_html+='</section>'
  for ex in examples:
-  cases_html+=f'<details><summary>{e(ex["test_id"])} · {e(ex["change"])} · {e(ex["before_classification"])} → {e(ex["after_classification"])}</summary><p>{e(ex["question"])}</p><h3>Phase-2 actual answer</h3><p class="answer">{e(ex["baseline_answer"])}</p><h3>Selected actual answer</h3><p class="answer">{e(ex["selected_answer"])}</p><p>{e(ex["rationale"])}</p><small>Exposed original development case; provisional review.</small></details>'
+  cases_html+=f'<details><summary>{e(ex["test_id"])} · {e(ex["change"])} · {e(ex["before_classification"])} → {e(ex["after_classification"])}</summary><p>{e(ex["question"])}</p><h3>{e(ex.get("before_source","Phase-2 actual answer"))}</h3><p class="answer">{render_answer(ex["baseline_answer"])}</p><h3>{e(ex.get("after_source","Selected actual answer"))}</h3><p class="answer">{render_answer(ex["selected_answer"])}</p><p>{e(ex["rationale"])}</p><small>{e(ex["dataset_status"])} Provisional review.</small></details>'
  final_text='Final results are not available until validation-only selection and final evaluation complete.'
  if payload['final']:
   s=payload['final'];h=payload['heldout'];final_text=f"Selected: {s['model']} / {s['prompt']}. Pooled {s['total']} cases: {fmt(s['correct_rate'])}% Correct, {fmt(s['unsupported_rate'])}% Unsupported, {s['critical_failures']} critical, mean {s['mean_latency']:.2f} s. Held-out {h['total']} cases: {fmt(h['correct_rate'])}% Correct."
  data=json.dumps(payload,ensure_ascii=False).replace('<',chr(92)+'u003c')
- html_doc=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Phase 3 · LLM experiments</title><script src="phase-3-dashboard.js" defer></script><style>body{{margin:0;background:#f2f5f7;color:#152a3a;font:16px/1.6 system-ui,sans-serif}}main{{max-width:1280px;margin:auto;padding:32px 24px}}h1{{line-height:1.15}}a,summary{{color:#12646b}}section,details{{background:white;border:1px solid #d3dde4;border-radius:10px;padding:22px;margin:20px 0}}.notice{{background:#fff6df;border:1px solid #d4ad4d;padding:16px}}.decision{{background:#fff0f2;border-left:5px solid #a51c30;padding:18px}}.filters{{display:flex;gap:18px;flex-wrap:wrap}}label{{display:flex;flex-direction:column;font-size:14px}}select{{font:inherit;padding:8px;max-width:100%}}.scroll{{overflow-x:auto}}table{{border-collapse:collapse;width:100%;font-size:14px}}th,td{{padding:11px;border-bottom:1px solid #d3dde4;text-align:left}}th{{background:#f3f7f8}}p,td,summary{{overflow-wrap:anywhere}}small{{color:#526474}}summary{{font-weight:650;cursor:pointer}}.answer{{white-space:pre-wrap}}a:focus-visible,select:focus-visible,summary:focus-visible{{outline:3px solid #be8100;outline-offset:3px}}.groups{{display:grid;grid-template-columns:1fr 1fr;gap:20px}}@media(max-width:700px){{main{{padding:18px 12px}}.groups{{grid-template-columns:1fr}}section{{padding:16px}}}}</style></head><body><main><nav><a href="dashboard.html">All phases</a> · <a href="http://127.0.0.1:8000/">Interactive assistant</a> · <a href="phase-3-comparison.md">Full evidence report</a></nav><p>Dmitry Petrushin · Independent fictional-company portfolio</p><h1>Phase 3: LLM optimization and comparison</h1><p class="notice">Actual local-model inference. All quality labels are provisional agent-assisted judgments. No independent human validation. Synthetic fixtures are not a real-model performance benchmark.</p><p class="decision"><b>NO-GO for deployment pending adequate human validation.</b><br>{e(final_text)}</p><section><h2>Experiment comparison</h2><p>Filter results by model, prompt and split. Compare identical validation/held-out cases. Development screens are intentionally failure-focused; pooled final results include exposed cases.</p><div class="filters"><label>Model<select id="model-filter"><option value="">All models</option></select></label><label>Prompt<select id="prompt-filter"><option value="">All prompts</option></select></label><label>Split<select id="split-filter"><option value="">All splits</option></select></label><label>Breakdown experiment<select id="experiment-select"></select></label></div><div class="scroll"><table><thead><tr><th>Experiment</th><th>Model / prompt</th><th>Split / n</th><th>Correct</th><th>Unsupported</th><th>Critical</th><th>Mean / median / P95 s</th><th>Review coverage</th></tr></thead><tbody id="experiment-rows"></tbody></table></div></section><div class="groups"><section><h2>By category</h2><div class="scroll"><table><thead><tr><th>Category</th><th>Correct / cases</th><th>Correct %</th></tr></thead><tbody id="category-rows"></tbody></table></div></section><section><h2>By difficulty</h2><div class="scroll"><table><thead><tr><th>Difficulty</th><th>Correct / cases</th><th>Correct %</th></tr></thead><tbody id="difficulty-rows"></tbody></table></div></section></div><section><h2>Matched final held-out comparison</h2><div id="heldout-summary"></div><p>Nominal intervals condition on provisional labels and independent-case assumptions. This authored question set is not a random employee-traffic sample.</p></section><section><h2>Model identity and resource evidence</h2><div id="resource-summary"></div><p>Runtime versions, digests, quantization and settings are recorded for each actual run. Memory values distinguish Ollama loaded-model size from container memory; they are not a peak-RSS claim.</p></section><section><h2>Observed improvements and regressions</h2><p>These examples compare identical original development questions. They are not held-out improvements.</p>{cases_html or '<p>No final comparison is claimed yet.</p>'}</section><footer><a href="phase-3-metrics.json">JSON metrics</a> · <a href="phase-3-comparison.csv">CSV comparison</a> · Synthetic baseline and Phase-2 results remain available on the all-phases dashboard.</footer><script type="application/json" id="experiment-data">{data}</script></main></body></html>'''
+ html_doc=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Phase 3 · LLM experiments</title><script src="phase-3-dashboard.js" defer></script><style>body{{margin:0;background:#f2f5f7;color:#152a3a;font:16px/1.6 system-ui,sans-serif}}main{{max-width:1280px;margin:auto;padding:32px 24px}}h1{{line-height:1.15}}a,summary{{color:#12646b}}section,details{{background:white;border:1px solid #d3dde4;border-radius:10px;padding:22px;margin:20px 0}}.notice{{background:#fff6df;border:1px solid #d4ad4d;padding:16px}}.decision{{background:#fff0f2;border-left:5px solid #a51c30;padding:18px}}.filters{{display:flex;gap:18px;flex-wrap:wrap}}label{{display:flex;flex-direction:column;font-size:14px}}select{{font:inherit;padding:8px;max-width:100%}}.scroll{{overflow-x:auto}}table{{border-collapse:collapse;width:100%;font-size:14px}}th,td{{padding:11px;border-bottom:1px solid #d3dde4;text-align:left}}th{{background:#f3f7f8}}p,td,summary{{overflow-wrap:anywhere}}small{{color:#526474}}summary{{font-weight:650;cursor:pointer}}.answer{{white-space:pre-wrap}}a:focus-visible,select:focus-visible,summary:focus-visible{{outline:3px solid #be8100;outline-offset:3px}}.groups{{display:grid;grid-template-columns:1fr 1fr;gap:20px}}@media(max-width:700px){{main{{padding:18px 12px}}.groups{{grid-template-columns:1fr}}section{{padding:16px}}}}</style></head><body><main><nav><a href="dashboard.html">All phases</a> · <a href="http://127.0.0.1:8000/">Interactive assistant</a> · <a href="phase-3-comparison.md">Full evidence report</a></nav><p>Dmitry Petrushin · Independent fictional-company portfolio</p><h1>Phase 3: LLM optimization and comparison</h1><p class="notice">Actual local-model inference. All quality labels are provisional agent-assisted judgments. No independent human validation. Synthetic fixtures are not a real-model performance benchmark.</p><p class="decision"><b>NO-GO for deployment pending adequate human validation.</b><br>{e(final_text)}</p>{critical_html}<section><h2>Experiment comparison</h2><p>Filter results by model, prompt and split. Compare identical validation/held-out cases. Development screens are intentionally failure-focused; pooled final results include exposed cases.</p><div class="filters"><label>Model<select id="model-filter"><option value="">All models</option></select></label><label>Prompt<select id="prompt-filter"><option value="">All prompts</option></select></label><label>Split<select id="split-filter"><option value="">All splits</option></select></label><label>Breakdown experiment<select id="experiment-select"></select></label></div><div class="scroll"><table><thead><tr><th>Experiment</th><th>Model / prompt</th><th>Split / n</th><th>Correct</th><th>Unsupported</th><th>Critical</th><th>Mean / median / P95 s</th><th>Review coverage</th></tr></thead><tbody id="experiment-rows"></tbody></table></div></section><div class="groups"><section><h2>By category</h2><div class="scroll"><table><thead><tr><th>Category</th><th>Correct / cases</th><th>Correct %</th></tr></thead><tbody id="category-rows"></tbody></table></div></section><section><h2>By difficulty</h2><div class="scroll"><table><thead><tr><th>Difficulty</th><th>Correct / cases</th><th>Correct %</th></tr></thead><tbody id="difficulty-rows"></tbody></table></div></section></div><section><h2>Matched final held-out comparison</h2><div id="heldout-summary"></div><p>Nominal intervals condition on provisional labels and independent-case assumptions. This authored question set is not a random employee-traffic sample.</p></section><section><h2>Model identity and resource evidence</h2><div id="resource-summary"></div><p>Runtime versions, digests, quantization and settings are recorded for each actual run. Memory values distinguish Ollama loaded-model size from container memory; they are not a peak-RSS claim.</p></section><section><h2>Observed improvements and regressions</h2><p>Original-case examples use exposed development questions. Validation examples compare Qwen2.5 and Qwen3 with the same workflow prompt and identify both configurations. They are not selected-profile or held-out gains.</p>{cases_html or '<p>No original-case classification changes were observed.</p>'}</section><footer><a href="phase-3-metrics.json">JSON metrics</a> · <a href="phase-3-comparison.csv">CSV comparison</a> · Synthetic baseline and Phase-2 results remain available on the all-phases dashboard.</footer><script type="application/json" id="experiment-data">{data}</script></main></body></html>'''
  (report/'phase-3-dashboard.html').write_text(html_doc)
  (report/'phase-3-dashboard.js').write_bytes((root/'app/phase3-dashboard.js').read_bytes())
  return payload

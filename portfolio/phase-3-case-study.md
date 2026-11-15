@@ -26,6 +26,22 @@ Quality follows the existing rubric: contradiction → Incorrect; otherwise mate
 
 ## Hardware and controlled comparisons
 
+```mermaid
+flowchart TD
+    KB["Unchanged fictional handbook"] --> RUN["Shared PolicyAssistant and local Ollama"]
+    DEV["40 development cases; 12-case prompt screens"] --> RUN
+    VAL["30 validation cases; five matched configurations"] --> RUN
+    RUN --> RAW["Exact raw outputs, timing and SHA seals"]
+    RAW --> REVIEW["Separate provisional agent-assisted reviews"]
+    REVIEW --> SELECT["Predeclared selection and baseline-retention rule"]
+    SELECT --> CONFIG["Frozen application recipe and rollback"]
+    CONFIG --> FINAL["Selected recipe on all 100; baseline control on 30 held-out"]
+    FINAL --> EVIDENCE["Split-specific metrics and offline dashboard"]
+    FINAL --> LS["Separate 100-task Label Studio project; unannotated"]
+    LS -. "Future independent review and adjudication" .-> HUMAN["Human validation pending"]
+    EVIDENCE --> DECISION["NO-GO; engineering completion is not deployment approval"]
+```
+
 The measured computer has an Intel Core i5-13420H, 12 logical CPUs and approximately 15.34 GiB RAM. Inference ran on CPU through Ollama 0.40.16 with four configured threads. No allocated GPU or peak-VRAM measurement is claimed. The three matched model configurations use Q4_K_M weights: Qwen2.5 3B, Qwen3 4B Instruct 2507 and Llama 3.2 3B. Qwen and Llama provide two model families. Each artifact is under 3 GB on disk; exact identifiers and digests are recorded with every real response.
 
 The generic `qwen3:4b` alias exposed thinking-only behavior in the installed runtime. A real compatibility probe took 116.6 seconds cold despite `think:false`; that single output was not treated as benchmark accuracy. The explicit `qwen3:4b-instruct-2507-q4_K_M` candidate provided the intended non-thinking comparison. Checking actual tag capabilities avoided presenting mismatched reasoning modes as a controlled model comparison.
@@ -61,3 +77,13 @@ This work demonstrates local AI integration, evaluation design, reproducible exp
 The remaining limits are substantive: one fictional handbook, a small authored benchmark, shared-author review bias, uncertain borderline labels, no reviewer agreement, no production security assessment, no real employee data, no stakeholder authorization and no measured adoption or business outcome. A zero critical count in any sample does not establish absence of critical risk. Further development needs independent policy-owner/reference validation, independent blinded answer review, representative/adversarial questions and operational safeguards outside the model. Deployment remains NO-GO.
 
 See the [reproduction guide](../docs/phase-3-experiments.md) for startup, rollback, experiment commands, immutable replay rules, test commands and service teardown. The completion report records final executed checks and selected/held-out results.
+
+## Final measured result
+
+The frozen rule retained Qwen2.5 3B with its original prompt. Across 100 actual outputs: **48 Correct, 36 Partially correct, 13 Incorrect, three Unsupported; three provisional critical findings**. Mean/median/P95 latency was **5.40/4.26/12.62 seconds**, with one output-limit stop. Correct ≥85% and zero-critical targets were not met; the full-pool Unsupported ≤3%, latency ≤10-second mean and 100-case coverage targets were met provisionally.
+
+Matched held-out selected/control results were both **12/30 Correct (40.0%)**, zero Unsupported and one critical finding, with byte-identical outputs. Mean times were 4.63/4.67 seconds. The nominal Wilson interval is 24.6–57.7%; it conditions on the unvalidated labels and does not establish population accuracy. All original 30 outputs also matched historical text exactly, so no improvement is claimed. The 48% pooled score and historical 46.7% use different case sets.
+
+The expanded benchmark identified critical advice in P3-D-004 (ignoring tax and waiving Finance approval), P3-V-018 (People Operations OR owner instead of owner AND InfoSec for external sharing) and P3-T-010 (replacing mandatory IT equipment approval with a different route). These are potential exposure in generated advice, not actual transactions or disclosure. The broader benchmark reveals weaknesses in the retained model; the optimization did not cause a new production incident.
+
+The delivered outcome is a functioning assistant plus a more auditable evaluation system and an unsuccessful optimization result, honestly reported. It supports continued evaluation and remediation, **not deployment**. The completion record links actual unit, live-inference, browser, annotation-preservation and service-teardown checks.
