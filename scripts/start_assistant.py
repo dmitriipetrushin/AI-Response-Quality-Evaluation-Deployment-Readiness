@@ -52,8 +52,8 @@ def ensure_model(config, setup=False):
     if not any(m.get('name') == config['model'] for m in tags):
         if not setup:
             raise ModelConnectionError('Configured model is not installed. Rerun with --setup-model.')
-        if config['model'] not in {'qwen2.5:3b', 'qwen2.5:1.5b'}:
-            raise ValueError('Automatic download is limited to qwen2.5:3b and qwen2.5:1.5b (under approximately 3 GB). Install other models separately.')
+        if config['model'] not in {'qwen2.5:3b', 'qwen2.5:1.5b', 'llama3.2:3b', 'qwen3:4b-instruct-2507-q4_K_M'}:
+            raise ValueError('Automatic download is limited to the evaluated small Qwen/Llama models (under approximately 3 GB). Install other models separately.')
         print(f"Downloading {config['model']} into the local Ollama cache (no paid API).", flush=True)
         # HTTP pull works for a native Ollama installation as well as the named container.
         opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))

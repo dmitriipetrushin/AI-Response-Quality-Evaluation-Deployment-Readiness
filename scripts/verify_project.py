@@ -105,7 +105,9 @@ def verify_project(root=ROOT):
         raise DatasetValidationError('Markdown report is stale')
     dashboard = (root / 'reports/dashboard.html').read_text(encoding='utf-8')
     from scripts.real_model_report import real_summary
-    if dashboard != html_dashboard(dataset, metrics, real_summary(root)):
+    phase3_path = root / 'reports/phase-3-metrics.json'
+    phase3_summary = json.loads(phase3_path.read_text()) if phase3_path.exists() else None
+    if dashboard != html_dashboard(dataset, metrics, real_summary(root), phase3_summary):
         raise DatasetValidationError('HTML report is stale')
     parser = OfflineHTML()
     parser.feed(dashboard)

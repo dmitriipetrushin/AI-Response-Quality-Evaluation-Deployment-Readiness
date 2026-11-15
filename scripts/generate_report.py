@@ -91,10 +91,16 @@ def markdown_report(dataset, metrics):
     return '\n'.join(lines) + '\n'
 
 
-def html_dashboard(dataset, m, real_summary=None):
+def html_dashboard(dataset, m, real_summary=None, phase3_summary=None):
     e = html.escape
     from scripts.real_model_report import dashboard_section
     real_section = dashboard_section(real_summary)
+    phase3_section = ''
+    if phase3_summary:
+        final = phase3_summary.get('final')
+        status = (f"Selected {final['model']} / {final['prompt']}: {final['correct_rate']:.1f}% Correct on {final['total']} pooled cases; held-out performance is reported separately."
+                  if final and final['correct_rate'] is not None else 'Controlled experiments are recorded; no final held-out score is claimed yet.')
+        phase3_section = '<section><h2>Phase 3 — LLM Optimization</h2><p>' + e(status) + '</p><p>Actual inference; provisional agent-assisted review, without independent human validation.</p><p><a href="phase-3-dashboard.html">Compare Phase 3 experiments</a> · <a href="phase-3-comparison.md">Read comparison evidence</a></p></section>'
     gate_summary = ('Demonstration fixtures meet the proposed gates; independent model validation is still required.'
                     if all(g['passed'] for g in m['gates'].values())
                     else 'Demonstration fixtures fail the proposed gates.')
@@ -128,6 +134,7 @@ def html_dashboard(dataset, m, real_summary=None):
 </style></head><body><main>
 <header><div class="eyebrow">Dmitry Petrushin · Independent portfolio simulation</div>
 <h1>AI Response Quality Evaluation Pilot</h1><p class="muted">A release decision grounded in policy evidence, explicit quality gates, and an auditable review process.</p></header>
+{phase3_section}
 {real_section}
 <div class="notice"><b>SYNTHETIC DATA · SIMULATED REVIEW</b><br>{e(m['disclosure'])} Northstar Business Services is fictional.</div>
 <h2 id="synthetic-baseline">Synthetic Evaluation Baseline</h2>
@@ -148,11 +155,13 @@ def generate_reports(root=ROOT, output_dir=None):
     metrics = calculate_metrics(dataset)
     from scripts.real_model_report import real_summary
     actual_summary = real_summary(root)
+    phase3_path = root / 'reports/phase-3-metrics.json'
+    phase3_summary = json.loads(phase3_path.read_text()) if phase3_path.exists() else None
     metrics['input_sha256'] = {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in INPUTS}
     output = Path(output_dir) if output_dir is not None else root / 'reports'
     output.mkdir(parents=True, exist_ok=True)
     (output / 'quality-report.md').write_text(markdown_report(dataset, metrics), encoding='utf-8')
-    (output / 'dashboard.html').write_text(html_dashboard(dataset, metrics, actual_summary), encoding='utf-8')
+    (output / 'dashboard.html').write_text(html_dashboard(dataset, metrics, actual_summary, phase3_summary), encoding='utf-8')
     (output / 'metrics.json').write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     return metrics
 

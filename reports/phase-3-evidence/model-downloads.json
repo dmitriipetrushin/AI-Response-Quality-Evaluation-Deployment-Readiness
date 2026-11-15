@@ -1,0 +1,10 @@
+[
+  {
+    "model": "qwen3:4b",
+    "final_status": "success"
+  },
+  {
+    "model": "llama3.2:3b",
+    "final_status": "success"
+  }
+]

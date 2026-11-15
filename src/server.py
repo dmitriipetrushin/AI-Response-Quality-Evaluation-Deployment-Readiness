@@ -56,9 +56,11 @@ class Handler(BaseHTTPRequestHandler):
                  '/assets/style.css': ('app/style.css', 'text/css; charset=utf-8'),
                  '/assets/app.js': ('app/app.js', 'text/javascript; charset=utf-8')}
         report_names = ['dashboard.html', 'quality-report.md', 'metrics.json',
+                        'phase-3-dashboard.html', 'phase-3-comparison.md', 'phase-3-metrics.json', 'phase-3-comparison.csv',
                         'real-model-dashboard.html', 'real-model-evaluation.md', 'real-model-metrics.json']
         for name in report_names:
             files['/reports/' + name] = ('reports/' + name, 'text/html; charset=utf-8' if name.endswith('.html') else 'application/json' if name.endswith('.json') else 'text/plain; charset=utf-8')
+        files['/reports/phase-3-dashboard.js'] = ('reports/phase-3-dashboard.js', 'text/javascript; charset=utf-8')
         if path in files:
             filename, mime = files[path]
             try:

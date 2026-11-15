@@ -1,0 +1,2015 @@
+{
+  "dataset_version": "northstar-policy-eval-v3.1",
+  "dataset_sha256": "dfd11901142173f937634464ab3f8c3944d96c085a0126a23412b4aa3ef8308b",
+  "case_count": 100,
+  "experiments": [
+    {
+      "experiment_id": "dev-baseline",
+      "model": "qwen2.5:3b",
+      "prompt": "baseline",
+      "split": "development",
+      "purpose": "candidate",
+      "total": 12,
+      "successful": 12,
+      "failed": 0,
+      "reviewed": 12,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 2,
+        "Partially correct": 7,
+        "Incorrect": 1,
+        "Unsupported": 2
+      },
+      "correct_rate": 16.666666666666668,
+      "unsupported_rate": 16.666666666666668,
+      "critical_failures": 0,
+      "mean_latency": 7.95384525,
+      "median_latency": 5.902338,
+      "p95_latency": 22.945831,
+      "nominal_wilson_95": [
+        4.696514218385378,
+        44.80308622529734
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 1,
+          "correct_rate": 33.333333333333336
+        },
+        "multi_step": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "out_of_scope": {
+          "total": 1,
+          "reviewed": 1,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "sensitive": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 1,
+          "correct_rate": 33.333333333333336
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 1,
+          "correct_rate": 33.333333333333336
+        },
+        "hard": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "medium": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 1,
+          "correct_rate": 14.285714285714286
+        }
+      },
+      "unknown_id_answers": 1,
+      "truncated_answers": 0,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "baseline"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:06:47.708279637Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.365GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "dev-context-4096",
+      "model": "qwen2.5:3b",
+      "prompt": "policy-workflow",
+      "split": "development",
+      "purpose": "candidate",
+      "total": 12,
+      "successful": 12,
+      "failed": 0,
+      "reviewed": 12,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 6,
+        "Partially correct": 6,
+        "Incorrect": 0,
+        "Unsupported": 0
+      },
+      "correct_rate": 50.0,
+      "unsupported_rate": 0.0,
+      "critical_failures": 0,
+      "mean_latency": 11.928119166666667,
+      "median_latency": 9.373651500000001,
+      "p95_latency": 44.351972,
+      "nominal_wilson_95": [
+        25.37815976337061,
+        74.6218402366294
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        },
+        "multi_step": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 1,
+          "correct_rate": 50.0
+        },
+        "out_of_scope": {
+          "total": 1,
+          "reviewed": 1,
+          "correct": 1,
+          "correct_rate": 100.0
+        },
+        "sensitive": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        },
+        "hard": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 1,
+          "correct_rate": 50.0
+        },
+        "medium": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 3,
+          "correct_rate": 42.857142857142854
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 1,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 4096,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "policy-workflow"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 4096,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2168360795,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2168360795,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:24:41.062559245Z",
+              "size_vram": 0,
+              "context_length": 4096,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.124GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "dev-instruction-focused",
+      "model": "qwen2.5:3b",
+      "prompt": "instruction-focused",
+      "split": "development",
+      "purpose": "candidate",
+      "total": 12,
+      "successful": 12,
+      "failed": 0,
+      "reviewed": 12,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 5,
+        "Partially correct": 5,
+        "Incorrect": 0,
+        "Unsupported": 2
+      },
+      "correct_rate": 41.666666666666664,
+      "unsupported_rate": 16.666666666666668,
+      "critical_failures": 0,
+      "mean_latency": 9.394103416666667,
+      "median_latency": 7.410852,
+      "p95_latency": 23.024078,
+      "nominal_wilson_95": [
+        19.326031365875664,
+        68.04886874504503
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        },
+        "multi_step": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "out_of_scope": {
+          "total": 1,
+          "reviewed": 1,
+          "correct": 1,
+          "correct_rate": 100.0
+        },
+        "sensitive": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        },
+        "hard": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "medium": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 3,
+          "correct_rate": 42.857142857142854
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 0,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "instruction-focused"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:09:38.376881732Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.445GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "dev-policy-workflow",
+      "model": "qwen2.5:3b",
+      "prompt": "policy-workflow",
+      "split": "development",
+      "purpose": "candidate",
+      "total": 12,
+      "successful": 12,
+      "failed": 0,
+      "reviewed": 12,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 6,
+        "Partially correct": 6,
+        "Incorrect": 0,
+        "Unsupported": 0
+      },
+      "correct_rate": 50.0,
+      "unsupported_rate": 0.0,
+      "critical_failures": 0,
+      "mean_latency": 11.7100285,
+      "median_latency": 8.330406,
+      "p95_latency": 40.778137,
+      "nominal_wilson_95": [
+        25.37815976337061,
+        74.6218402366294
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        },
+        "multi_step": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 1,
+          "correct_rate": 50.0
+        },
+        "out_of_scope": {
+          "total": 1,
+          "reviewed": 1,
+          "correct": 1,
+          "correct_rate": 100.0
+        },
+        "sensitive": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        },
+        "hard": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 1,
+          "correct_rate": 50.0
+        },
+        "medium": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 3,
+          "correct_rate": 42.857142857142854
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 1,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "policy-workflow"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:15:38.587076507Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.646GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "dev-structured",
+      "model": "qwen2.5:3b",
+      "prompt": "structured",
+      "split": "development",
+      "purpose": "candidate",
+      "total": 12,
+      "successful": 12,
+      "failed": 0,
+      "reviewed": 12,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 0,
+        "Partially correct": 10,
+        "Incorrect": 1,
+        "Unsupported": 1
+      },
+      "correct_rate": 0.0,
+      "unsupported_rate": 8.333333333333334,
+      "critical_failures": 1,
+      "mean_latency": 8.42902,
+      "median_latency": 6.746274,
+      "p95_latency": 21.032203,
+      "nominal_wilson_95": [
+        2.7755575615628914e-15,
+        24.249400665524085
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "multi_step": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "out_of_scope": {
+          "total": 1,
+          "reviewed": 1,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "sensitive": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "hard": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "medium": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 0,
+          "correct_rate": 0.0
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 0,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "structured"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:18:21.472559635Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.772GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "dev-temperature-03",
+      "model": "qwen2.5:3b",
+      "prompt": "policy-workflow",
+      "split": "development",
+      "purpose": "candidate",
+      "total": 12,
+      "successful": 12,
+      "failed": 0,
+      "reviewed": 12,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 4,
+        "Partially correct": 7,
+        "Incorrect": 0,
+        "Unsupported": 1
+      },
+      "correct_rate": 33.333333333333336,
+      "unsupported_rate": 8.333333333333334,
+      "critical_failures": 0,
+      "mean_latency": 11.371939083333334,
+      "median_latency": 7.466582,
+      "p95_latency": 37.989316,
+      "nominal_wilson_95": [
+        13.812009109121314,
+        60.93779111272004
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 1,
+          "correct_rate": 33.333333333333336
+        },
+        "multi_step": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 1,
+          "correct_rate": 50.0
+        },
+        "out_of_scope": {
+          "total": 1,
+          "reviewed": 1,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "sensitive": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 1,
+          "correct_rate": 33.333333333333336
+        },
+        "hard": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 1,
+          "correct_rate": 50.0
+        },
+        "medium": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 2,
+          "correct_rate": 28.571428571428573
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 1,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0.3,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "policy-workflow"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:28:04.146529943Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.35GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "dev-uncertainty-aware",
+      "model": "qwen2.5:3b",
+      "prompt": "uncertainty-aware",
+      "split": "development",
+      "purpose": "candidate",
+      "total": 12,
+      "successful": 12,
+      "failed": 0,
+      "reviewed": 12,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 5,
+        "Partially correct": 5,
+        "Incorrect": 1,
+        "Unsupported": 1
+      },
+      "correct_rate": 41.666666666666664,
+      "unsupported_rate": 8.333333333333334,
+      "critical_failures": 0,
+      "mean_latency": 8.078246,
+      "median_latency": 5.911381,
+      "p95_latency": 26.168226,
+      "nominal_wilson_95": [
+        19.326031365875664,
+        68.04886874504503
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        },
+        "multi_step": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "out_of_scope": {
+          "total": 1,
+          "reviewed": 1,
+          "correct": 1,
+          "correct_rate": 100.0
+        },
+        "sensitive": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 3,
+          "reviewed": 3,
+          "correct": 2,
+          "correct_rate": 66.66666666666667
+        },
+        "hard": {
+          "total": 2,
+          "reviewed": 2,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "medium": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 3,
+          "correct_rate": 42.857142857142854
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 0,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "uncertainty-aware"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:12:14.066167078Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.545GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "val-baseline",
+      "model": "qwen2.5:3b",
+      "prompt": "baseline",
+      "split": "validation",
+      "purpose": "candidate",
+      "total": 30,
+      "successful": 30,
+      "failed": 0,
+      "reviewed": 30,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 20,
+        "Partially correct": 7,
+        "Incorrect": 3,
+        "Unsupported": 0
+      },
+      "correct_rate": 66.66666666666667,
+      "unsupported_rate": 0.0,
+      "critical_failures": 1,
+      "mean_latency": 7.7416396333333335,
+      "median_latency": 6.0262899999999995,
+      "p95_latency": 15.921228,
+      "nominal_wilson_95": [
+        48.780051644543846,
+        80.76950191632386
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 6,
+          "correct_rate": 100.0
+        },
+        "multi_step": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 5,
+          "correct_rate": 83.33333333333333
+        },
+        "out_of_scope": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 6,
+          "correct_rate": 100.0
+        },
+        "sensitive": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 3,
+          "correct_rate": 50.0
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 7,
+          "correct_rate": 100.0
+        },
+        "hard": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 3,
+          "correct_rate": 42.857142857142854
+        },
+        "medium": {
+          "total": 16,
+          "reviewed": 16,
+          "correct": 10,
+          "correct_rate": 62.5
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 1,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "baseline"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:32:46.447582502Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.456GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "val-llama",
+      "model": "llama3.2:3b",
+      "prompt": "policy-workflow",
+      "split": "validation",
+      "purpose": "candidate",
+      "total": 30,
+      "successful": 30,
+      "failed": 0,
+      "reviewed": 30,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 14,
+        "Partially correct": 14,
+        "Incorrect": 1,
+        "Unsupported": 1
+      },
+      "correct_rate": 46.666666666666664,
+      "unsupported_rate": 3.3333333333333335,
+      "critical_failures": 0,
+      "mean_latency": 9.149492333333333,
+      "median_latency": 7.1671905,
+      "p95_latency": 18.093467,
+      "nominal_wilson_95": [
+        30.232388907699754,
+        63.8577003801267
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 1,
+          "correct_rate": 16.666666666666668
+        },
+        "factual": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 6,
+          "correct_rate": 100.0
+        },
+        "multi_step": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 1,
+          "correct_rate": 16.666666666666668
+        },
+        "out_of_scope": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 3,
+          "correct_rate": 50.0
+        },
+        "sensitive": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 3,
+          "correct_rate": 50.0
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 5,
+          "correct_rate": 71.42857142857143
+        },
+        "hard": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 2,
+          "correct_rate": 28.571428571428573
+        },
+        "medium": {
+          "total": 16,
+          "reviewed": 16,
+          "correct": 7,
+          "correct_rate": 43.75
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 0,
+      "retry_requests": 0,
+      "config": {
+        "model": "llama3.2:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "policy-workflow"
+      },
+      "model_metadata": {
+        "identifier": "llama3.2:3b",
+        "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+        "size_bytes": 2019393189,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "llama",
+          "families": [
+            "llama"
+          ],
+          "parameter_size": "3.2B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 131072,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": {
+          "values": [
+            false
+          ],
+          "default": false
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 3131981167,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "llama3.2:3b",
+              "model": "llama3.2:3b",
+              "size": 3131981167,
+              "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "llama",
+                "families": [
+                  "llama"
+                ],
+                "parameter_size": "3.2B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T13:02:43.352561958Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "3.015GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "val-qwen3-instruct",
+      "model": "qwen3:4b-instruct-2507-q4_K_M",
+      "prompt": "policy-workflow",
+      "split": "validation",
+      "purpose": "candidate",
+      "total": 30,
+      "successful": 30,
+      "failed": 0,
+      "reviewed": 30,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 23,
+        "Partially correct": 2,
+        "Incorrect": 2,
+        "Unsupported": 3
+      },
+      "correct_rate": 76.66666666666667,
+      "unsupported_rate": 10.0,
+      "critical_failures": 0,
+      "mean_latency": 26.204695033333333,
+      "median_latency": 26.436404500000002,
+      "p95_latency": 53.662915,
+      "nominal_wilson_95": [
+        59.07167384187784,
+        88.20761185551049
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 4,
+          "correct_rate": 66.66666666666667
+        },
+        "factual": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 5,
+          "correct_rate": 83.33333333333333
+        },
+        "multi_step": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 4,
+          "correct_rate": 66.66666666666667
+        },
+        "out_of_scope": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 6,
+          "correct_rate": 100.0
+        },
+        "sensitive": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 4,
+          "correct_rate": 66.66666666666667
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 7,
+          "correct_rate": 100.0
+        },
+        "hard": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 5,
+          "correct_rate": 71.42857142857143
+        },
+        "medium": {
+          "total": 16,
+          "reviewed": 16,
+          "correct": 11,
+          "correct_rate": 68.75
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 0,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "policy-workflow",
+        "think": false
+      },
+      "model_metadata": {
+        "identifier": "qwen3:4b-instruct-2507-q4_K_M",
+        "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+        "size_bytes": 2497293803,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 262144,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "tools",
+          "thinking",
+          "completion"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 3888675552,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen3:4b-instruct-2507-q4_K_M",
+              "model": "qwen3:4b-instruct-2507-q4_K_M",
+              "size": 3888675552,
+              "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "4.0B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:57:16.206710159Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "3.714GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "val-uncertainty",
+      "model": "qwen2.5:3b",
+      "prompt": "uncertainty-aware",
+      "split": "validation",
+      "purpose": "candidate",
+      "total": 30,
+      "successful": 30,
+      "failed": 0,
+      "reviewed": 30,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 19,
+        "Partially correct": 8,
+        "Incorrect": 3,
+        "Unsupported": 0
+      },
+      "correct_rate": 63.333333333333336,
+      "unsupported_rate": 0.0,
+      "critical_failures": 1,
+      "mean_latency": 6.3947384666666665,
+      "median_latency": 6.3983945,
+      "p95_latency": 10.510817,
+      "nominal_wilson_95": [
+        45.51356365479487,
+        78.12607919389929
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 6,
+          "correct_rate": 100.0
+        },
+        "multi_step": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 3,
+          "correct_rate": 50.0
+        },
+        "out_of_scope": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 6,
+          "correct_rate": 100.0
+        },
+        "sensitive": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 4,
+          "correct_rate": 66.66666666666667
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 7,
+          "correct_rate": 100.0
+        },
+        "hard": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 3,
+          "correct_rate": 42.857142857142854
+        },
+        "medium": {
+          "total": 16,
+          "reviewed": 16,
+          "correct": 9,
+          "correct_rate": 56.25
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 0,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "uncertainty-aware"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:42:29.376039105Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.551GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    },
+    {
+      "experiment_id": "val-workflow",
+      "model": "qwen2.5:3b",
+      "prompt": "policy-workflow",
+      "split": "validation",
+      "purpose": "candidate",
+      "total": 30,
+      "successful": 30,
+      "failed": 0,
+      "reviewed": 30,
+      "review_coverage": 100.0,
+      "counts": {
+        "Correct": 14,
+        "Partially correct": 10,
+        "Incorrect": 3,
+        "Unsupported": 3
+      },
+      "correct_rate": 46.666666666666664,
+      "unsupported_rate": 10.0,
+      "critical_failures": 1,
+      "mean_latency": 11.044479066666668,
+      "median_latency": 9.947538999999999,
+      "p95_latency": 21.062811,
+      "nominal_wilson_95": [
+        30.232388907699754,
+        63.8577003801267
+      ],
+      "complete_review": true,
+      "by_category": {
+        "ambiguous": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 0,
+          "correct_rate": 0.0
+        },
+        "factual": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 6,
+          "correct_rate": 100.0
+        },
+        "multi_step": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 1,
+          "correct_rate": 16.666666666666668
+        },
+        "out_of_scope": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 4,
+          "correct_rate": 66.66666666666667
+        },
+        "sensitive": {
+          "total": 6,
+          "reviewed": 6,
+          "correct": 3,
+          "correct_rate": 50.0
+        }
+      },
+      "by_difficulty": {
+        "easy": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 6,
+          "correct_rate": 85.71428571428571
+        },
+        "hard": {
+          "total": 7,
+          "reviewed": 7,
+          "correct": 2,
+          "correct_rate": 28.571428571428573
+        },
+        "medium": {
+          "total": 16,
+          "reviewed": 16,
+          "correct": 6,
+          "correct_rate": 37.5
+        }
+      },
+      "unknown_id_answers": 0,
+      "truncated_answers": 1,
+      "retry_requests": 0,
+      "config": {
+        "model": "qwen2.5:3b",
+        "service_url": "http://127.0.0.1:11434",
+        "timeout_seconds": 180,
+        "context_strategy": "full_policy_document",
+        "policy_path": "data/company-policies.md",
+        "host": "127.0.0.1",
+        "port": 8000,
+        "options": {
+          "temperature": 0,
+          "seed": 42,
+          "num_ctx": 8192,
+          "num_predict": 384,
+          "num_thread": 4
+        },
+        "prompt_version": "policy-workflow"
+      },
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16",
+        "thinking_controls": null,
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      "runtime": {
+        "ollama_loaded_model_bytes": 2420564295,
+        "ollama_ps": {
+          "models": [
+            {
+              "name": "qwen2.5:3b",
+              "model": "qwen2.5:3b",
+              "size": 2420564295,
+              "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen2",
+                "families": [
+                  "qwen2"
+                ],
+                "parameter_size": "3.1B",
+                "quantization_level": "Q4_K_M"
+              },
+              "expires_at": "2026-11-15T12:38:20.773416541Z",
+              "size_vram": 0,
+              "context_length": 8192,
+              "runner": "llamacpp"
+            }
+          ]
+        },
+        "docker_memory_usage": "2.447GiB / 15.34GiB",
+        "memory_note": "Ollama loaded-model size and container usage, not a per-process RSS or peak VRAM guarantee."
+      },
+      "judgment_status": "provisional_agent_assisted; no independent human validation"
+    }
+  ],
+  "selection": {
+    "frozen_at": "2026-11-15T12:48:32.001531+00:00",
+    "dataset_sha256": "dfd11901142173f937634464ab3f8c3944d96c085a0126a23412b4aa3ef8308b",
+    "selected_experiment": "val-baseline",
+    "config": {
+      "model": "qwen2.5:3b",
+      "service_url": "http://127.0.0.1:11434",
+      "timeout_seconds": 180,
+      "context_strategy": "full_policy_document",
+      "policy_path": "data/company-policies.md",
+      "host": "127.0.0.1",
+      "port": 8000,
+      "options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 8192,
+        "num_predict": 384,
+        "num_thread": 4
+      },
+      "prompt_version": "baseline"
+    },
+    "minimum_meaningful_gain_correct_cases": 2,
+    "baseline_retention_reason": "No candidate met the predeclared minimum of two additional Correct validation cases without more critical or Unsupported outcomes.",
+    "rank_order": "critical failures; request failures; truncated outputs; number of violated Correct/Unsupported/latency targets; descending Correct count; Unsupported count; mean latency; loaded-model bytes",
+    "validation_experiments": [
+      "val-llama",
+      "val-qwen3-instruct",
+      "val-uncertainty",
+      "val-baseline",
+      "val-workflow"
+    ],
+    "validation_evidence": {
+      "val-llama": {
+        "responses": "0fb71307026ab0e3ae447db2ad749c69d1536623d7a3cc9ca475dfd6987fdcd7",
+        "reviews": "be8c5ca28b6e6c19a62a272b4cda0ca065258ee85c009885ac9fd8c751170144"
+      },
+      "val-qwen3-instruct": {
+        "responses": "f4a6158aad0ee8292884cb2c7aa551ac34edc4589d01c1349c8820fb00245334",
+        "reviews": "78d2e3eec43ee4324624217063d6abe084f661b7a23300cd09aba6af124e521f"
+      },
+      "val-uncertainty": {
+        "responses": "98495632b353561c0b16a90bc58c06bc627bc81c2b0d9c9cd036b42099c28009",
+        "reviews": "25c207a316672bba854dcf0a0f0ed5dfcb72dd939df5b69b5f32623796db3cb3"
+      },
+      "val-baseline": {
+        "responses": "b7fcf344dbad2e9a9040e9d50baab3027e1ccc9c9f59aab2e1475e4c82eda195",
+        "reviews": "8f64ab93ed52c4f78301c8010af7c1c8a0999d52eebc0a86921b2ee05b0b0f16"
+      },
+      "val-workflow": {
+        "responses": "5e602d4a4d928b61e0f8709876394ececb7b717e3d1a00b589498a2dcb5b1cc6",
+        "reviews": "e32ede44d4884afa3a679f6409d8b9e3d39d47f905c1bdad94fa8fdf5f18b797"
+      }
+    },
+    "human_validated": false,
+    "production_decision": "NO-GO pending independent validation"
+  },
+  "final": null,
+  "heldout": null,
+  "baseline_heldout": null,
+  "original_30_selected": null,
+  "judgment_disclosure": "All classifications are provisional agent-assisted reviews. No independent human annotations.",
+  "historical_phase2": {
+    "run_id": "northstar-2026-11-15T10:58:21.374275+00:00",
+    "model": "qwen2.5:3b",
+    "model_metadata": {
+      "identifier": "qwen2.5:3b",
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "size_bytes": 1929912432,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      },
+      "supported_context_length": 32768,
+      "configured_context_length": 8192,
+      "ollama_version": "0.40.16"
+    },
+    "generation_options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 384,
+      "num_thread": 4
+    },
+    "context_strategy": "full_policy_document",
+    "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+    "total": 30,
+    "attempted": 30,
+    "successful": 30,
+    "failed": 0,
+    "unattempted": 0,
+    "average_response_time_seconds": 4.889977833333333,
+    "maximum_response_time_seconds": 15.803392,
+    "reviewed": 30,
+    "counts": {
+      "Correct": 14,
+      "Partially correct": 13,
+      "Incorrect": 1,
+      "Unsupported": 2
+    },
+    "correct_rate": 46.666666666666664,
+    "unsupported_rate": 6.666666666666667,
+    "critical_failures": 0,
+    "coverage": 100.0,
+    "inference_coverage": 100.0,
+    "gates": {
+      "correct_rate": "FAIL",
+      "unsupported_rate": "FAIL",
+      "critical_failures": "PASS",
+      "coverage": "PASS"
+    },
+    "review_status": "provisional_agent_assisted; independent human verification not performed",
+    "citation_checks": {
+      "answers_with_recognized_ids": 13,
+      "answers_with_unknown_ids": 1,
+      "unknown_ids_by_case": {
+        "TC-023": [
+          "POL-008"
+        ]
+      },
+      "claim_support": "Not established by identifier validation."
+    },
+    "output_limit_stops": 0,
+    "decision": "NO-GO — provisional acceptance gates failed",
+    "input_sha256": {
+      "data/real-model-responses.json": "605de84c5d2fefbf26d139caffb1bcbb5c55fb39c6d15dc9b35d36af098a4836",
+      "data/real-model-evaluation.csv": "ccf2f409ceca7d20582ea96ef42f3eb9fdbc0f3675cc01363d93b8dd13be3b92"
+    },
+    "prompt_token_counts": [
+      2714,
+      2715,
+      2716,
+      2717,
+      2718,
+      2719,
+      2720,
+      2722,
+      2723,
+      2724,
+      2725,
+      2726,
+      2727,
+      2728,
+      2729,
+      2735,
+      2736
+    ]
+  }
+}

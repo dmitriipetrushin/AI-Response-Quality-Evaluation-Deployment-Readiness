@@ -126,6 +126,12 @@ class ExperimentTests(unittest.TestCase):
   p=experiment_dir('test-run',self.root)/'reviews.csv';p.write_text(p.read_text().replace('Correct','Incorrect'))
   with self.assertRaisesRegex(ValueError,'changed'):summarize('test-run',self.root)
 
+ def test_resource_and_warmup_evidence_are_sealed(self):
+  for name in ['runtime.json','warmup.json']:
+   eid='tamper-'+name.split('.')[0];self.run_mock(eid,ids=['TC-001'])
+   (experiment_dir(eid,self.root)/name).write_text('{}')
+   with self.assertRaisesRegex(ValueError,'resource evidence'):read_experiment(eid,self.root)
+
  def test_failure_is_preserved_without_synthetic_substitution(self):
   self.fake.answer.side_effect=ModelProtocolError('unit-test invalid response')
   self.run_mock(ids=['TC-001']);_,rows=read_experiment('test-run',self.root)
@@ -152,8 +158,46 @@ class ExperimentTests(unittest.TestCase):
   self.run_mock(ids=['TC-001','TC-002']);self.review('test-run');s=summarize('test-run',self.root)
   self.assertGreaterEqual(s['p95_latency'],s['median_latency']);self.assertIn('factual',s['by_category'])
 
+ def test_small_validation_gain_retains_baseline(self):
+  cases=json.loads((self.root/'data/phase-3/dataset/validation.json').read_text())
+  ids=[c['test_id'] for c in cases]
+  self.run_mock('val-base','validation');self.review('val-base',{ids[0]:'Partially correct'})
+  self.run_mock('val-alternative','validation',config=make_config(prompt='uncertainty-aware',root=self.root))
+  self.review('val-alternative')
+  selected=freeze_selection(['val-base','val-alternative'],self.root)
+  self.assertEqual(selected['selected_experiment'],'val-base')
+  self.assertIn('two additional',selected['baseline_retention_reason'])
+
  def test_safe_experiment_id(self):
   with self.assertRaises(ValueError):experiment_dir('../overwrite',self.root)
+
+ def test_report_generation_is_offline_and_deterministic(self):
+  from scripts.phase3_reports import generate
+  self.run_mock(ids=['TC-001']);self.review('test-run')
+  (self.root/'reports').mkdir();(self.root/'app').mkdir()
+  shutil.copy(ROOT/'reports/real-model-metrics.json',self.root/'reports/real-model-metrics.json')
+  shutil.copy(ROOT/'app/phase3-dashboard.js',self.root/'app/phase3-dashboard.js')
+  payload=generate(self.root)
+  self.assertEqual(payload['experiments'][0]['correct_rate'],100)
+  page=(self.root/'reports/phase-3-dashboard.html').read_text()
+  self.assertIn('model-filter',page);self.assertIn('difficulty-rows',page)
+  self.assertNotIn('P3-T-',page)
+  before=(self.root/'reports/phase-3-metrics.json').read_bytes();generate(self.root)
+  self.assertEqual(before,(self.root/'reports/phase-3-metrics.json').read_bytes())
+
+ def test_dashboard_json_escapes_script_termination(self):
+  from scripts.phase3_reports import generate
+  from html.parser import HTMLParser
+  malicious='</script><script>alert(1)</script>'
+  config=copy.deepcopy(self.config);config['model']=malicious
+  self.run_mock(config=config,ids=['TC-001']);self.review('test-run')
+  (self.root/'reports').mkdir();(self.root/'app').mkdir()
+  shutil.copy(ROOT/'reports/real-model-metrics.json',self.root/'reports/real-model-metrics.json')
+  shutil.copy(ROOT/'app/phase3-dashboard.js',self.root/'app/phase3-dashboard.js')
+  generate(self.root);page=(self.root/'reports/phase-3-dashboard.html').read_text()
+  self.assertNotIn(malicious,page)
+  payload=page.split('id="experiment-data">',1)[1].split('</script>',1)[0]
+  self.assertEqual(json.loads(payload)['experiments'][0]['model'],malicious)
 
 
 if __name__=='__main__':unittest.main()

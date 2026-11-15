@@ -1,0 +1,49 @@
+{
+  "experiment_id": "dev-context-4096",
+  "timestamp": "2026-11-15T12:06:14.553529+00:00",
+  "git_commit": "ddf547a62c4e8ea9f3bc5bcc1e9c0e52bc49ca28",
+  "source_sha256": {
+    "src/assistant.py": "aa350ba2fce6120be8a50448a052dff056c0c3b5a3bf0c1136a876e3d6a34c41",
+    "src/model_client.py": "1ce3fbeff4e3f5b50b34a2114bad55002f0bb90c7a2870fc0984a143f354d8da",
+    "src/prompting.py": "cf7ba6a2be4911fd0bd79c0c8d252a300804c93ac53be626e51569a08a53ec4a",
+    "src/experiments.py": "fee58bdb4d864daf92b97d3e0b0d33ff74539ac294f5bfcfaf3582715e9f843b"
+  },
+  "source": "actual_ollama_local_inference",
+  "dataset_version": "northstar-policy-eval-v3.1",
+  "random_seed": 42,
+  "config": {
+    "model": "qwen2.5:3b",
+    "service_url": "http://127.0.0.1:11434",
+    "timeout_seconds": 180,
+    "context_strategy": "full_policy_document",
+    "policy_path": "data/company-policies.md",
+    "host": "127.0.0.1",
+    "port": 8000,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 384,
+      "num_thread": 4
+    },
+    "prompt_version": "policy-workflow"
+  },
+  "split": "development",
+  "case_ids": [
+    "TC-001",
+    "TC-004",
+    "TC-006",
+    "TC-011",
+    "TC-012",
+    "TC-016",
+    "TC-018",
+    "TC-020",
+    "TC-023",
+    "TC-026",
+    "TC-027",
+    "TC-029"
+  ],
+  "dataset_sha256": "dfd11901142173f937634464ab3f8c3944d96c085a0126a23412b4aa3ef8308b",
+  "prompt_sha256": "ec28fdf7e80f80083f850d7fa853920fcddc4ca004c4e95cfcb8d70369aae763",
+  "purpose": "candidate"
+}

@@ -1,0 +1,61 @@
+dev-policy-workflow TC-001 success 4.44s
+dev-policy-workflow TC-004 success 6.14s
+dev-policy-workflow TC-006 success 6.82s
+dev-policy-workflow TC-011 success 11.63s
+dev-policy-workflow TC-012 success 40.78s
+dev-policy-workflow TC-016 success 8.08s
+dev-policy-workflow TC-018 success 8.38s
+dev-policy-workflow TC-020 success 16.83s
+dev-policy-workflow TC-023 success 8.28s
+dev-policy-workflow TC-026 success 8.09s
+dev-policy-workflow TC-027 success 10.87s
+dev-policy-workflow TC-029 success 10.18s
+{
+  "experiment_id": "dev-policy-workflow",
+  "timestamp": "2026-11-15T11:57:15.206151+00:00",
+  "git_commit": "658383722dd37e4014a18417719a0ffcb245fcd0",
+  "source_sha256": {
+    "src/assistant.py": "658ceb7c5c10f220f4bb3c39d655509a9bdca028d16d7cd04b17158f80e99525",
+    "src/model_client.py": "1ce3fbeff4e3f5b50b34a2114bad55002f0bb90c7a2870fc0984a143f354d8da",
+    "src/prompting.py": "cf7ba6a2be4911fd0bd79c0c8d252a300804c93ac53be626e51569a08a53ec4a",
+    "src/experiments.py": "94c9e03d6ca6e73670968cd9eb679ad79e465dcd191f93773d337665e3e0bfe1"
+  },
+  "source": "actual_ollama_local_inference",
+  "dataset_version": "northstar-policy-eval-v3.1",
+  "random_seed": 42,
+  "config": {
+    "model": "qwen2.5:3b",
+    "service_url": "http://127.0.0.1:11434",
+    "timeout_seconds": 180,
+    "context_strategy": "full_policy_document",
+    "policy_path": "data/company-policies.md",
+    "host": "127.0.0.1",
+    "port": 8000,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 384,
+      "num_thread": 4
+    },
+    "prompt_version": "policy-workflow"
+  },
+  "split": "development",
+  "case_ids": [
+    "TC-001",
+    "TC-004",
+    "TC-006",
+    "TC-011",
+    "TC-012",
+    "TC-016",
+    "TC-018",
+    "TC-020",
+    "TC-023",
+    "TC-026",
+    "TC-027",
+    "TC-029"
+  ],
+  "dataset_sha256": "dfd11901142173f937634464ab3f8c3944d96c085a0126a23412b4aa3ef8308b",
+  "prompt_sha256": "ec28fdf7e80f80083f850d7fa853920fcddc4ca004c4e95cfcb8d70369aae763",
+  "purpose": "candidate"
+}

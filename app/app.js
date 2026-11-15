@@ -31,7 +31,7 @@ byId('question-form').addEventListener('submit', async event => {
     if (!response.ok) throw new Error(data.error || `Request failed (HTTP ${response.status}).`);
     byId('answer').textContent = data.answer;
     byId('answer-meta').replaceChildren();
-    for (const value of [`Model: ${data.model}`, `Response time: ${data.response_time_seconds.toFixed(2)} s`, `Prompt tokens: ${data.token_usage.prompt_eval_count ?? 'unreported'}`]) {
+    for (const value of [`Model: ${data.model}`, `Profile: ${data.prompt_version || 'baseline'}`, `Response time: ${data.response_time_seconds.toFixed(2)} s`, `Prompt tokens: ${data.token_usage.prompt_eval_count ?? 'unreported'}`]) {
       const item = document.createElement('span'); item.textContent = value; byId('answer-meta').append(item);
     }
     byId('answer-warnings').textContent = data.warnings.join(' ');

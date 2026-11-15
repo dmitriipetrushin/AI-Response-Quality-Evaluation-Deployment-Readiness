@@ -1,0 +1,8 @@
+{
+  "sealed_at": "2026-11-15T12:40:45.713124+00:00",
+  "sha256": {
+    "seal.json": "a77c0f6e0aa6960190f5fb24da82320aeb981e0cd0ec19dba7a2714e89104ce8",
+    "warmup.json": "59ac7bc0477b2b3ffce1478798b818ccf100f1f2c8b275d33d8c16d0f00ecdd5",
+    "runtime.json": "8238b632dad215c078b793fce5d663116d22bd096584bb12a0c0d68361426ef2"
+  }
+}

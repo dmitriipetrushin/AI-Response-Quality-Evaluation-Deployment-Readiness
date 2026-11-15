@@ -1,0 +1,5 @@
+{
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "final_status": "success",
+  "reason": "The generic qwen3:4b tag resolves to a thinking-only artifact; an explicit instruction variant is appropriate for matched short-answer latency comparisons."
+}

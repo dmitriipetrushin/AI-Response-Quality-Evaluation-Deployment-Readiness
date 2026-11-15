@@ -1,0 +1,56 @@
+{
+  "frozen_at": "2026-11-15T12:48:32.001531+00:00",
+  "dataset_sha256": "dfd11901142173f937634464ab3f8c3944d96c085a0126a23412b4aa3ef8308b",
+  "selected_experiment": "val-baseline",
+  "config": {
+    "model": "qwen2.5:3b",
+    "service_url": "http://127.0.0.1:11434",
+    "timeout_seconds": 180,
+    "context_strategy": "full_policy_document",
+    "policy_path": "data/company-policies.md",
+    "host": "127.0.0.1",
+    "port": 8000,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 384,
+      "num_thread": 4
+    },
+    "prompt_version": "baseline"
+  },
+  "minimum_meaningful_gain_correct_cases": 2,
+  "baseline_retention_reason": "No candidate met the predeclared minimum of two additional Correct validation cases without more critical or Unsupported outcomes.",
+  "rank_order": "critical failures; request failures; truncated outputs; number of violated Correct/Unsupported/latency targets; descending Correct count; Unsupported count; mean latency; loaded-model bytes",
+  "validation_experiments": [
+    "val-llama",
+    "val-qwen3-instruct",
+    "val-uncertainty",
+    "val-baseline",
+    "val-workflow"
+  ],
+  "validation_evidence": {
+    "val-llama": {
+      "responses": "0fb71307026ab0e3ae447db2ad749c69d1536623d7a3cc9ca475dfd6987fdcd7",
+      "reviews": "be8c5ca28b6e6c19a62a272b4cda0ca065258ee85c009885ac9fd8c751170144"
+    },
+    "val-qwen3-instruct": {
+      "responses": "f4a6158aad0ee8292884cb2c7aa551ac34edc4589d01c1349c8820fb00245334",
+      "reviews": "78d2e3eec43ee4324624217063d6abe084f661b7a23300cd09aba6af124e521f"
+    },
+    "val-uncertainty": {
+      "responses": "98495632b353561c0b16a90bc58c06bc627bc81c2b0d9c9cd036b42099c28009",
+      "reviews": "25c207a316672bba854dcf0a0f0ed5dfcb72dd939df5b69b5f32623796db3cb3"
+    },
+    "val-baseline": {
+      "responses": "b7fcf344dbad2e9a9040e9d50baab3027e1ccc9c9f59aab2e1475e4c82eda195",
+      "reviews": "8f64ab93ed52c4f78301c8010af7c1c8a0999d52eebc0a86921b2ee05b0b0f16"
+    },
+    "val-workflow": {
+      "responses": "5e602d4a4d928b61e0f8709876394ececb7b717e3d1a00b589498a2dcb5b1cc6",
+      "reviews": "e32ede44d4884afa3a679f6409d8b9e3d39d47f905c1bdad94fa8fdf5f18b797"
+    }
+  },
+  "human_validated": false,
+  "production_decision": "NO-GO pending independent validation"
+}

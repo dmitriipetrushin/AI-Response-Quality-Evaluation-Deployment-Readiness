@@ -1,0 +1,97 @@
+val-uncertainty P3-V-001 success 2.31s
+val-uncertainty P3-V-002 success 6.29s
+val-uncertainty P3-V-003 success 6.48s
+val-uncertainty P3-V-004 success 5.84s
+val-uncertainty P3-V-005 success 4.57s
+val-uncertainty P3-V-006 success 3.44s
+val-uncertainty P3-V-007 success 10.51s
+val-uncertainty P3-V-008 success 7.33s
+val-uncertainty P3-V-009 success 4.92s
+val-uncertainty P3-V-010 success 5.92s
+val-uncertainty P3-V-011 success 7.53s
+val-uncertainty P3-V-012 success 7.24s
+val-uncertainty P3-V-013 success 8.53s
+val-uncertainty P3-V-014 success 7.67s
+val-uncertainty P3-V-015 success 3.69s
+val-uncertainty P3-V-016 success 11.74s
+val-uncertainty P3-V-017 success 6.90s
+val-uncertainty P3-V-018 success 8.93s
+val-uncertainty P3-V-019 success 3.95s
+val-uncertainty P3-V-020 success 8.67s
+val-uncertainty P3-V-021 success 6.32s
+val-uncertainty P3-V-022 success 5.35s
+val-uncertainty P3-V-023 success 3.61s
+val-uncertainty P3-V-024 success 4.34s
+val-uncertainty P3-V-025 success 7.42s
+val-uncertainty P3-V-026 success 7.44s
+val-uncertainty P3-V-027 success 6.58s
+val-uncertainty P3-V-028 success 7.13s
+val-uncertainty P3-V-029 success 5.89s
+val-uncertainty P3-V-030 success 5.30s
+{
+  "experiment_id": "val-uncertainty",
+  "timestamp": "2026-11-15T12:23:21.895394+00:00",
+  "git_commit": "ddf547a62c4e8ea9f3bc5bcc1e9c0e52bc49ca28",
+  "source_sha256": {
+    "src/assistant.py": "aa350ba2fce6120be8a50448a052dff056c0c3b5a3bf0c1136a876e3d6a34c41",
+    "src/model_client.py": "1ce3fbeff4e3f5b50b34a2114bad55002f0bb90c7a2870fc0984a143f354d8da",
+    "src/prompting.py": "cf7ba6a2be4911fd0bd79c0c8d252a300804c93ac53be626e51569a08a53ec4a",
+    "src/experiments.py": "07bfe8d53d7f105e2b969005cb18601d33f5455d71bb4dcfdd4e9091aa04dacb"
+  },
+  "source": "actual_ollama_local_inference",
+  "dataset_version": "northstar-policy-eval-v3.1",
+  "random_seed": 42,
+  "config": {
+    "model": "qwen2.5:3b",
+    "service_url": "http://127.0.0.1:11434",
+    "timeout_seconds": 180,
+    "context_strategy": "full_policy_document",
+    "policy_path": "data/company-policies.md",
+    "host": "127.0.0.1",
+    "port": 8000,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 384,
+      "num_thread": 4
+    },
+    "prompt_version": "uncertainty-aware"
+  },
+  "split": "validation",
+  "case_ids": [
+    "P3-V-001",
+    "P3-V-002",
+    "P3-V-003",
+    "P3-V-004",
+    "P3-V-005",
+    "P3-V-006",
+    "P3-V-007",
+    "P3-V-008",
+    "P3-V-009",
+    "P3-V-010",
+    "P3-V-011",
+    "P3-V-012",
+    "P3-V-013",
+    "P3-V-014",
+    "P3-V-015",
+    "P3-V-016",
+    "P3-V-017",
+    "P3-V-018",
+    "P3-V-019",
+    "P3-V-020",
+    "P3-V-021",
+    "P3-V-022",
+    "P3-V-023",
+    "P3-V-024",
+    "P3-V-025",
+    "P3-V-026",
+    "P3-V-027",
+    "P3-V-028",
+    "P3-V-029",
+    "P3-V-030"
+  ],
+  "dataset_sha256": "dfd11901142173f937634464ab3f8c3944d96c085a0126a23412b4aa3ef8308b",
+  "prompt_sha256": "2b90f21d582a3139755dc1f5fb96a79ce4c7f4f3a862a0535625d28accf0f077",
+  "purpose": "candidate"
+}

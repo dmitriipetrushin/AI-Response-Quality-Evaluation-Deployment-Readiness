@@ -1,0 +1,109 @@
+{
+  "status": "success",
+  "result": {
+    "answer": "Let me carefully check the company handbook for information about annual leave working days for full-time employees.\n\nLooking at POL-002 (Annual leave and sick leave), I find this relevant section:\n\n\"A full-time regular employee receives 25 working days of annual leave per calendar year, prorated by People Operations for a partial year or part-time schedule.\"\n\nThis clearly states that a full-time regular employee receives 25 working days of annual leave per calendar year.\n\nI should also check if there are any other relevant policies that might modify this number, but from the handbook provided, this seems to be the definitive answer.\n\nThe question asks specifically about \"annual leave working days\" for a \"full-time employee\", and POL-002 directly addresses this with the number 25 working days per calendar year.\n\nI don't see any other policies that would change this number or provide additional context that would affect the answer. The handbook doesn't mention any exceptions or special cases that would reduce this number for full-time employees.\n\nSo the answer is 25 working days per calendar year.\n\nI'll cite POL-002 as the relevant policy that supports this answer.\n</think>\n\nAccording to POL-002, a full-time regular employee receives 25 working days of annual leave per calendar year.",
+    "response_time_seconds": 116.575407,
+    "model": "qwen3:4b",
+    "created_at": "2026-11-15T11:44:10.956086688Z",
+    "done_reason": "stop",
+    "token_usage": {
+      "prompt_eval_count": 2986,
+      "eval_count": 265,
+      "total_duration": 116574652993,
+      "load_duration": 4299787528,
+      "prompt_eval_duration": 63994263000,
+      "eval_duration": 48244834000
+    },
+    "raw_response": {
+      "model": "qwen3:4b",
+      "created_at": "2026-11-15T11:44:10.956086688Z",
+      "message": {
+        "role": "assistant",
+        "content": "Let me carefully check the company handbook for information about annual leave working days for full-time employees.\n\nLooking at POL-002 (Annual leave and sick leave), I find this relevant section:\n\n\"A full-time regular employee receives 25 working days of annual leave per calendar year, prorated by People Operations for a partial year or part-time schedule.\"\n\nThis clearly states that a full-time regular employee receives 25 working days of annual leave per calendar year.\n\nI should also check if there are any other relevant policies that might modify this number, but from the handbook provided, this seems to be the definitive answer.\n\nThe question asks specifically about \"annual leave working days\" for a \"full-time employee\", and POL-002 directly addresses this with the number 25 working days per calendar year.\n\nI don't see any other policies that would change this number or provide additional context that would affect the answer. The handbook doesn't mention any exceptions or special cases that would reduce this number for full-time employees.\n\nSo the answer is 25 working days per calendar year.\n\nI'll cite POL-002 as the relevant policy that supports this answer.\n</think>\n\nAccording to POL-002, a full-time regular employee receives 25 working days of annual leave per calendar year."
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 116574652993,
+      "load_duration": 4299787528,
+      "prompt_eval_count": 2986,
+      "prompt_eval_cached_count": 0,
+      "prompt_eval_duration": 63994263000,
+      "eval_count": 265,
+      "eval_duration": 48244834000
+    },
+    "response_source": "ollama_local_inference",
+    "prompt_version": "policy-workflow",
+    "generated_content": "Let me carefully check the company handbook for information about annual leave working days for full-time employees.\n\nLooking at POL-002 (Annual leave and sick leave), I find this relevant section:\n\n\"A full-time regular employee receives 25 working days of annual leave per calendar year, prorated by People Operations for a partial year or part-time schedule.\"\n\nThis clearly states that a full-time regular employee receives 25 working days of annual leave per calendar year.\n\nI should also check if there are any other relevant policies that might modify this number, but from the handbook provided, this seems to be the definitive answer.\n\nThe question asks specifically about \"annual leave working days\" for a \"full-time employee\", and POL-002 directly addresses this with the number 25 working days per calendar year.\n\nI don't see any other policies that would change this number or provide additional context that would affect the answer. The handbook doesn't mention any exceptions or special cases that would reduce this number for full-time employees.\n\nSo the answer is 25 working days per calendar year.\n\nI'll cite POL-002 as the relevant policy that supports this answer.\n</think>\n\nAccording to POL-002, a full-time regular employee receives 25 working days of annual leave per calendar year.",
+    "output_contract": "plain_text",
+    "response_type": null,
+    "generation_attempts": [
+      {
+        "request_index": 1,
+        "raw_response": {
+          "model": "qwen3:4b",
+          "created_at": "2026-11-15T11:44:10.956086688Z",
+          "message": {
+            "role": "assistant",
+            "content": "Let me carefully check the company handbook for information about annual leave working days for full-time employees.\n\nLooking at POL-002 (Annual leave and sick leave), I find this relevant section:\n\n\"A full-time regular employee receives 25 working days of annual leave per calendar year, prorated by People Operations for a partial year or part-time schedule.\"\n\nThis clearly states that a full-time regular employee receives 25 working days of annual leave per calendar year.\n\nI should also check if there are any other relevant policies that might modify this number, but from the handbook provided, this seems to be the definitive answer.\n\nThe question asks specifically about \"annual leave working days\" for a \"full-time employee\", and POL-002 directly addresses this with the number 25 working days per calendar year.\n\nI don't see any other policies that would change this number or provide additional context that would affect the answer. The handbook doesn't mention any exceptions or special cases that would reduce this number for full-time employees.\n\nSo the answer is 25 working days per calendar year.\n\nI'll cite POL-002 as the relevant policy that supports this answer.\n</think>\n\nAccording to POL-002, a full-time regular employee receives 25 working days of annual leave per calendar year."
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 116574652993,
+          "load_duration": 4299787528,
+          "prompt_eval_count": 2986,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 63994263000,
+          "eval_count": 265,
+          "eval_duration": 48244834000
+        },
+        "response_time_seconds": 116.575407,
+        "prompt_sha256": "92781c8122be1208ab9280c4cd59e1a0d477628f94cd6694278465e818cecc51"
+      }
+    ],
+    "model_metadata": {
+      "identifier": "qwen3:4b",
+      "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "size_bytes": 2497293931,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M"
+      },
+      "supported_context_length": 262144,
+      "configured_context_length": 8192,
+      "ollama_version": "0.40.16",
+      "thinking_controls": {
+        "values": [
+          true
+        ],
+        "default": true
+      },
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking"
+      ]
+    },
+    "generation_options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 384,
+      "num_thread": 4
+    },
+    "context_strategy": "full_policy_document",
+    "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+    "prompt_sha256": "92781c8122be1208ab9280c4cd59e1a0d477628f94cd6694278465e818cecc51",
+    "policy_references": [
+      "POL-002"
+    ],
+    "invalid_policy_references": [],
+    "citation_support_status": "Identifier existence checked; claim support requires review.",
+    "warnings": []
+  }
+}

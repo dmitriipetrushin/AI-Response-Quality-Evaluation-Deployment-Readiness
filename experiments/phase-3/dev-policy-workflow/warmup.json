@@ -1,0 +1,102 @@
+{
+  "status": "success",
+  "response": {
+    "answer": "Northstar Business Services — Fictional Employee Policy Handbook",
+    "response_time_seconds": 62.804347,
+    "model": "qwen2.5:3b",
+    "created_at": "2026-11-15T11:58:18.031242895Z",
+    "done_reason": "stop",
+    "token_usage": {
+      "prompt_eval_count": 2979,
+      "eval_count": 11,
+      "total_duration": 62803600291,
+      "load_duration": 667259,
+      "prompt_eval_duration": 61822284000,
+      "eval_duration": 907797000
+    },
+    "raw_response": {
+      "model": "qwen2.5:3b",
+      "created_at": "2026-11-15T11:58:18.031242895Z",
+      "message": {
+        "role": "assistant",
+        "content": "Northstar Business Services — Fictional Employee Policy Handbook"
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 62803600291,
+      "load_duration": 667259,
+      "prompt_eval_count": 2979,
+      "prompt_eval_cached_count": 209,
+      "prompt_eval_duration": 61822284000,
+      "eval_count": 11,
+      "eval_duration": 907797000
+    },
+    "response_source": "ollama_local_inference",
+    "prompt_version": "policy-workflow",
+    "generated_content": "Northstar Business Services — Fictional Employee Policy Handbook",
+    "output_contract": "plain_text",
+    "response_type": null,
+    "generation_attempts": [
+      {
+        "request_index": 1,
+        "raw_response": {
+          "model": "qwen2.5:3b",
+          "created_at": "2026-11-15T11:58:18.031242895Z",
+          "message": {
+            "role": "assistant",
+            "content": "Northstar Business Services — Fictional Employee Policy Handbook"
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 62803600291,
+          "load_duration": 667259,
+          "prompt_eval_count": 2979,
+          "prompt_eval_cached_count": 209,
+          "prompt_eval_duration": 61822284000,
+          "eval_count": 11,
+          "eval_duration": 907797000
+        },
+        "response_time_seconds": 62.804347,
+        "prompt_sha256": "bfac866837801f6a790fc307e6e65f2ed2f7d6814f33608c198179dce84f98d7"
+      }
+    ],
+    "model_metadata": {
+      "identifier": "qwen2.5:3b",
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "size_bytes": 1929912432,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      },
+      "supported_context_length": 32768,
+      "configured_context_length": 8192,
+      "ollama_version": "0.40.16",
+      "thinking_controls": null,
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    "generation_options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 384,
+      "num_thread": 4
+    },
+    "context_strategy": "full_policy_document",
+    "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+    "prompt_sha256": "bfac866837801f6a790fc307e6e65f2ed2f7d6814f33608c198179dce84f98d7",
+    "policy_references": [],
+    "invalid_policy_references": [],
+    "citation_support_status": "Identifier existence checked; claim support requires review.",
+    "warnings": []
+  },
+  "wall_seconds": 62.810890729000675
+}

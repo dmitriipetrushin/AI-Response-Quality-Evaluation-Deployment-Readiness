@@ -1,0 +1,13 @@
+experiment_id,model,prompt,split,total,successful,reviewed,correct_rate,unsupported_rate,critical_failures,mean_latency,median_latency,p95_latency,unknown_id_answers,truncated_answers,retry_requests
+dev-baseline,qwen2.5:3b,baseline,development,12,12,12,16.666666666666668,16.666666666666668,0,7.95384525,5.902338,22.945831,1,0,0
+dev-context-4096,qwen2.5:3b,policy-workflow,development,12,12,12,50.0,0.0,0,11.928119166666667,9.373651500000001,44.351972,0,1,0
+dev-instruction-focused,qwen2.5:3b,instruction-focused,development,12,12,12,41.666666666666664,16.666666666666668,0,9.394103416666667,7.410852,23.024078,0,0,0
+dev-policy-workflow,qwen2.5:3b,policy-workflow,development,12,12,12,50.0,0.0,0,11.7100285,8.330406,40.778137,0,1,0
+dev-structured,qwen2.5:3b,structured,development,12,12,12,0.0,8.333333333333334,1,8.42902,6.746274,21.032203,0,0,0
+dev-temperature-03,qwen2.5:3b,policy-workflow,development,12,12,12,33.333333333333336,8.333333333333334,0,11.371939083333334,7.466582,37.989316,0,1,0
+dev-uncertainty-aware,qwen2.5:3b,uncertainty-aware,development,12,12,12,41.666666666666664,8.333333333333334,0,8.078246,5.911381,26.168226,0,0,0
+val-baseline,qwen2.5:3b,baseline,validation,30,30,30,66.66666666666667,0.0,1,7.7416396333333335,6.0262899999999995,15.921228,0,1,0
+val-llama,llama3.2:3b,policy-workflow,validation,30,30,30,46.666666666666664,3.3333333333333335,0,9.149492333333333,7.1671905,18.093467,0,0,0
+val-qwen3-instruct,qwen3:4b-instruct-2507-q4_K_M,policy-workflow,validation,30,30,30,76.66666666666667,10.0,0,26.204695033333333,26.436404500000002,53.662915,0,0,0
+val-uncertainty,qwen2.5:3b,uncertainty-aware,validation,30,30,30,63.333333333333336,0.0,1,6.3947384666666665,6.3983945,10.510817,0,0,0
+val-workflow,qwen2.5:3b,policy-workflow,validation,30,30,30,46.666666666666664,10.0,1,11.044479066666668,9.947538999999999,21.062811,0,1,0

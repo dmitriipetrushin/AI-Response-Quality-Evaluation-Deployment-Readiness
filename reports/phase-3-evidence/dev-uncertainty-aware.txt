@@ -1,0 +1,61 @@
+dev-uncertainty-aware TC-001 success 5.66s
+dev-uncertainty-aware TC-004 success 5.77s
+dev-uncertainty-aware TC-006 success 6.06s
+dev-uncertainty-aware TC-011 success 26.17s
+dev-uncertainty-aware TC-012 success 9.91s
+dev-uncertainty-aware TC-016 success 9.10s
+dev-uncertainty-aware TC-018 success 4.44s
+dev-uncertainty-aware TC-020 success 5.17s
+dev-uncertainty-aware TC-023 success 3.09s
+dev-uncertainty-aware TC-026 success 7.88s
+dev-uncertainty-aware TC-027 success 5.07s
+dev-uncertainty-aware TC-029 success 8.62s
+{
+  "experiment_id": "dev-uncertainty-aware",
+  "timestamp": "2026-11-15T11:54:39.481932+00:00",
+  "git_commit": "da27cdc130797c9c53e875b7e1444214f46f278c",
+  "source_sha256": {
+    "src/assistant.py": "658ceb7c5c10f220f4bb3c39d655509a9bdca028d16d7cd04b17158f80e99525",
+    "src/model_client.py": "1ce3fbeff4e3f5b50b34a2114bad55002f0bb90c7a2870fc0984a143f354d8da",
+    "src/prompting.py": "cf7ba6a2be4911fd0bd79c0c8d252a300804c93ac53be626e51569a08a53ec4a",
+    "src/experiments.py": "d3b7e45a4e919f66d5bda0bc4e1e73cbcfa0e24a658b4808fab2626e1cb0a5a6"
+  },
+  "source": "actual_ollama_local_inference",
+  "dataset_version": "northstar-policy-eval-v3.1",
+  "random_seed": 42,
+  "config": {
+    "model": "qwen2.5:3b",
+    "service_url": "http://127.0.0.1:11434",
+    "timeout_seconds": 180,
+    "context_strategy": "full_policy_document",
+    "policy_path": "data/company-policies.md",
+    "host": "127.0.0.1",
+    "port": 8000,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 384,
+      "num_thread": 4
+    },
+    "prompt_version": "uncertainty-aware"
+  },
+  "split": "development",
+  "case_ids": [
+    "TC-001",
+    "TC-004",
+    "TC-006",
+    "TC-011",
+    "TC-012",
+    "TC-016",
+    "TC-018",
+    "TC-020",
+    "TC-023",
+    "TC-026",
+    "TC-027",
+    "TC-029"
+  ],
+  "dataset_sha256": "dfd11901142173f937634464ab3f8c3944d96c085a0126a23412b4aa3ef8308b",
+  "prompt_sha256": "2b90f21d582a3139755dc1f5fb96a79ce4c7f4f3a862a0535625d28accf0f077",
+  "purpose": "candidate"
+}

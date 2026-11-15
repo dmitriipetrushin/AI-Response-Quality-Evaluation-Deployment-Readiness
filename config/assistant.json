@@ -12,5 +12,6 @@
     "num_ctx": 8192,
     "num_predict": 384,
     "num_thread": 4
-  }
+  },
+  "prompt_version": "baseline"
 }

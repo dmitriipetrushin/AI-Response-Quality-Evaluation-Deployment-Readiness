@@ -1,0 +1,61 @@
+dev-structured TC-001 success 6.88s
+dev-structured TC-004 success 9.39s
+dev-structured TC-006 success 3.25s
+dev-structured TC-011 success 21.03s
+dev-structured TC-012 success 16.62s
+dev-structured TC-016 success 9.76s
+dev-structured TC-018 success 6.61s
+dev-structured TC-020 success 10.27s
+dev-structured TC-023 success 4.54s
+dev-structured TC-026 success 4.06s
+dev-structured TC-027 success 4.31s
+dev-structured TC-029 success 4.42s
+{
+  "experiment_id": "dev-structured",
+  "timestamp": "2026-11-15T12:00:39.726707+00:00",
+  "git_commit": "866a22b022746f10e214d9172b8eafe70e3b62d7",
+  "source_sha256": {
+    "src/assistant.py": "aa350ba2fce6120be8a50448a052dff056c0c3b5a3bf0c1136a876e3d6a34c41",
+    "src/model_client.py": "1ce3fbeff4e3f5b50b34a2114bad55002f0bb90c7a2870fc0984a143f354d8da",
+    "src/prompting.py": "cf7ba6a2be4911fd0bd79c0c8d252a300804c93ac53be626e51569a08a53ec4a",
+    "src/experiments.py": "bf6d15f09c4463ff64b5c328efbe407b0145c6ecc5397540895cd1c18895c901"
+  },
+  "source": "actual_ollama_local_inference",
+  "dataset_version": "northstar-policy-eval-v3.1",
+  "random_seed": 42,
+  "config": {
+    "model": "qwen2.5:3b",
+    "service_url": "http://127.0.0.1:11434",
+    "timeout_seconds": 180,
+    "context_strategy": "full_policy_document",
+    "policy_path": "data/company-policies.md",
+    "host": "127.0.0.1",
+    "port": 8000,
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 384,
+      "num_thread": 4
+    },
+    "prompt_version": "structured"
+  },
+  "split": "development",
+  "case_ids": [
+    "TC-001",
+    "TC-004",
+    "TC-006",
+    "TC-011",
+    "TC-012",
+    "TC-016",
+    "TC-018",
+    "TC-020",
+    "TC-023",
+    "TC-026",
+    "TC-027",
+    "TC-029"
+  ],
+  "dataset_sha256": "dfd11901142173f937634464ab3f8c3944d96c085a0126a23412b4aa3ef8308b",
+  "prompt_sha256": "f64dca307a3f4ed89c99cb57cd73c3dc6898adc03d572e90179ce8e0f859975a",
+  "purpose": "candidate"
+}

@@ -132,6 +132,9 @@ def run_experiment(experiment_id,config,split,root=ROOT,ids=None,resume=False,pu
         metadata=json.loads((folder/'experiment.json').read_text())
         if any(metadata[k]!=v for k,v in provenance.items()):raise ValueError('Experiment resume provenance mismatch')
         if (folder/'seal.json').exists():verify_seal(folder);return metadata
+        for source in ['src/assistant.py','src/model_client.py','src/prompting.py']:
+            if sha(root/source)!=metadata['source_sha256'][source]:
+                raise ValueError('Incomplete experiment has different inference source; restore its recorded code or use a new ID.')
     else:
         folder.mkdir(parents=True)
         code_paths=['src/assistant.py','src/model_client.py','src/prompting.py','src/experiments.py']
@@ -180,6 +183,7 @@ def run_experiment(experiment_id,config,split,root=ROOT,ids=None,resume=False,pu
         atomic_json(folder/'runtime.json',runtime)
         atomic_json(folder/'seal.json',{'experiment_sha256':sha(folder/'experiment.json'),'responses_sha256':sha(response_path),
                                      'completed_at':datetime.now(timezone.utc).isoformat(),'records':len(records)})
+        seal_auxiliary(folder)
     return metadata
 
 
@@ -187,6 +191,20 @@ def verify_seal(folder):
     folder=Path(folder);seal=json.loads((folder/'seal.json').read_text())
     if seal['experiment_sha256']!=sha(folder/'experiment.json') or seal['responses_sha256']!=sha(folder/'responses.jsonl'):
         raise ValueError('Sealed experiment data was modified')
+    auxiliary=folder/'auxiliary-seal.json'
+    if auxiliary.exists():
+        values=json.loads(auxiliary.read_text())
+        for name,expected in values['sha256'].items():
+            if sha(folder/name)!=expected:raise ValueError('Sealed experiment resource evidence was modified')
+
+
+def seal_auxiliary(folder):
+    """Append a resource/warm-up seal; never rewrite historical response seals."""
+    folder=Path(folder);verify_seal(folder)
+    path=folder/'auxiliary-seal.json'
+    if not path.exists():
+        atomic_json(path,{'sealed_at':datetime.now(timezone.utc).isoformat(),
+            'sha256':{name:sha(folder/name) for name in ['seal.json','warmup.json','runtime.json']}})
 
 
 def read_experiment(experiment_id,root=ROOT):
@@ -212,6 +230,7 @@ def write_reviews(experiment_id,judgments,root=ROOT):
         row=by_id.get(tid)
         if not row or row['status']!='success' or label not in CLASSIFICATIONS or type(critical) is not bool or not rationale.strip():raise ValueError('Invalid provisional judgment')
         if label=='Correct' and critical:raise ValueError('Correct cannot be critical')
+        if severity not in {'low','medium','high','critical'} or not reason.strip():raise ValueError('A failure reason and valid severity are required.')
         rows.append({'test_id':tid,'response_sha256':answer_hash(row['response']['answer']),
            'classification':label,'critical_failure':str(critical).lower(),'rationale':rationale,
            'failure_reason':reason,'severity':severity,'evaluation_method':'provisional_agent_assisted_review'})
@@ -232,6 +251,8 @@ def read_reviews(experiment_id,records,root=ROOT):
         row=by_id.get(review['test_id'])
         if (not row or row['status']!='success' or review['response_sha256']!=answer_hash(row['response']['answer'])
             or review['classification'] not in CLASSIFICATIONS or review['critical_failure'] not in {'true','false'}
+            or review['severity'] not in {'low','medium','high','critical'} or not review['failure_reason'].strip()
+            or (review['classification']=='Correct' and review['critical_failure']=='true')
             or review['evaluation_method']!='provisional_agent_assisted_review' or not review['rationale'].strip()):raise ValueError('Review does not match actual inference')
     return rows
 
