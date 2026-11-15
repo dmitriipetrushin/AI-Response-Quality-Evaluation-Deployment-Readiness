@@ -291,7 +291,7 @@ def freeze_selection(experiment_ids,root=ROOT):
     def rank(s):
         violations=sum([s['correct_rate']<85,s['unsupported_rate']>3,s['mean_latency']>10])
         memory=s['runtime'].get('ollama_loaded_model_bytes') or float('inf')
-        return (s['critical_failures'],s['failed'],violations,-s['counts']['Correct'],s['counts']['Unsupported'],s['mean_latency'],memory)
+        return (s['critical_failures'],s['failed'],s['truncated_answers'],violations,-s['counts']['Correct'],s['counts']['Unsupported'],s['mean_latency'],memory)
     ranked=sorted(summaries,key=rank)
     best=ranked[0]
     baseline=next((s for s in summaries if s['model']=='qwen2.5:3b' and s['prompt']=='baseline'),None)
@@ -305,7 +305,7 @@ def freeze_selection(experiment_ids,root=ROOT):
     selection={'frozen_at':datetime.now(timezone.utc).isoformat(),'dataset_sha256':digest(manifest),
        'selected_experiment':best['experiment_id'],'config':best['config'],
        'minimum_meaningful_gain_correct_cases':2,'baseline_retention_reason':retention_reason,
-       'rank_order':'critical failures; request failures; number of violated Correct/Unsupported/latency targets; descending Correct count; Unsupported count; mean latency; loaded-model bytes',
+       'rank_order':'critical failures; request failures; truncated outputs; number of violated Correct/Unsupported/latency targets; descending Correct count; Unsupported count; mean latency; loaded-model bytes',
        'validation_experiments':[s['experiment_id'] for s in ranked],
        'validation_evidence':{s['experiment_id']:{'responses':sha(experiment_dir(s['experiment_id'],root)/'responses.jsonl'),'reviews':sha(experiment_dir(s['experiment_id'],root)/'reviews.csv')} for s in ranked},
        'human_validated':False,'production_decision':'NO-GO pending independent validation'}

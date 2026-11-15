@@ -35,6 +35,7 @@
   "selection_order": [
     "observed critical failures",
     "request failures",
+    "truncated outputs",
     "number of violated Correct>=85, Unsupported<=3, mean_latency<=10 targets",
     "descending Correct count",
     "Unsupported count",
@@ -57,5 +58,9 @@
     "qwen3:4b-instruct-2507-q4_K_M",
     "llama3.2:3b"
   ],
-  "screen_latency_caveat": "Early development screens overlapped the final model download. Use non-overlapping validation/final runs for latency comparisons."
+  "screen_latency_caveat": "Early development screens overlapped the final model download. Use non-overlapping validation/final runs for latency comparisons.",
+  "reliability_amendment_before_validation": {
+    "at": "2026-11-15T12:06:14.430164+00:00",
+    "reason": "Development policy-workflow produced repeated, truncated text despite containing the requested facts. Keep semantic correctness separate and prioritize output reliability before validation selection."
+  }
 }
