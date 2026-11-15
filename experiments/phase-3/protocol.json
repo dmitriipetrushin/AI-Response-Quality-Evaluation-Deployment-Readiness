@@ -1,0 +1,49 @@
+{
+  "registered_at": "2026-11-15T11:39:06.527139+00:00",
+  "dataset_sha256": "dfd11901142173f937634464ab3f8c3944d96c085a0126a23412b4aa3ef8308b",
+  "screens": {
+    "split": "development",
+    "case_ids": [
+      "TC-001",
+      "TC-004",
+      "TC-006",
+      "TC-011",
+      "TC-012",
+      "TC-016",
+      "TC-018",
+      "TC-020",
+      "TC-023",
+      "TC-026",
+      "TC-027",
+      "TC-029"
+    ],
+    "prompts": [
+      "baseline",
+      "instruction-focused",
+      "uncertainty-aware",
+      "policy-workflow",
+      "structured"
+    ],
+    "model": "qwen2.5:3b",
+    "settings": "identical Phase-2 inference options"
+  },
+  "ablations": [
+    "best development prompt at 4096 versus 8192 context",
+    "best development prompt at temperature 0.3 versus 0"
+  ],
+  "validation": "same complete 30 validation cases: baseline, two strongest nonbaseline development prompts on Qwen2.5, strongest development prompt on Qwen3 4B and Llama3.2 3B; add an ablation only if development evidence warrants it",
+  "selection_order": [
+    "observed critical failures",
+    "request failures",
+    "number of violated Correct>=85, Unsupported<=3, mean_latency<=10 targets",
+    "descending Correct count",
+    "Unsupported count",
+    "mean latency",
+    "loaded-model bytes"
+  ],
+  "final": "freeze validation-only selection; run selected configuration on all 100 cases and the original baseline on the same 30 held-out cases. Report held-out separately from exposed development/validation pools.",
+  "review": "provisional agent-assisted review with exact answer hashes; deterministic technical checks remain separate; no independent human validation",
+  "intervals": "nominal Wilson 95% intervals conditional on provisional labels; not population guarantees for a nonrandom authored question set",
+  "no_prompt_tuning_after_freeze": true,
+  "no_hardcoded_answers": true
+}

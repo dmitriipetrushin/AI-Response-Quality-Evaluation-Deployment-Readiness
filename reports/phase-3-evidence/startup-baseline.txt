@@ -1,0 +1,2 @@
+northstar-ollama
+Verified qwen2.5:3b · native context 32768 · configured 8192

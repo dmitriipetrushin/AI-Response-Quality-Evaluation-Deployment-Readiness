@@ -1,0 +1,374 @@
+test_batch_outputs_real_schema_and_preserves_failure (test_assistant.BatchAndWebTests.test_batch_outputs_real_schema_and_preserves_failure) ... TC-001 success 0.00s
+TC-002 error 0.00s
+ok
+test_busy_server_rejects_queue (test_assistant.BatchAndWebTests.test_busy_server_rejects_queue) ... ok
+test_cross_origin_and_invalid_input_rejected (test_assistant.BatchAndWebTests.test_cross_origin_and_invalid_input_rejected) ... ok
+test_model_errors_are_useful_http_errors (test_assistant.BatchAndWebTests.test_model_errors_are_useful_http_errors) ... ok
+test_resume_requires_same_generation_config (test_assistant.BatchAndWebTests.test_resume_requires_same_generation_config) ... TC-001 success 0.00s
+TC-002 success 0.00s
+ok
+test_static_allowlist_blocks_traversal (test_assistant.BatchAndWebTests.test_static_allowlist_blocks_traversal) ... ok
+test_synthetic_output_is_protected (test_assistant.BatchAndWebTests.test_synthetic_output_is_protected) ... ok
+test_web_answer_and_metadata (test_assistant.BatchAndWebTests.test_web_answer_and_metadata) ... ok
+test_connection_error (test_assistant.ModelClientTests.test_connection_error) ... ok
+test_connection_reset_during_startup (test_assistant.ModelClientTests.test_connection_reset_during_startup) ... ok
+test_empty_or_incomplete_response (test_assistant.ModelClientTests.test_empty_or_incomplete_response) ... ok
+test_invalid_json (test_assistant.ModelClientTests.test_invalid_json) ... ok
+test_native_context_capacity (test_assistant.ModelClientTests.test_native_context_capacity) ... ok
+test_nonobject_json (test_assistant.ModelClientTests.test_nonobject_json) ... ok
+test_oversized_context_rejected (test_assistant.ModelClientTests.test_oversized_context_rejected) ... ok
+test_parse_real_api_shape (test_assistant.ModelClientTests.test_parse_real_api_shape) ... ok
+test_remote_url_and_embedded_credentials_rejected (test_assistant.ModelClientTests.test_remote_url_and_embedded_credentials_rejected) ... ok
+test_timeouts (test_assistant.ModelClientTests.test_timeouts) ... ok
+test_configurable_model (test_assistant.PolicyAndPromptTests.test_configurable_model) ... ok
+test_full_policy_loading (test_assistant.PolicyAndPromptTests.test_full_policy_loading) ... ok
+test_generation_limit_warning (test_assistant.PolicyAndPromptTests.test_generation_limit_warning) ... ok
+test_invalid_policy_document (test_assistant.PolicyAndPromptTests.test_invalid_policy_document) ... ok
+test_invalid_question_never_calls_model (test_assistant.PolicyAndPromptTests.test_invalid_question_never_calls_model) ... ok
+test_metadata_and_raw_answer_recorded (test_assistant.PolicyAndPromptTests.test_metadata_and_raw_answer_recorded) ... ok
+test_model_context_verified_before_inference (test_assistant.PolicyAndPromptTests.test_model_context_verified_before_inference) ... ok
+test_prompt_uses_full_document_not_reference_answer (test_assistant.PolicyAndPromptTests.test_prompt_uses_full_document_not_reference_answer) ... ok
+test_unknown_citation_is_flagged_and_not_hidden (test_assistant.PolicyAndPromptTests.test_unknown_citation_is_flagged_and_not_hidden) ... ok
+test_category_mismatch (test_evaluation.DatasetTests.test_category_mismatch) ... ok
+test_context_is_verbatim (test_evaluation.DatasetTests.test_context_is_verbatim) ... ok
+test_correct_category_counts (test_evaluation.DatasetTests.test_correct_category_counts) ... ok
+test_csv_boolean_false_is_not_truthy (test_evaluation.DatasetTests.test_csv_boolean_false_is_not_truthy) ... ok
+test_dataset_completeness (test_evaluation.DatasetTests.test_dataset_completeness) ... ok
+test_duplicate_evaluation_is_rejected (test_evaluation.DatasetTests.test_duplicate_evaluation_is_rejected) ... ok
+test_invalid_boolean_values (test_evaluation.DatasetTests.test_invalid_boolean_values) ... ok
+test_invalid_classification (test_evaluation.DatasetTests.test_invalid_classification) ... ok
+test_missing_evaluation (test_evaluation.DatasetTests.test_missing_evaluation) ... ok
+test_missing_response (test_evaluation.DatasetTests.test_missing_response) ... ok
+test_orphan_response (test_evaluation.DatasetTests.test_orphan_response) ... ok
+test_policy_reference_mismatch (test_evaluation.DatasetTests.test_policy_reference_mismatch) ... ok
+test_provenance_cannot_claim_real_review (test_evaluation.DatasetTests.test_provenance_cannot_claim_real_review) ... ok
+test_real_model_cannot_mix_into_baseline (test_evaluation.DatasetTests.test_real_model_cannot_mix_into_baseline) ... ok
+test_required_fields (test_evaluation.DatasetTests.test_required_fields) ... ok
+test_unique_ids (test_evaluation.DatasetTests.test_unique_ids) ... ok
+test_unknown_policy (test_evaluation.DatasetTests.test_unknown_policy) ... ok
+test_wrong_total (test_evaluation.DatasetTests.test_wrong_total) ... ok
+test_acceptance_boundary (test_evaluation.ReportingTests.test_acceptance_boundary) ... ok
+test_all_correct_still_requires_independent_validation (test_evaluation.ReportingTests.test_all_correct_still_requires_independent_validation) ... ok
+test_cli_fails_cleanly_for_missing_inputs (test_evaluation.ReportingTests.test_cli_fails_cleanly_for_missing_inputs) ... ok
+test_critical_failure_count (test_evaluation.ReportingTests.test_critical_failure_count) ... ok
+test_dashboard_escapes_untrusted_text (test_evaluation.ReportingTests.test_dashboard_escapes_untrusted_text) ... ok
+test_failure_decision (test_evaluation.ReportingTests.test_failure_decision) ... ok
+test_invalid_input_does_not_publish_reports (test_evaluation.ReportingTests.test_invalid_input_does_not_publish_reports) ... ok
+test_label_studio_tasks_are_unannotated_and_traceable (test_evaluation.ReportingTests.test_label_studio_tasks_are_unannotated_and_traceable) ... ok
+test_metric_calculations (test_evaluation.ReportingTests.test_metric_calculations) ... ok
+test_report_generation_and_determinism (test_evaluation.ReportingTests.test_report_generation_and_determinism) ... ok
+test_altered_raw_answer_is_rejected (test_real_reporting.RealReportTests.test_altered_raw_answer_is_rejected) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+test_duplicate_reviews_rejected (test_real_reporting.RealReportTests.test_duplicate_reviews_rejected) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+test_failed_gates_and_critical_count (test_real_reporting.RealReportTests.test_failed_gates_and_critical_count) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+test_human_review_claim_rejected (test_real_reporting.RealReportTests.test_human_review_claim_rejected) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+test_partial_review_does_not_silently_pass_gates (test_real_reporting.RealReportTests.test_partial_review_does_not_silently_pass_gates) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+test_provenance_and_answer_hash_required (test_real_reporting.RealReportTests.test_provenance_and_answer_hash_required) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+test_provisional_passing_score_cannot_authorize_production (test_real_reporting.RealReportTests.test_provisional_passing_score_cannot_authorize_production) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+test_reporting_and_dashboard_separate_sources (test_real_reporting.RealReportTests.test_reporting_and_dashboard_separate_sources) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+test_unrelated_question_is_rejected (test_real_reporting.RealReportTests.test_unrelated_question_is_rejected) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+test_unreviewed_results_remain_unknown (test_real_reporting.RealReportTests.test_unreviewed_results_remain_unknown) ... TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+ok
+
+----------------------------------------------------------------------
+Ran 65 tests in 3.315s
+
+OK

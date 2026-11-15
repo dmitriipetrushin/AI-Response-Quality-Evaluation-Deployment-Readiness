@@ -1,0 +1,26 @@
+{
+  "original_commit": "e4b371050f28adec6698ecc36291e63f14151361",
+  "initial_git_status": "clean",
+  "python": "3.12.3",
+  "ram_gib": {
+    "MemTotal": 15.34,
+    "MemAvailable": 5.71
+  },
+  "free_disk_gib": 318.41,
+  "historical_sha256": {
+    "data/candidate-responses.json": "4aae55f3a7d3e9f80cda7938f07f36a33a1244b8ace132f49244ff50bbd3d878",
+    "data/company-policies.md": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+    "data/evaluation-results.csv": "f0e978aadd147f2cfdd90ae4ef994e6fab850cc87bbac5be39b5eccdd18ffd73",
+    "data/real-model-evaluation.csv": "ccf2f409ceca7d20582ea96ef42f3eb9fdbc0f3675cc01363d93b8dd13be3b92",
+    "data/real-model-responses.json": "605de84c5d2fefbf26d139caffb1bcbb5c55fb39c6d15dc9b35d36af098a4836",
+    "data/test-cases.json": "05c26d114817291afb70a3887524931c2438af73769bb2d60da802ed1d2e275c",
+    "label-studio/import-tasks.json": "71f4ba79978ba7239cc9da9f9e4f5d49724de1a84d5b29d4b7d2f416b46ff715",
+    "label-studio/real-model-import-tasks.json": "1d5077e350f695bcdbd4aaf565da8bab7d0ea8830317aeb37685b160f9acee35",
+    "reports/metrics.json": "f647047d74a1c8d8e69d975e29bd2fd03b9f0756eb5cdf3dfe69bff8d33fa660",
+    "reports/quality-report.md": "f42a527079c75fa63d405a7d79a92a055894dbc3477bb452e72ee235c2b28123",
+    "reports/real-model-dashboard.html": "89c01cd044138b229f5af1f487c7d09ca4eb799d2cf82f8544a9fb7981c45489",
+    "reports/real-model-evaluation.md": "bcc340946ae88c5302c8bda17484b7dc8b577209bbc1b358e09309cd5687a2dc",
+    "reports/real-model-metrics.json": "d02e08fde48a9ebf6be142340cc6b3ac2b4c399ba3cdc4736f7d5258af309386"
+  },
+  "baseline_config_sha256": "e8284e4b3e829436aed6e214b2cd9586fc00d23578754dc2cd34f2a4d69848b5"
+}

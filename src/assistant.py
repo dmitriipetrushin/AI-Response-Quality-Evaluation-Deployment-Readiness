@@ -5,6 +5,8 @@ import re
 from pathlib import Path
 from .model_client import ModelClient
 from .policy_loader import load_policies
+from .prompting import VERSIONS, load_prompt, response_schema, parse_structured
+from .model_client import ModelProtocolError
 
 ROOT = Path(__file__).resolve().parents[1]
 SYSTEM_INSTRUCTIONS = '''You are Northstar AI Policy Assistant. This is an independent demonstration using fictional company policies.
@@ -24,6 +26,10 @@ def load_config(path=None):
     config = json.loads(path.read_text(encoding='utf-8'))
     if config.get('context_strategy') != 'full_policy_document':
         raise ValueError('Only the documented full_policy_document strategy is supported.')
+    if config.get('prompt_version', 'baseline') not in VERSIONS:
+        raise ValueError('Unknown prompt_version.')
+    if type(config.get('structured_retries', 1)) is not int or not 0 <= config.get('structured_retries', 1) <= 1:
+        raise ValueError('Structured validation permits at most one repair retry.')
     if config.get('host') not in {'127.0.0.1', 'localhost', '::1'}:
         raise ValueError('The application must bind to loopback.')
     if type(config.get('port')) is not int or not 1024 <= config['port'] <= 65535:
@@ -49,7 +55,8 @@ class PolicyAssistant:
             raise ValueError('Enter a nonempty question.')
         if len(question) > 2000:
             raise ValueError('Keep the question within 2,000 characters.')
-        return [{'role': 'system', 'content': SYSTEM_INSTRUCTIONS + '\n<company_handbook>\n' + self.policies.text + '\n</company_handbook>'},
+        instructions = load_prompt(self.config.get('prompt_version', 'baseline'), SYSTEM_INSTRUCTIONS, self.root)
+        return [{'role': 'system', 'content': instructions + '\n<company_handbook>\n' + self.policies.text + '\n</company_handbook>'},
                 {'role': 'user', 'content': question.strip()}]
 
     def model_metadata(self):
@@ -61,9 +68,35 @@ class PolicyAssistant:
         messages = self.messages(question)
         # Verify native context support before the first inference of each process.
         metadata = self.model_metadata()
-        result = self.client.chat(messages)
+        structured = self.config.get('prompt_version', 'baseline') == 'structured'
+        schema = response_schema(self.policies.sections) if structured else None
+        attempts = []
+        parsed = None
+        request_messages = messages
+        for index in range(1 + (self.config.get('structured_retries', 1) if structured else 0)):
+            result = self.client.chat(request_messages, response_format=schema, think=self.config.get('think'))
+            attempts.append({'request_index': index + 1, 'raw_response': result['raw_response'],
+                             'response_time_seconds': result['response_time_seconds'],
+                             'prompt_sha256': hashlib.sha256(json.dumps(request_messages, ensure_ascii=False, sort_keys=True).encode()).hexdigest()})
+            if not structured:
+                break
+            try:
+                parsed = parse_structured(result['answer'], self.policies.sections)
+                break
+            except ModelProtocolError as exc:
+                attempts[-1]['validation_error'] = str(exc)
+                if index == self.config.get('structured_retries', 1):
+                    exc.attempts = attempts
+                    raise
+                request_messages = messages + [{'role': 'user', 'content': 'Technical format repair: return only the required JSON object with a nonempty answer, valid response_type, and an array of supplied policy IDs. Do not change the employee request or invent information.'}]
+        generated_content = result['answer']
+        if parsed is not None:
+            result['answer'] = parsed['answer']
+        result['response_time_seconds'] = round(sum(a['response_time_seconds'] for a in attempts), 6)
         cited = sorted(set(re.findall(r'\bPOL-\d+\b', result['answer'])))
         valid = [p for p in cited if p in self.policies.sections]
+        if parsed is not None:
+            valid = sorted(set(valid) | set(parsed['policy_references']))
         invalid = [p for p in cited if p not in self.policies.sections]
         warnings = []
         if invalid:
@@ -74,6 +107,10 @@ class PolicyAssistant:
         if isinstance(prompt_tokens, int) and prompt_tokens + self.config['options']['num_predict'] >= self.config['options']['num_ctx']:
             warnings.append('Prompt approaches the configured context limit; inspect for truncation.')
         return {**result, 'response_source': 'ollama_local_inference',
+                'prompt_version': self.config.get('prompt_version', 'baseline'),
+                'generated_content': generated_content, 'output_contract': 'json_schema' if structured else 'plain_text',
+                'response_type': parsed['response_type'] if parsed else None,
+                'generation_attempts': attempts,
                 'model_metadata': metadata, 'generation_options': dict(self.config['options']),
                 'context_strategy': self.config['context_strategy'], 'policy_sha256': self.policies.sha256,
                 'prompt_sha256': hashlib.sha256(json.dumps(messages, ensure_ascii=False, sort_keys=True).encode()).hexdigest(),

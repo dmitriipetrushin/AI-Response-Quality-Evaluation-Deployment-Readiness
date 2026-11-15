@@ -1,0 +1,28 @@
+{
+  "version": "northstar-policy-eval-v3.1",
+  "total": 100,
+  "splits": {
+    "development": {
+      "count": 40,
+      "sha256": "e7a779700b92125fb1cc591200ad3153731108ac3e3661c4c93240e31bf62402"
+    },
+    "validation": {
+      "count": 30,
+      "sha256": "6b41a1fa31d7ff57fe90086225a5e4d7b1998802812fd83127c14eb64c30e6f8"
+    },
+    "heldout": {
+      "count": 30,
+      "sha256": "82a121840ddfd7c9c6c63d27e476146fa72c5963509b64eb34fcce7db4d747cf"
+    }
+  },
+  "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+  "original_cases_sha256": "05c26d114817291afb70a3887524931c2438af73769bb2d60da802ed1d2e275c",
+  "limitations": "Question holdout within the same fictional policy corpus; all cases agent-authored and policy-checked, not independently human-validated. Policy-fact overlap across splits is expected; no identical question or scenario group crosses splits.",
+  "frozen_prompt_sha256": {
+    "baseline": "d79ecd854684eab2c62a5dd854474355785f8ced315cbef6e4f6ee8e7a234f3e",
+    "instruction-focused": "3d85cbdfc8e1162765a44e7afe96256e9f8da32cbb638a85c4f43b8843af7fe3",
+    "structured": "f64dca307a3f4ed89c99cb57cd73c3dc6898adc03d572e90179ce8e0f859975a",
+    "uncertainty-aware": "2b90f21d582a3139755dc1f5fb96a79ce4c7f4f3a862a0535625d28accf0f077",
+    "policy-workflow": "ec28fdf7e80f80083f850d7fa853920fcddc4ca004c4e95cfcb8d70369aae763"
+  }
+}

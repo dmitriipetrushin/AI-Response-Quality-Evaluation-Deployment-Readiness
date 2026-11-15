@@ -88,12 +88,18 @@ class ModelClient:
         version = self.request('/api/version', timeout=10).get('version', 'unknown')
         return {'identifier': self.model, 'digest': tag.get('digest'), 'size_bytes': tag.get('size'),
                 'details': info.get('details', {}), 'supported_context_length': supported,
-                'configured_context_length': configured, 'ollama_version': version}
+                'configured_context_length': configured, 'ollama_version': version,
+                'thinking_controls': info.get('thinking'), 'capabilities': info.get('capabilities', [])}
 
-    def chat(self, messages):
+    def chat(self, messages, response_format=None, think=None):
         started = time.perf_counter()
-        result = self.request('/api/chat', {'model': self.model, 'messages': messages,
-                              'stream': False, 'keep_alive': '15m', 'options': self.options})
+        payload = {'model': self.model, 'messages': messages,
+                   'stream': False, 'keep_alive': '15m', 'options': self.options}
+        if response_format is not None:
+            payload['format'] = response_format
+        if think is not None:
+            payload['think'] = think
+        result = self.request('/api/chat', payload)
         duration = time.perf_counter() - started
         answer = result.get('message', {}).get('content') if isinstance(result.get('message'), dict) else None
         if not isinstance(answer, str) or not answer.strip() or result.get('done') is not True:
