@@ -1,0 +1,33 @@
+test_category_mismatch (test_evaluation.DatasetTests.test_category_mismatch) ... ok
+test_context_is_verbatim (test_evaluation.DatasetTests.test_context_is_verbatim) ... ok
+test_correct_category_counts (test_evaluation.DatasetTests.test_correct_category_counts) ... ok
+test_csv_boolean_false_is_not_truthy (test_evaluation.DatasetTests.test_csv_boolean_false_is_not_truthy) ... ok
+test_dataset_completeness (test_evaluation.DatasetTests.test_dataset_completeness) ... ok
+test_duplicate_evaluation_is_rejected (test_evaluation.DatasetTests.test_duplicate_evaluation_is_rejected) ... ok
+test_invalid_boolean_values (test_evaluation.DatasetTests.test_invalid_boolean_values) ... ok
+test_invalid_classification (test_evaluation.DatasetTests.test_invalid_classification) ... ok
+test_missing_evaluation (test_evaluation.DatasetTests.test_missing_evaluation) ... ok
+test_missing_response (test_evaluation.DatasetTests.test_missing_response) ... ok
+test_orphan_response (test_evaluation.DatasetTests.test_orphan_response) ... ok
+test_policy_reference_mismatch (test_evaluation.DatasetTests.test_policy_reference_mismatch) ... ok
+test_provenance_cannot_claim_real_review (test_evaluation.DatasetTests.test_provenance_cannot_claim_real_review) ... ok
+test_real_model_cannot_mix_into_baseline (test_evaluation.DatasetTests.test_real_model_cannot_mix_into_baseline) ... ok
+test_required_fields (test_evaluation.DatasetTests.test_required_fields) ... ok
+test_unique_ids (test_evaluation.DatasetTests.test_unique_ids) ... ok
+test_unknown_policy (test_evaluation.DatasetTests.test_unknown_policy) ... ok
+test_wrong_total (test_evaluation.DatasetTests.test_wrong_total) ... ok
+test_acceptance_boundary (test_evaluation.ReportingTests.test_acceptance_boundary) ... ok
+test_all_correct_still_requires_independent_validation (test_evaluation.ReportingTests.test_all_correct_still_requires_independent_validation) ... ok
+test_cli_fails_cleanly_for_missing_inputs (test_evaluation.ReportingTests.test_cli_fails_cleanly_for_missing_inputs) ... ok
+test_critical_failure_count (test_evaluation.ReportingTests.test_critical_failure_count) ... ok
+test_dashboard_escapes_untrusted_text (test_evaluation.ReportingTests.test_dashboard_escapes_untrusted_text) ... ok
+test_failure_decision (test_evaluation.ReportingTests.test_failure_decision) ... ok
+test_invalid_input_does_not_publish_reports (test_evaluation.ReportingTests.test_invalid_input_does_not_publish_reports) ... ok
+test_label_studio_tasks_are_unannotated_and_traceable (test_evaluation.ReportingTests.test_label_studio_tasks_are_unannotated_and_traceable) ... ok
+test_metric_calculations (test_evaluation.ReportingTests.test_metric_calculations) ... ok
+test_report_generation_and_determinism (test_evaluation.ReportingTests.test_report_generation_and_determinism) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.106s
+
+OK

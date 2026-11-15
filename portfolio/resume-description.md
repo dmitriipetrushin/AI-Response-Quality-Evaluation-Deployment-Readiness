@@ -2,9 +2,9 @@
 
 **Dmitry Petrushin · Independent portfolio simulation**
 
-- Defined business requirements, scope, proposed release gates, a four-week implementation roadmap, and a hypothetical budget for a fictional internal-policy assistant evaluation.
-- Designed 30 policy-grounded test cases, a four-class evaluation rubric, and separate critical-failure criteria; documented simulated review rationales for every synthetic response.
-- Implemented reproducible Python validation and reporting with 28 passing automated tests, an offline HTML dashboard, and Label Studio annotation configuration and import tasks.
-- Produced a 14-risk register and executive decision pack; recommended no-go after the synthetic baseline failed proposed quality gates, identifying the evidence required before a real pilot.
+- Defined business requirements, scope, proposed quality gates, a four-week roadmap, and a hypothetical budget; maintained a 14-risk register and implementation decision pack.
+- Implemented a local Qwen2.5 3B policy assistant using Ollama, full-handbook prompting, a configurable Python client, and a responsive loopback web interface.
+- Built a 30-case QA dataset and evaluated 30 actual model outputs separately from synthetic fixtures, with provisional agent-assisted review, traceable reports, and a separate Label Studio project.
+- Verified the implementation with 65 passing unit tests, a live integration test, and genuine browser checks; recommended no-go after two proposed model-quality gates failed and documented independent-review prerequisites.
 
-This was an AI-assisted independent portfolio build. It does not represent paid employment, a real client engagement, management of a team, production deployment, or independently measured model accuracy.
+This was an AI-assisted independent portfolio build. It does not represent paid employment, a real client engagement, management of a team, production deployment, or independently validated model accuracy. The original synthetic baseline and history are preserved.

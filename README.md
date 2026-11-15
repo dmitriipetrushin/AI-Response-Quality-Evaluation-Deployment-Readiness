@@ -3,9 +3,11 @@
 
 **Dmitry Petrushin · Independent portfolio simulation**
 
+**Now includes [Phase 2 — Real AI Model Integration](#phase-2--real-ai-model-integration): a working local Qwen2.5 3B assistant, 30 actual responses, and provisional quality findings.** Start with `python3 scripts/start_assistant.py --open`; see the [setup guide](docs/local-model-setup.md).
+
 A reproducible quality-assurance pilot showing how an AI Project Manager can turn a business question into requirements, risk controls, evaluation evidence, and a deployment recommendation. The fictional Northstar Business Services wants to understand whether an internal-policy assistant could enter a controlled pilot.
 
-**The completed deliverable is an evaluation process. No real client, staffed team, deployed model, independent annotation exercise, production rollout, or business improvement is claimed.** Candidate answers are deliberately mixed synthetic fixtures; labels are simulated reviews.
+**The original Phase 1 deliverable is an evaluation process. No real client, staffed team, independent annotation exercise, production rollout, or business improvement is claimed.** Phase 1 candidate answers are deliberately mixed synthetic fixtures; their labels are simulated reviews. Phase 2 below adds actual local-model inference and provisional agent-assisted review.
 
 Start with the [results dashboard](reports/dashboard.html), [case study](portfolio/case-study.md), or [one-page executive summary](portfolio/executive-summary.md). The dashboard opens directly in a browser without internet access. [Verification evidence](reports/completion-report.md) records what was actually executed.
 
@@ -128,8 +130,96 @@ Genuine [desktop](reports/evidence/dashboard-desktop.png) and [mobile](reports/e
 
 Explicit precedence avoids double counting; independent criticality prevents aggregate scores from hiding serious risks. Tests caught a dashboard statement that did not follow changed gate results and now guard both pass and fail paths. Offline-first implementation kept annotation-server setup from blocking the core. See [lessons learned](project-management/lessons-learned.md).
 
-The sample is small and deliberately selected. Candidates, reference answers, and labels share authorship; no independent agreement or statistical accuracy claim is supported. Structural validation cannot prove the semantic judgments. There is no real-model execution, real stakeholder approval, employee adoption measurement, or production monitoring. No screenshots are fabricated; any included images come from actual local browser rendering.
+The sample is small and deliberately selected. Candidates, reference answers, and labels share authorship; no independent agreement or statistical accuracy claim is supported. Structural validation cannot prove the semantic judgments. Phase 1 did not execute a real model. Phase 2 adds actual local inference below; real stakeholder approvals, employee adoption measurement, and production monitoring remain outside this build. No screenshots are fabricated; any included images come from actual local browser rendering.
 
 ## License and foundation
 
 Original code, fictional data, and documentation are provided under the [MIT license](LICENSE). This project prepares an integration for [HumanSignal/label-studio](https://github.com/HumanSignal/label-studio), whose upstream source is licensed under Apache 2.0; see [third-party attribution](THIRD_PARTY_NOTICES.md). Label Studio source code is not copied into this repository. Official [import documentation](https://labelstud.io/guide/tasks), [Choices control](https://labelstud.io/tags/choices), and [TextArea control](https://labelstud.io/tags/textarea) informed the integration.
+
+# Phase 2 — Real AI Model Integration
+
+The original pilot proved that the evaluation process could expose authored failures. It could not show whether a real assistant would answer the handbook correctly. Phase 2 extends the same repository with **actual Qwen2.5 3B inference**, a working local web application, and a new evaluation dataset. It preserves the original policies, questions, synthetic answers, labels, and Git history.
+
+## Model and implementation
+
+The selected model is **`qwen2.5:3b`**, Q4_K_M, 1.93 GB, run on CPU through Ollama **0.40.16**. Its digest is `357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b`. Native context capacity is 32,768 tokens; the application configures 8,192, temperature 0, seed 42, four threads, and a 384-token output cap. All actual prompt counts fit comfortably: 2,714–2,736 tokens in the batch, with no output-limit stops.
+
+The assistant includes the **complete handbook** in every grounded prompt. Employee questions are separate untrusted user messages. This is full-context prompting, not RAG; no retrieval or embedding system is claimed. Neither reference answers nor evaluation labels are sent to the model. The same `PolicyAssistant` powers both the UI and the 30-case batch.
+
+```mermaid
+flowchart TD
+    CONFIG["Tracked configuration · model, local URL, limits"] --> CLIENT["Python Ollama HTTP client"]
+    KB["Unchanged fictional policy handbook"] --> PROMPT["Grounded system instructions + complete handbook"]
+    UI["Loopback web UI · employee question"] --> ASSIST["Shared PolicyAssistant"]
+    CASES["Same 30 original questions"] --> BATCH["Batch runner · atomic checkpoints"]
+    BATCH --> ASSIST
+    ASSIST --> PROMPT
+    PROMPT --> CLIENT
+    CLIENT --> MODEL["Actual Qwen2.5 3B · Ollama · CPU inference"]
+    MODEL --> RAW["Exact answer + raw API output + metadata + time"]
+    RAW --> CITE["Check citation IDs · flag unknown IDs"]
+    CITE --> UI
+    RAW --> RUN["Separate real-model response JSON"]
+    RUN --> REVIEW["Provisional agent-assisted review · answer hashes"]
+    RUN --> LS["Separate Label Studio project · unannotated real answers"]
+    REVIEW --> REPORT["Real-run reports + clearly separated dashboard"]
+    REPORT --> DECISION["NO-GO · independent review still required"]
+```
+
+Policy IDs generated in answers are checked against the actual sections, and the UI lets users inspect cited text. **A valid identifier does not establish that the claim is supported.** Unknown IDs remain in the exact answer and are flagged separately; no generated text is silently corrected. Connection failures, timeouts, invalid input, and busy-model requests have explicit error paths. The web server defaults to `127.0.0.1:8000`, does not execute commands from questions, and renders model output as text.
+
+## What actually ran
+
+- The original **28 tests passed** before changes. The complete suite now has **65 passing unit tests**, including the original tests, plus **one passing explicit live integration test** covering both required questions.
+- **33 successful real inference requests** are saved as evidence: 30 batch questions, two live-check questions, and one browser-submitted question. Mocked unit responses are excluded from that count.
+- Chrome obtained a real answer through the UI and verified the model, timing, source expansion, mobile layout, and missing-model error state. No application page errors or external requests were captured during the successful app flow.
+- Label Studio **1.23.0** imported all 30 actual answers into **separate project 6**. Existing projects 1–5 were preserved, every imported answer string was checked, and the interface rendered. **No annotation was submitted.**
+
+The cold annual-leave check took **46.04 seconds**; the subsequent warm password-sharing check took **3.34 seconds**. Mean successful sequential batch time was **4.89 seconds**, with a maximum of **15.80 seconds**. The batch benefited from a warm model and a reused prompt prefix; it is not a concurrent-load benchmark or response-time SLA.
+
+Genuine images: [desktop assistant](reports/phase-2-evidence/assistant-desktop.png), [mobile assistant](reports/phase-2-evidence/assistant-mobile.png), [combined dashboard](reports/phase-2-evidence/combined-dashboard.png), and [Label Studio real-answer project](reports/phase-2-evidence/label-studio-real-model.png).
+
+## Real-output quality findings
+
+All 30 answers received **provisional agent-assisted review**, using the original rubric and case-specific acceptance criteria. These are not independent human annotations.
+
+| Proposed gate | Actual provisional result | Outcome |
+|---|---|---|
+| Correct ≥90% | **46.7% (14/30)** | Fail |
+| Unsupported ≤5% | **6.7% (2/30)** | Fail |
+| Critical failures = 0 | **0 observed** | Pass provisionally |
+| Review coverage = 100% | **100.0% (30/30)** | Pass provisionally |
+
+Labels: 14 Correct, 13 Partially correct, 1 Incorrect, and 2 Unsupported. The model often produced supported facts while missing necessary clarifications, workflow details, or escalation. TC-023 invented pension policy `POL-008`; the application flagged the unknown ID. TC-011 gave the wrong approval sequence. Thirteen answers contained a recognized policy ID, which is an identifier-presence count, not evidence of correct citation support. [Review notes](quality-assurance/phase-2-review-notes.md) explain borderline judgments, including the unsupported IT support route in TC-027.
+
+**Recommendation: NO-GO for a controlled business pilot.** Two proposed quality gates fail. Zero critical findings in this sample does not establish rare-event safety. Independent human review, broader representative/adversarial cases, corrected clarification and workflow behavior, latency criteria, monitoring, and business/security approval remain necessary. The synthetic answers were intentionally mixed; differences between synthetic and real scores are **not measured model improvement**.
+
+## Run and reproduce Phase 2
+
+Initial setup and launch:
+
+```bash
+python3 scripts/start_assistant.py --setup-model --open
+```
+
+Later launches reuse the cached model:
+
+```bash
+python3 scripts/start_assistant.py --open
+```
+
+Open `http://127.0.0.1:8000` if the browser does not open automatically. Requirements are Python and Docker (or an existing local Ollama service), sufficient resources, and initial internet access for the official runtime/model downloads. All Python application functionality uses the standard library. Model weights, runtime state, databases, and credentials are excluded from Git. See the [complete setup/configuration guide](docs/local-model-setup.md).
+
+```bash
+python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s tests -p integration_real_model.py -v
+python3 scripts/verify_phase2.py
+```
+
+The committed real run is in [actual responses](data/real-model-responses.json), [provisional reviews](data/real-model-evaluation.csv), and the [real evaluation report](reports/real-model-evaluation.md). Use `python3 scripts/evaluate_real_model.py --resume` to continue the canonical run; use `--output data/new-real-run.json` to preserve it while creating a new run. Quality labels require a new substantive review tied to those exact answers. A stale review CSV is rejected. Regenerate canonical reports with `python3 scripts/generate_real_model_report.py`.
+
+## Management evidence and lessons
+
+The [implementation plan](project-management/phase-2-implementation-plan.md), [risk assessment](project-management/phase-2-risk-assessment.md), [acceptance criteria](project-management/phase-2-acceptance-criteria.md), and [executive report](project-management/phase-2-executive-report.md) separate technical delivery from business release readiness. The [completion record](reports/phase-2-completion-report.md) links actual test, inference, browser, and import evidence.
+
+A real model exposed issues the authored fixtures could only illustrate: fluent nonanswers, missed clarifications, incomplete approval routes, and a nonexistent citation. Full policy context did not guarantee complete answers. A startup connection reset also led to explicit transient-connection handling and a regression test. Cold and warm latency needed separate reporting. The decisive management lesson is to require actual outputs and traceable review before making a deployment recommendation, while treating provisional labels as unresolved evidence rather than approval.

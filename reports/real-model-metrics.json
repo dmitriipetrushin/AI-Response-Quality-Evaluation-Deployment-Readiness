@@ -1,0 +1,92 @@
+{
+  "run_id": "northstar-2026-11-15T10:58:21.374275+00:00",
+  "model": "qwen2.5:3b",
+  "model_metadata": {
+    "identifier": "qwen2.5:3b",
+    "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+    "size_bytes": 1929912432,
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "3.1B",
+      "quantization_level": "Q4_K_M"
+    },
+    "supported_context_length": 32768,
+    "configured_context_length": 8192,
+    "ollama_version": "0.40.16"
+  },
+  "generation_options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 8192,
+    "num_predict": 384,
+    "num_thread": 4
+  },
+  "context_strategy": "full_policy_document",
+  "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+  "total": 30,
+  "attempted": 30,
+  "successful": 30,
+  "failed": 0,
+  "unattempted": 0,
+  "average_response_time_seconds": 4.889977833333333,
+  "maximum_response_time_seconds": 15.803392,
+  "reviewed": 30,
+  "counts": {
+    "Correct": 14,
+    "Partially correct": 13,
+    "Incorrect": 1,
+    "Unsupported": 2
+  },
+  "correct_rate": 46.666666666666664,
+  "unsupported_rate": 6.666666666666667,
+  "critical_failures": 0,
+  "coverage": 100.0,
+  "inference_coverage": 100.0,
+  "gates": {
+    "correct_rate": "FAIL",
+    "unsupported_rate": "FAIL",
+    "critical_failures": "PASS",
+    "coverage": "PASS"
+  },
+  "review_status": "provisional_agent_assisted; independent human verification not performed",
+  "citation_checks": {
+    "answers_with_recognized_ids": 13,
+    "answers_with_unknown_ids": 1,
+    "unknown_ids_by_case": {
+      "TC-023": [
+        "POL-008"
+      ]
+    },
+    "claim_support": "Not established by identifier validation."
+  },
+  "output_limit_stops": 0,
+  "decision": "NO-GO — provisional acceptance gates failed",
+  "input_sha256": {
+    "data/real-model-responses.json": "605de84c5d2fefbf26d139caffb1bcbb5c55fb39c6d15dc9b35d36af098a4836",
+    "data/real-model-evaluation.csv": "ccf2f409ceca7d20582ea96ef42f3eb9fdbc0f3675cc01363d93b8dd13be3b92"
+  },
+  "prompt_token_counts": [
+    2714,
+    2715,
+    2716,
+    2717,
+    2718,
+    2719,
+    2720,
+    2722,
+    2723,
+    2724,
+    2725,
+    2726,
+    2727,
+    2728,
+    2729,
+    2735,
+    2736
+  ]
+}

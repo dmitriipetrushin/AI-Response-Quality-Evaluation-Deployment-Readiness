@@ -1,0 +1,37 @@
+{
+  "assistant": {
+    "question": "Can I share my company password with a colleague?",
+    "http_status": 200,
+    "browser_elapsed_seconds": 3.569357,
+    "browser_version": "157.0.8103.78",
+    "example_button": "passed",
+    "submit_button": "passed",
+    "policy_expansion": "passed",
+    "mobile_page_overflow": false,
+    "page_errors": [],
+    "remote_requests": [],
+    "status": "passed"
+  },
+  "dashboard": {
+    "synthetic_and_real_sections": "passed",
+    "synthetic_case_count": 30,
+    "assistant_link": "http://127.0.0.1:8000/",
+    "status": "passed"
+  },
+  "label_studio": {
+    "version": "1.23.0",
+    "new_project_id": 6,
+    "existing_project_ids_preserved": [
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "task_count": 30,
+    "all_imported_answers_verified": true,
+    "annotations_submitted": 0,
+    "interface_rendered": true,
+    "status": "passed"
+  }
+}

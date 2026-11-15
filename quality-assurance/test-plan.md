@@ -1,5 +1,7 @@
 # Quality assurance plan
 
+**Historical Phase 1 record:** the statements below describe the original synthetic-only build at commit `931e1ac`. Phase 2 adds actual inference; see [the phase-2 record](../project-management/phase-2-acceptance-criteria.md).
+
 ## Purpose and methodology
 
 Demonstrate a repeatable pre-pilot quality decision for an internal-policy assistant. The implemented baseline uses 30 manually authored synthetic responses and simulated review labels. Python validates record integrity and calculates metrics; it does not assess language semantics. The fictional handbook and rubric provide the review evidence. Every case has an ID, context, reference answer, behavior expectation, risk level, acceptance criteria, candidate answer, and rationale.

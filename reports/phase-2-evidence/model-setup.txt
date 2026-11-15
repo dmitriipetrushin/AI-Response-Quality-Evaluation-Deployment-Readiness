@@ -1,0 +1,13 @@
+ad7f8eee4f4e782059bd57757b9352e6a30acd6b3c79e73c508ca395cda95a5e
+Startup failed: [Errno 104] Connection reset by peer
+Downloading qwen2.5:3b into the local Ollama cache (no paid API).
+pulling manifest
+pulling 5ee4f07cdb9b
+pulling 66b9ea09bd5b
+pulling eb4402837c78
+pulling b5c0e5cf74cf
+pulling 161ddde4c9cd
+verifying sha256 digest
+writing manifest
+success
+Verified qwen2.5:3b · native context 32768 · configured 8192

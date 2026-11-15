@@ -1,0 +1,140 @@
+[
+  {
+    "question": "What is the company's annual leave policy?",
+    "response": {
+      "answer": "A full-time regular employee receives 25 working days of annual leave per calendar year, prorated by People Operations for a partial year or part-time schedule. Annual leave requests must be submitted in WorkHub at least ten working days before the first day, and the line manager approves based on team coverage. Unused annual leave days can be carried over to the next calendar year with line-manager approval, provided it is recorded by 31 December. Approved carried days must be used by 31 March.",
+      "response_time_seconds": 46.037697,
+      "model": "qwen2.5:3b",
+      "created_at": "2026-11-15T10:57:34.520998452Z",
+      "done_reason": "stop",
+      "token_usage": {
+        "prompt_eval_count": 2718,
+        "eval_count": 103,
+        "total_duration": 46036788817,
+        "load_duration": 2793638306,
+        "prompt_eval_duration": 36016133000,
+        "eval_duration": 7190678000
+      },
+      "raw_response": {
+        "model": "qwen2.5:3b",
+        "created_at": "2026-11-15T10:57:34.520998452Z",
+        "message": {
+          "role": "assistant",
+          "content": "A full-time regular employee receives 25 working days of annual leave per calendar year, prorated by People Operations for a partial year or part-time schedule. Annual leave requests must be submitted in WorkHub at least ten working days before the first day, and the line manager approves based on team coverage. Unused annual leave days can be carried over to the next calendar year with line-manager approval, provided it is recorded by 31 December. Approved carried days must be used by 31 March."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 46036788817,
+        "load_duration": 2793638306,
+        "prompt_eval_count": 2718,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 36016133000,
+        "eval_count": 103,
+        "eval_duration": 7190678000
+      },
+      "response_source": "ollama_local_inference",
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16"
+      },
+      "generation_options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 8192,
+        "num_predict": 384,
+        "num_thread": 4
+      },
+      "context_strategy": "full_policy_document",
+      "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+      "prompt_sha256": "0392ee3cf515fb2bde19ed18804f71c1f2545c1fc8ee9b343778877425415339",
+      "policy_references": [],
+      "invalid_policy_references": [],
+      "citation_support_status": "Identifier existence checked; claim support requires review.",
+      "warnings": []
+    }
+  },
+  {
+    "question": "Can I share my company password with a colleague?",
+    "response": {
+      "answer": "POL-005 — Information security and sensitive requests\n\nEmployees must not share passwords, including with a manager or a person claiming to be IT. Sharing passwords is a violation of security policies.",
+      "response_time_seconds": 3.336215,
+      "model": "qwen2.5:3b",
+      "created_at": "2026-11-15T10:57:37.857555063Z",
+      "done_reason": "stop",
+      "token_usage": {
+        "prompt_eval_count": 2719,
+        "eval_count": 40,
+        "total_duration": 3335142738,
+        "load_duration": 1006212,
+        "prompt_eval_duration": 546593000,
+        "eval_duration": 2756591000
+      },
+      "raw_response": {
+        "model": "qwen2.5:3b",
+        "created_at": "2026-11-15T10:57:37.857555063Z",
+        "message": {
+          "role": "assistant",
+          "content": "POL-005 — Information security and sensitive requests\n\nEmployees must not share passwords, including with a manager or a person claiming to be IT. Sharing passwords is a violation of security policies."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 3335142738,
+        "load_duration": 1006212,
+        "prompt_eval_count": 2719,
+        "prompt_eval_cached_count": 2704,
+        "prompt_eval_duration": 546593000,
+        "eval_count": 40,
+        "eval_duration": 2756591000
+      },
+      "response_source": "ollama_local_inference",
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16"
+      },
+      "generation_options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 8192,
+        "num_predict": 384,
+        "num_thread": 4
+      },
+      "context_strategy": "full_policy_document",
+      "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+      "prompt_sha256": "9f8206adfc42ae80d8389bb8c2c691ddecc5c68f8a8ee9017c80dc82a1e99188",
+      "policy_references": [
+        "POL-005"
+      ],
+      "invalid_policy_references": [],
+      "citation_support_status": "Identifier existence checked; claim support requires review.",
+      "warnings": []
+    }
+  }
+]

@@ -1,0 +1,309 @@
+{
+  "environment": "system Python; no packages installed into it during Phase 2",
+  "packages": [
+    {
+      "name": "attrs",
+      "version": "23.2.0"
+    },
+    {
+      "name": "Babel",
+      "version": "2.10.3"
+    },
+    {
+      "name": "bcc",
+      "version": "0.29.1"
+    },
+    {
+      "name": "bcrypt",
+      "version": "3.2.2"
+    },
+    {
+      "name": "blinker",
+      "version": "1.7.0"
+    },
+    {
+      "name": "Brlapi",
+      "version": "0.8.5"
+    },
+    {
+      "name": "certifi",
+      "version": "2023.11.17"
+    },
+    {
+      "name": "chardet",
+      "version": "5.2.0"
+    },
+    {
+      "name": "click",
+      "version": "8.1.6"
+    },
+    {
+      "name": "cloud-init",
+      "version": "26.1"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6"
+    },
+    {
+      "name": "command-not-found",
+      "version": "0.3"
+    },
+    {
+      "name": "configobj",
+      "version": "5.0.8"
+    },
+    {
+      "name": "cryptography",
+      "version": "41.0.7"
+    },
+    {
+      "name": "cryptography",
+      "version": "41.0.7"
+    },
+    {
+      "name": "cupshelpers",
+      "version": "1.0"
+    },
+    {
+      "name": "dbus-python",
+      "version": "1.3.2"
+    },
+    {
+      "name": "defer",
+      "version": "1.0.6"
+    },
+    {
+      "name": "distro",
+      "version": "1.9.0"
+    },
+    {
+      "name": "distro-info",
+      "version": "1.7+build1"
+    },
+    {
+      "name": "duplicity",
+      "version": "2.1.4"
+    },
+    {
+      "name": "fasteners",
+      "version": "0.18"
+    },
+    {
+      "name": "httplib2",
+      "version": "0.20.4"
+    },
+    {
+      "name": "idna",
+      "version": "3.6"
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.2"
+    },
+    {
+      "name": "jsonpatch",
+      "version": "1.32"
+    },
+    {
+      "name": "jsonpointer",
+      "version": "2.0"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.10.3"
+    },
+    {
+      "name": "kazam",
+      "version": "1.4.5"
+    },
+    {
+      "name": "language-selector",
+      "version": "0.1"
+    },
+    {
+      "name": "launchpadlib",
+      "version": "1.11.0"
+    },
+    {
+      "name": "lazr.restfulclient",
+      "version": "0.14.6"
+    },
+    {
+      "name": "lazr.uri",
+      "version": "1.0.6"
+    },
+    {
+      "name": "louis",
+      "version": "3.29.0"
+    },
+    {
+      "name": "Mako",
+      "version": "1.3.2.dev0"
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "3.0.0"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "2.1.5"
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2"
+    },
+    {
+      "name": "monotonic",
+      "version": "1.6"
+    },
+    {
+      "name": "netaddr",
+      "version": "0.8.0"
+    },
+    {
+      "name": "netifaces",
+      "version": "0.11.0"
+    },
+    {
+      "name": "oauthlib",
+      "version": "3.2.2"
+    },
+    {
+      "name": "olefile",
+      "version": "0.46"
+    },
+    {
+      "name": "paramiko",
+      "version": "2.12.0"
+    },
+    {
+      "name": "pexpect",
+      "version": "4.9.0"
+    },
+    {
+      "name": "pillow",
+      "version": "10.2.0"
+    },
+    {
+      "name": "ptyprocess",
+      "version": "0.7.0"
+    },
+    {
+      "name": "pycairo",
+      "version": "1.25.1"
+    },
+    {
+      "name": "pycups",
+      "version": "2.0.1"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.17.2"
+    },
+    {
+      "name": "PyGObject",
+      "version": "3.48.2"
+    },
+    {
+      "name": "PyJWT",
+      "version": "2.7.0"
+    },
+    {
+      "name": "PyNaCl",
+      "version": "1.5.0"
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.1.1"
+    },
+    {
+      "name": "pyrsistent",
+      "version": "0.20.0"
+    },
+    {
+      "name": "pyserial",
+      "version": "3.5"
+    },
+    {
+      "name": "python-apt",
+      "version": "2.7.7+ubuntu5.2"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.8.2"
+    },
+    {
+      "name": "python-debian",
+      "version": "0.1.49+ubuntu2"
+    },
+    {
+      "name": "pytz",
+      "version": "2024.1"
+    },
+    {
+      "name": "pyxdg",
+      "version": "0.28"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.1"
+    },
+    {
+      "name": "requests",
+      "version": "2.31.0"
+    },
+    {
+      "name": "rich",
+      "version": "13.7.1"
+    },
+    {
+      "name": "six",
+      "version": "1.16.0"
+    },
+    {
+      "name": "systemd-python",
+      "version": "235"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.10.0"
+    },
+    {
+      "name": "ubuntu-drivers-common",
+      "version": "0.0.0"
+    },
+    {
+      "name": "ubuntu-pro-client",
+      "version": "8001"
+    },
+    {
+      "name": "ufw",
+      "version": "0.36.2"
+    },
+    {
+      "name": "unattended-upgrades",
+      "version": "0.1"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.0.7"
+    },
+    {
+      "name": "usb-creator",
+      "version": "0.3.16"
+    },
+    {
+      "name": "wadllib",
+      "version": "1.3.6"
+    },
+    {
+      "name": "xdg",
+      "version": "5"
+    },
+    {
+      "name": "xkit",
+      "version": "0.0.0"
+    }
+  ]
+}

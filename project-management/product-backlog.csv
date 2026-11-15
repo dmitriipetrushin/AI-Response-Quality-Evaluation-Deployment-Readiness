@@ -18,5 +18,5 @@ BL-16,Write README case study and résumé bullets,Must,4h,Truthful narrative an
 BL-17,Execute final artifact and consistency checks,Must,4h,Required files XML JSON hashes links and tests checked,BL-10;BL-11;BL-16,Complete
 BL-18,Capture genuine dashboard render evidence,Should,2h,Local dashboard rendered in actual browser,BL-09,Complete
 BL-19,Obtain policy owner and sponsor approval,Future,4h,Real equivalent roles approve source and scope,BL-01;BL-02,Proposed; not performed
-BL-20,Evaluate actual model and adjudicate independent labels,Future,20h,Separate versioned model dataset and independent review record,BL-19;BL-10,Proposed; not performed
+BL-20,Evaluate actual model and adjudicate independent labels,Future,20h,Separate versioned model dataset and independent review record,BL-19;BL-10,Partially implemented in Phase 2; actual model run complete; independent adjudication not performed
 BL-21,Run bounded-pilot readiness and adoption review,Future,14h,All gates met and monitoring rollback and decision owners recorded,BL-20;BL-15,Proposed; not performed

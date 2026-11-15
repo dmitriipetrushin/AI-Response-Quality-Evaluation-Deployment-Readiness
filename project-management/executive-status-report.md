@@ -1,5 +1,7 @@
 # Executive status report
 
+**Historical Phase 1 record:** the statements below describe the original synthetic-only build at commit `931e1ac`. Phase 2 adds actual inference; see [the phase-2 record](phase-2-executive-report.md).
+
 **Portfolio owner:** Dmitry Petrushin<br>
 **Reporting date:** 15 November 2026 (Europe/Moscow)<br>
 **Context:** Independent simulation; fictional organization and stakeholder roles.

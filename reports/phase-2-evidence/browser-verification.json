@@ -1,0 +1,92 @@
+{
+  "assistant": {
+    "question": "Can I share my company password with a colleague?",
+    "response": {
+      "answer": "POL-005 — Information security and sensitive requests\n\nEmployees must not share passwords, including with a manager or a person claiming to be IT. Sharing passwords is a violation of security policies.",
+      "response_time_seconds": 3.229652,
+      "model": "qwen2.5:3b",
+      "created_at": "2026-11-15T11:04:15.576147735Z",
+      "done_reason": "stop",
+      "token_usage": {
+        "prompt_eval_count": 2719,
+        "eval_count": 40,
+        "total_duration": 3228839785,
+        "load_duration": 718612,
+        "prompt_eval_duration": 460044000,
+        "eval_duration": 2732665000
+      },
+      "response_source": "ollama_local_inference",
+      "model_metadata": {
+        "identifier": "qwen2.5:3b",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size_bytes": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "supported_context_length": 32768,
+        "configured_context_length": 8192,
+        "ollama_version": "0.40.16"
+      },
+      "generation_options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 8192,
+        "num_predict": 384,
+        "num_thread": 4
+      },
+      "context_strategy": "full_policy_document",
+      "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+      "prompt_sha256": "9f8206adfc42ae80d8389bb8c2c691ddecc5c68f8a8ee9017c80dc82a1e99188",
+      "policy_references": [
+        "POL-005"
+      ],
+      "invalid_policy_references": [],
+      "citation_support_status": "Identifier existence checked; claim support requires review.",
+      "warnings": []
+    },
+    "http_status": 200,
+    "browser_elapsed_seconds": 3.569357,
+    "browser_version": "157.0.8103.78",
+    "example_button": "passed",
+    "submit_button": "passed",
+    "policy_expansion": "passed",
+    "mobile_page_overflow": false,
+    "page_errors": [],
+    "remote_requests": [],
+    "status": "passed"
+  },
+  "dashboard": {
+    "synthetic_and_real_sections": "passed",
+    "synthetic_case_count": 30,
+    "assistant_link": "http://127.0.0.1:8000/",
+    "status": "passed"
+  },
+  "label_studio": {
+    "version": "1.23.0",
+    "new_project_id": 6,
+    "existing_project_ids_preserved": [
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "task_count": 30,
+    "all_imported_answers_verified": true,
+    "annotations_submitted": 0,
+    "interface_rendered": true,
+    "status": "passed"
+  },
+  "teardown": {
+    "application": "stopped after verification",
+    "ollama_container": "stopped; model cache retained",
+    "label_studio_container": "stopped; demo projects retained"
+  }
+}

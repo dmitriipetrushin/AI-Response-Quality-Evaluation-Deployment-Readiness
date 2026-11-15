@@ -7,6 +7,7 @@ import json
 import sys
 from collections import Counter
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 if __package__:
     from .validate_dataset import ROOT, CATEGORY_COUNTS, CLASSIFICATIONS, DatasetValidationError, load_dataset
@@ -90,8 +91,10 @@ def markdown_report(dataset, metrics):
     return '\n'.join(lines) + '\n'
 
 
-def html_dashboard(dataset, m):
+def html_dashboard(dataset, m, real_summary=None):
     e = html.escape
+    from scripts.real_model_report import dashboard_section
+    real_section = dashboard_section(real_summary)
     gate_summary = ('Demonstration fixtures meet the proposed gates; independent model validation is still required.'
                     if all(g['passed'] for g in m['gates'].values())
                     else 'Demonstration fixtures fail the proposed gates.')
@@ -125,8 +128,10 @@ def html_dashboard(dataset, m):
 </style></head><body><main>
 <header><div class="eyebrow">Dmitry Petrushin · Independent portfolio simulation</div>
 <h1>AI Response Quality Evaluation Pilot</h1><p class="muted">A release decision grounded in policy evidence, explicit quality gates, and an auditable review process.</p></header>
+{real_section}
 <div class="notice"><b>SYNTHETIC DATA · SIMULATED REVIEW</b><br>{e(m['disclosure'])} Northstar Business Services is fictional.</div>
-<div class="decision"><strong>{e(m['decision'])}</strong><br>{e(gate_summary)} No model was evaluated and no deployment occurred.</div>
+<h2 id="synthetic-baseline">Synthetic Evaluation Baseline</h2>
+<div class="decision"><strong>{e(m['decision'])}</strong><br>{e(gate_summary)} This synthetic baseline uses authored answers; no business deployment occurred.</div>
 <div class="cards">{cards}</div>
 <div class="two"><section><h2>Proposed acceptance gates</h2><ul class="gates">{gates}</ul><p class="muted">For 30 cases: at least 27 Correct, at most 1 Unsupported, and no critical failures. Exact counts determine the decision.</p></section>
 <section><h2>Classification distribution</h2><ul class="distribution">{classifications}</ul><p class="muted">Precedence: contradiction → Incorrect; otherwise unsupported material claim → Unsupported; otherwise omission → Partially correct; otherwise Correct.</p></section></div>
@@ -141,11 +146,13 @@ def generate_reports(root=ROOT, output_dir=None):
     root = Path(root)
     dataset = load_dataset(root)
     metrics = calculate_metrics(dataset)
+    from scripts.real_model_report import real_summary
+    actual_summary = real_summary(root)
     metrics['input_sha256'] = {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in INPUTS}
     output = Path(output_dir) if output_dir is not None else root / 'reports'
     output.mkdir(parents=True, exist_ok=True)
     (output / 'quality-report.md').write_text(markdown_report(dataset, metrics), encoding='utf-8')
-    (output / 'dashboard.html').write_text(html_dashboard(dataset, metrics), encoding='utf-8')
+    (output / 'dashboard.html').write_text(html_dashboard(dataset, metrics, actual_summary), encoding='utf-8')
     (output / 'metrics.json').write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     return metrics
 

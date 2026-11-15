@@ -1,0 +1,9 @@
+{
+  "command": "python3 scripts/start_assistant.py",
+  "http_status": 200,
+  "response": {
+    "status": "ready",
+    "model": "qwen2.5:3b"
+  },
+  "status": "passed"
+}

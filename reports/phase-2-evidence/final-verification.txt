@@ -1,0 +1,906 @@
+Phase 2 final verification execution log
+Unit suite responses are mocked; live evidence is recorded separately.
+
+$ python3 scripts/validate_dataset.py
+VALID: 30 cases, 30 synthetic responses, 30 simulated reviews; categories and policy references verified.
+
+
+Exit code: 0
+
+$ python3 -m unittest discover -s tests -v
+TC-001 success 0.00s
+TC-002 error 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+
+test_batch_outputs_real_schema_and_preserves_failure (test_assistant.BatchAndWebTests.test_batch_outputs_real_schema_and_preserves_failure) ... ok
+test_busy_server_rejects_queue (test_assistant.BatchAndWebTests.test_busy_server_rejects_queue) ... ok
+test_cross_origin_and_invalid_input_rejected (test_assistant.BatchAndWebTests.test_cross_origin_and_invalid_input_rejected) ... ok
+test_model_errors_are_useful_http_errors (test_assistant.BatchAndWebTests.test_model_errors_are_useful_http_errors) ... ok
+test_resume_requires_same_generation_config (test_assistant.BatchAndWebTests.test_resume_requires_same_generation_config) ... ok
+test_static_allowlist_blocks_traversal (test_assistant.BatchAndWebTests.test_static_allowlist_blocks_traversal) ... ok
+test_synthetic_output_is_protected (test_assistant.BatchAndWebTests.test_synthetic_output_is_protected) ... ok
+test_web_answer_and_metadata (test_assistant.BatchAndWebTests.test_web_answer_and_metadata) ... ok
+test_connection_error (test_assistant.ModelClientTests.test_connection_error) ... ok
+test_connection_reset_during_startup (test_assistant.ModelClientTests.test_connection_reset_during_startup) ... ok
+test_empty_or_incomplete_response (test_assistant.ModelClientTests.test_empty_or_incomplete_response) ... ok
+test_invalid_json (test_assistant.ModelClientTests.test_invalid_json) ... ok
+test_native_context_capacity (test_assistant.ModelClientTests.test_native_context_capacity) ... ok
+test_nonobject_json (test_assistant.ModelClientTests.test_nonobject_json) ... ok
+test_oversized_context_rejected (test_assistant.ModelClientTests.test_oversized_context_rejected) ... ok
+test_parse_real_api_shape (test_assistant.ModelClientTests.test_parse_real_api_shape) ... ok
+test_remote_url_and_embedded_credentials_rejected (test_assistant.ModelClientTests.test_remote_url_and_embedded_credentials_rejected) ... ok
+test_timeouts (test_assistant.ModelClientTests.test_timeouts) ... ok
+test_configurable_model (test_assistant.PolicyAndPromptTests.test_configurable_model) ... ok
+test_full_policy_loading (test_assistant.PolicyAndPromptTests.test_full_policy_loading) ... ok
+test_generation_limit_warning (test_assistant.PolicyAndPromptTests.test_generation_limit_warning) ... ok
+test_invalid_policy_document (test_assistant.PolicyAndPromptTests.test_invalid_policy_document) ... ok
+test_invalid_question_never_calls_model (test_assistant.PolicyAndPromptTests.test_invalid_question_never_calls_model) ... ok
+test_metadata_and_raw_answer_recorded (test_assistant.PolicyAndPromptTests.test_metadata_and_raw_answer_recorded) ... ok
+test_model_context_verified_before_inference (test_assistant.PolicyAndPromptTests.test_model_context_verified_before_inference) ... ok
+test_prompt_uses_full_document_not_reference_answer (test_assistant.PolicyAndPromptTests.test_prompt_uses_full_document_not_reference_answer) ... ok
+test_unknown_citation_is_flagged_and_not_hidden (test_assistant.PolicyAndPromptTests.test_unknown_citation_is_flagged_and_not_hidden) ... ok
+test_category_mismatch (test_evaluation.DatasetTests.test_category_mismatch) ... ok
+test_context_is_verbatim (test_evaluation.DatasetTests.test_context_is_verbatim) ... ok
+test_correct_category_counts (test_evaluation.DatasetTests.test_correct_category_counts) ... ok
+test_csv_boolean_false_is_not_truthy (test_evaluation.DatasetTests.test_csv_boolean_false_is_not_truthy) ... ok
+test_dataset_completeness (test_evaluation.DatasetTests.test_dataset_completeness) ... ok
+test_duplicate_evaluation_is_rejected (test_evaluation.DatasetTests.test_duplicate_evaluation_is_rejected) ... ok
+test_invalid_boolean_values (test_evaluation.DatasetTests.test_invalid_boolean_values) ... ok
+test_invalid_classification (test_evaluation.DatasetTests.test_invalid_classification) ... ok
+test_missing_evaluation (test_evaluation.DatasetTests.test_missing_evaluation) ... ok
+test_missing_response (test_evaluation.DatasetTests.test_missing_response) ... ok
+test_orphan_response (test_evaluation.DatasetTests.test_orphan_response) ... ok
+test_policy_reference_mismatch (test_evaluation.DatasetTests.test_policy_reference_mismatch) ... ok
+test_provenance_cannot_claim_real_review (test_evaluation.DatasetTests.test_provenance_cannot_claim_real_review) ... ok
+test_real_model_cannot_mix_into_baseline (test_evaluation.DatasetTests.test_real_model_cannot_mix_into_baseline) ... ok
+test_required_fields (test_evaluation.DatasetTests.test_required_fields) ... ok
+test_unique_ids (test_evaluation.DatasetTests.test_unique_ids) ... ok
+test_unknown_policy (test_evaluation.DatasetTests.test_unknown_policy) ... ok
+test_wrong_total (test_evaluation.DatasetTests.test_wrong_total) ... ok
+test_acceptance_boundary (test_evaluation.ReportingTests.test_acceptance_boundary) ... ok
+test_all_correct_still_requires_independent_validation (test_evaluation.ReportingTests.test_all_correct_still_requires_independent_validation) ... ok
+test_cli_fails_cleanly_for_missing_inputs (test_evaluation.ReportingTests.test_cli_fails_cleanly_for_missing_inputs) ... ok
+test_critical_failure_count (test_evaluation.ReportingTests.test_critical_failure_count) ... ok
+test_dashboard_escapes_untrusted_text (test_evaluation.ReportingTests.test_dashboard_escapes_untrusted_text) ... ok
+test_failure_decision (test_evaluation.ReportingTests.test_failure_decision) ... ok
+test_invalid_input_does_not_publish_reports (test_evaluation.ReportingTests.test_invalid_input_does_not_publish_reports) ... ok
+test_label_studio_tasks_are_unannotated_and_traceable (test_evaluation.ReportingTests.test_label_studio_tasks_are_unannotated_and_traceable) ... ok
+test_metric_calculations (test_evaluation.ReportingTests.test_metric_calculations) ... ok
+test_report_generation_and_determinism (test_evaluation.ReportingTests.test_report_generation_and_determinism) ... ok
+test_altered_raw_answer_is_rejected (test_real_reporting.RealReportTests.test_altered_raw_answer_is_rejected) ... ok
+test_duplicate_reviews_rejected (test_real_reporting.RealReportTests.test_duplicate_reviews_rejected) ... ok
+test_failed_gates_and_critical_count (test_real_reporting.RealReportTests.test_failed_gates_and_critical_count) ... ok
+test_human_review_claim_rejected (test_real_reporting.RealReportTests.test_human_review_claim_rejected) ... ok
+test_partial_review_does_not_silently_pass_gates (test_real_reporting.RealReportTests.test_partial_review_does_not_silently_pass_gates) ... ok
+test_provenance_and_answer_hash_required (test_real_reporting.RealReportTests.test_provenance_and_answer_hash_required) ... ok
+test_provisional_passing_score_cannot_authorize_production (test_real_reporting.RealReportTests.test_provisional_passing_score_cannot_authorize_production) ... ok
+test_reporting_and_dashboard_separate_sources (test_real_reporting.RealReportTests.test_reporting_and_dashboard_separate_sources) ... ok
+test_unrelated_question_is_rejected (test_real_reporting.RealReportTests.test_unrelated_question_is_rejected) ... ok
+test_unreviewed_results_remain_unknown (test_real_reporting.RealReportTests.test_unreviewed_results_remain_unknown) ... ok
+
+----------------------------------------------------------------------
+Ran 65 tests in 3.325s
+
+OK
+
+Exit code: 0
+
+$ python3 -S -m unittest discover -s tests -v
+TC-001 success 0.00s
+TC-002 error 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+TC-001 success 0.00s
+TC-002 success 0.00s
+TC-003 success 0.00s
+TC-004 success 0.00s
+TC-005 success 0.00s
+TC-006 success 0.00s
+TC-007 success 0.00s
+TC-008 success 0.00s
+TC-009 success 0.00s
+TC-010 success 0.00s
+TC-011 success 0.00s
+TC-012 success 0.00s
+TC-013 success 0.00s
+TC-014 success 0.00s
+TC-015 success 0.00s
+TC-016 success 0.00s
+TC-017 success 0.00s
+TC-018 success 0.00s
+TC-019 success 0.00s
+TC-020 success 0.00s
+TC-021 success 0.00s
+TC-022 success 0.00s
+TC-023 success 0.00s
+TC-024 success 0.00s
+TC-025 success 0.00s
+TC-026 success 0.00s
+TC-027 success 0.00s
+TC-028 success 0.00s
+TC-029 success 0.00s
+TC-030 success 0.00s
+
+test_batch_outputs_real_schema_and_preserves_failure (test_assistant.BatchAndWebTests.test_batch_outputs_real_schema_and_preserves_failure) ... ok
+test_busy_server_rejects_queue (test_assistant.BatchAndWebTests.test_busy_server_rejects_queue) ... ok
+test_cross_origin_and_invalid_input_rejected (test_assistant.BatchAndWebTests.test_cross_origin_and_invalid_input_rejected) ... ok
+test_model_errors_are_useful_http_errors (test_assistant.BatchAndWebTests.test_model_errors_are_useful_http_errors) ... ok
+test_resume_requires_same_generation_config (test_assistant.BatchAndWebTests.test_resume_requires_same_generation_config) ... ok
+test_static_allowlist_blocks_traversal (test_assistant.BatchAndWebTests.test_static_allowlist_blocks_traversal) ... ok
+test_synthetic_output_is_protected (test_assistant.BatchAndWebTests.test_synthetic_output_is_protected) ... ok
+test_web_answer_and_metadata (test_assistant.BatchAndWebTests.test_web_answer_and_metadata) ... ok
+test_connection_error (test_assistant.ModelClientTests.test_connection_error) ... ok
+test_connection_reset_during_startup (test_assistant.ModelClientTests.test_connection_reset_during_startup) ... ok
+test_empty_or_incomplete_response (test_assistant.ModelClientTests.test_empty_or_incomplete_response) ... ok
+test_invalid_json (test_assistant.ModelClientTests.test_invalid_json) ... ok
+test_native_context_capacity (test_assistant.ModelClientTests.test_native_context_capacity) ... ok
+test_nonobject_json (test_assistant.ModelClientTests.test_nonobject_json) ... ok
+test_oversized_context_rejected (test_assistant.ModelClientTests.test_oversized_context_rejected) ... ok
+test_parse_real_api_shape (test_assistant.ModelClientTests.test_parse_real_api_shape) ... ok
+test_remote_url_and_embedded_credentials_rejected (test_assistant.ModelClientTests.test_remote_url_and_embedded_credentials_rejected) ... ok
+test_timeouts (test_assistant.ModelClientTests.test_timeouts) ... ok
+test_configurable_model (test_assistant.PolicyAndPromptTests.test_configurable_model) ... ok
+test_full_policy_loading (test_assistant.PolicyAndPromptTests.test_full_policy_loading) ... ok
+test_generation_limit_warning (test_assistant.PolicyAndPromptTests.test_generation_limit_warning) ... ok
+test_invalid_policy_document (test_assistant.PolicyAndPromptTests.test_invalid_policy_document) ... ok
+test_invalid_question_never_calls_model (test_assistant.PolicyAndPromptTests.test_invalid_question_never_calls_model) ... ok
+test_metadata_and_raw_answer_recorded (test_assistant.PolicyAndPromptTests.test_metadata_and_raw_answer_recorded) ... ok
+test_model_context_verified_before_inference (test_assistant.PolicyAndPromptTests.test_model_context_verified_before_inference) ... ok
+test_prompt_uses_full_document_not_reference_answer (test_assistant.PolicyAndPromptTests.test_prompt_uses_full_document_not_reference_answer) ... ok
+test_unknown_citation_is_flagged_and_not_hidden (test_assistant.PolicyAndPromptTests.test_unknown_citation_is_flagged_and_not_hidden) ... ok
+test_category_mismatch (test_evaluation.DatasetTests.test_category_mismatch) ... ok
+test_context_is_verbatim (test_evaluation.DatasetTests.test_context_is_verbatim) ... ok
+test_correct_category_counts (test_evaluation.DatasetTests.test_correct_category_counts) ... ok
+test_csv_boolean_false_is_not_truthy (test_evaluation.DatasetTests.test_csv_boolean_false_is_not_truthy) ... ok
+test_dataset_completeness (test_evaluation.DatasetTests.test_dataset_completeness) ... ok
+test_duplicate_evaluation_is_rejected (test_evaluation.DatasetTests.test_duplicate_evaluation_is_rejected) ... ok
+test_invalid_boolean_values (test_evaluation.DatasetTests.test_invalid_boolean_values) ... ok
+test_invalid_classification (test_evaluation.DatasetTests.test_invalid_classification) ... ok
+test_missing_evaluation (test_evaluation.DatasetTests.test_missing_evaluation) ... ok
+test_missing_response (test_evaluation.DatasetTests.test_missing_response) ... ok
+test_orphan_response (test_evaluation.DatasetTests.test_orphan_response) ... ok
+test_policy_reference_mismatch (test_evaluation.DatasetTests.test_policy_reference_mismatch) ... ok
+test_provenance_cannot_claim_real_review (test_evaluation.DatasetTests.test_provenance_cannot_claim_real_review) ... ok
+test_real_model_cannot_mix_into_baseline (test_evaluation.DatasetTests.test_real_model_cannot_mix_into_baseline) ... ok
+test_required_fields (test_evaluation.DatasetTests.test_required_fields) ... ok
+test_unique_ids (test_evaluation.DatasetTests.test_unique_ids) ... ok
+test_unknown_policy (test_evaluation.DatasetTests.test_unknown_policy) ... ok
+test_wrong_total (test_evaluation.DatasetTests.test_wrong_total) ... ok
+test_acceptance_boundary (test_evaluation.ReportingTests.test_acceptance_boundary) ... ok
+test_all_correct_still_requires_independent_validation (test_evaluation.ReportingTests.test_all_correct_still_requires_independent_validation) ... ok
+test_cli_fails_cleanly_for_missing_inputs (test_evaluation.ReportingTests.test_cli_fails_cleanly_for_missing_inputs) ... ok
+test_critical_failure_count (test_evaluation.ReportingTests.test_critical_failure_count) ... ok
+test_dashboard_escapes_untrusted_text (test_evaluation.ReportingTests.test_dashboard_escapes_untrusted_text) ... ok
+test_failure_decision (test_evaluation.ReportingTests.test_failure_decision) ... ok
+test_invalid_input_does_not_publish_reports (test_evaluation.ReportingTests.test_invalid_input_does_not_publish_reports) ... ok
+test_label_studio_tasks_are_unannotated_and_traceable (test_evaluation.ReportingTests.test_label_studio_tasks_are_unannotated_and_traceable) ... ok
+test_metric_calculations (test_evaluation.ReportingTests.test_metric_calculations) ... ok
+test_report_generation_and_determinism (test_evaluation.ReportingTests.test_report_generation_and_determinism) ... ok
+test_altered_raw_answer_is_rejected (test_real_reporting.RealReportTests.test_altered_raw_answer_is_rejected) ... ok
+test_duplicate_reviews_rejected (test_real_reporting.RealReportTests.test_duplicate_reviews_rejected) ... ok
+test_failed_gates_and_critical_count (test_real_reporting.RealReportTests.test_failed_gates_and_critical_count) ... ok
+test_human_review_claim_rejected (test_real_reporting.RealReportTests.test_human_review_claim_rejected) ... ok
+test_partial_review_does_not_silently_pass_gates (test_real_reporting.RealReportTests.test_partial_review_does_not_silently_pass_gates) ... ok
+test_provenance_and_answer_hash_required (test_real_reporting.RealReportTests.test_provenance_and_answer_hash_required) ... ok
+test_provisional_passing_score_cannot_authorize_production (test_real_reporting.RealReportTests.test_provisional_passing_score_cannot_authorize_production) ... ok
+test_reporting_and_dashboard_separate_sources (test_real_reporting.RealReportTests.test_reporting_and_dashboard_separate_sources) ... ok
+test_unrelated_question_is_rejected (test_real_reporting.RealReportTests.test_unrelated_question_is_rejected) ... ok
+test_unreviewed_results_remain_unknown (test_real_reporting.RealReportTests.test_unreviewed_results_remain_unknown) ... ok
+
+----------------------------------------------------------------------
+Ran 65 tests in 3.292s
+
+OK
+
+Exit code: 0
+
+$ python3 scripts/generate_real_model_report.py
+{
+  "run_id": "northstar-2026-11-15T10:58:21.374275+00:00",
+  "model": "qwen2.5:3b",
+  "model_metadata": {
+    "identifier": "qwen2.5:3b",
+    "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+    "size_bytes": 1929912432,
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "3.1B",
+      "quantization_level": "Q4_K_M"
+    },
+    "supported_context_length": 32768,
+    "configured_context_length": 8192,
+    "ollama_version": "0.40.16"
+  },
+  "generation_options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 8192,
+    "num_predict": 384,
+    "num_thread": 4
+  },
+  "context_strategy": "full_policy_document",
+  "policy_sha256": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+  "total": 30,
+  "attempted": 30,
+  "successful": 30,
+  "failed": 0,
+  "unattempted": 0,
+  "average_response_time_seconds": 4.889977833333333,
+  "maximum_response_time_seconds": 15.803392,
+  "reviewed": 30,
+  "counts": {
+    "Correct": 14,
+    "Partially correct": 13,
+    "Incorrect": 1,
+    "Unsupported": 2
+  },
+  "correct_rate": 46.666666666666664,
+  "unsupported_rate": 6.666666666666667,
+  "critical_failures": 0,
+  "coverage": 100.0,
+  "inference_coverage": 100.0,
+  "gates": {
+    "correct_rate": "FAIL",
+    "unsupported_rate": "FAIL",
+    "critical_failures": "PASS",
+    "coverage": "PASS"
+  },
+  "review_status": "provisional_agent_assisted; independent human verification not performed",
+  "citation_checks": {
+    "answers_with_recognized_ids": 13,
+    "answers_with_unknown_ids": 1,
+    "unknown_ids_by_case": {
+      "TC-023": [
+        "POL-008"
+      ]
+    },
+    "claim_support": "Not established by identifier validation."
+  },
+  "output_limit_stops": 0,
+  "decision": "NO-GO \u2014 provisional acceptance gates failed",
+  "input_sha256": {
+    "data/real-model-responses.json": "605de84c5d2fefbf26d139caffb1bcbb5c55fb39c6d15dc9b35d36af098a4836",
+    "data/real-model-evaluation.csv": "ccf2f409ceca7d20582ea96ef42f3eb9fdbc0f3675cc01363d93b8dd13be3b92"
+  },
+  "prompt_token_counts": [
+    2714,
+    2715,
+    2716,
+    2717,
+    2718,
+    2719,
+    2720,
+    2722,
+    2723,
+    2724,
+    2725,
+    2726,
+    2727,
+    2728,
+    2729,
+    2735,
+    2736
+  ]
+}
+
+
+Exit code: 0
+
+$ python3 scripts/verify_project.py
+{
+  "required_artifacts": 33,
+  "policy_words": 2019,
+  "label_studio_tasks": 30,
+  "reports_fresh": true,
+  "presentation_metrics_consistent": true,
+  "local_markdown_links_valid": true
+}
+
+
+Exit code: 0
+
+$ python3 scripts/verify_phase2.py
+{
+  "baseline_inputs_unchanged": true,
+  "questions_attempted": 30,
+  "actual_answers": 30,
+  "failed_requests": 0,
+  "provisional_reviews": 30,
+  "model_digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+  "shared_prompt_verified": true,
+  "label_studio_actual_tasks": 30,
+  "status": "passed"
+}
+
+
+Exit code: 0
+
+$ git diff --exit-code -- data/company-policies.md data/test-cases.json data/candidate-responses.json data/evaluation-results.csv
+
+
+Exit code: 0
+
+$ git diff --check
+
+
+Exit code: 0
+
+Bounded credential-pattern scan: 90 text files checked; 0 matching files.
+Checks common private keys and provider-token patterns; not an exhaustive security audit.
+Final staged scan after cleanup: 90 text files; 0 matching credential patterns. Largest tracked artifact: 276387 bytes. Owned preview and demo containers stopped.

@@ -1,0 +1,6 @@
+test_two_required_questions_generate_actual_answers (integration_real_model.LiveInferenceTests.test_two_required_questions_generate_actual_answers) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 49.396s
+
+OK

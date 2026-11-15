@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "unit_tests": 65,
+  "unit_failures": 0,
+  "recorded_live_integration_tests": 1,
+  "saved_successful_real_requests": 33,
+  "checks": [
+    {
+      "name": "baseline",
+      "command": [
+        "python3",
+        "scripts/validate_dataset.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "unit_suite",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "unit_suite_no_site_packages",
+      "command": [
+        "python3",
+        "-S",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "report_generation",
+      "command": [
+        "python3",
+        "scripts/generate_real_model_report.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "original_artifact_verifier",
+      "command": [
+        "python3",
+        "scripts/verify_project.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "phase_2_verifier",
+      "command": [
+        "python3",
+        "scripts/verify_phase2.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "baseline_git_preservation",
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "data/company-policies.md",
+        "data/test-cases.json",
+        "data/candidate-responses.json",
+        "data/evaluation-results.csv"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "bounded_secret_pattern_scan",
+      "files_checked": 90,
+      "matching_files": [],
+      "exit_code": 0
+    },
+    {
+      "name": "final_teardown_and_staged_review",
+      "exit_code": 0,
+      "model_weights_excluded": true,
+      "largest_tracked_file_bytes": 276387,
+      "baseline_history_preserved": true
+    }
+  ]
+}

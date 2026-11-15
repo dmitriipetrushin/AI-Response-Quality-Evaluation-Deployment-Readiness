@@ -10,6 +10,8 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote
+from urllib.parse import urlsplit
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 if __package__:
     from .validate_dataset import ROOT, CLASSIFICATIONS, DatasetValidationError, load_dataset
@@ -57,7 +59,8 @@ class OfflineHTML(HTMLParser):
         for field in ['src', 'href']:
             value = attrs.get(field, '')
             if value.startswith(('http:', 'https:', '//')):
-                self.remote.append(value)
+                if not (tag == 'a' and field == 'href' and urlsplit(value).hostname in {'127.0.0.1', 'localhost', '::1'}):
+                    self.remote.append(value)
 
 
 def verify_project(root=ROOT):
@@ -101,7 +104,8 @@ def verify_project(root=ROOT):
     if (root / 'reports/quality-report.md').read_text(encoding='utf-8') != markdown_report(dataset, metrics):
         raise DatasetValidationError('Markdown report is stale')
     dashboard = (root / 'reports/dashboard.html').read_text(encoding='utf-8')
-    if dashboard != html_dashboard(dataset, metrics):
+    from scripts.real_model_report import real_summary
+    if dashboard != html_dashboard(dataset, metrics, real_summary(root)):
         raise DatasetValidationError('HTML report is stale')
     parser = OfflineHTML()
     parser.feed(dashboard)

@@ -19,6 +19,6 @@ At USD 0.24 per response, the same assumed 1,000-response evaluation would cost 
 
 ## Actual portfolio-build costs
 
-No paid services, AI inference APIs, subscriptions, or model downloads were ordered by this project. No monetary purchases were made as part of the build. Existing compute, network access, electricity, AI-assisted development session cost, and the owner's time were not metered, so total actual economic cost is **unknown**, not claimed to be zero. The mandatory pipeline runs with the existing Python installation and no third-party Python dependencies.
+During the original Phase 1 build, no paid services, AI inference APIs, subscriptions, or model downloads were ordered. Phase 2 added free local runtime and model downloads; it still used no paid inference API or service purchase. No monetary purchases were made as part of the build. Existing compute, network access, electricity, AI-assisted development session cost, and the owner's time were not metered, so total actual economic cost is **unknown**, not claimed to be zero. The mandatory pipeline runs with the existing Python installation and no third-party Python dependencies.
 
 Future hosting or inference procurement would be a separate human decision after privacy review and scope approval. This estimate does not authorize any purchase.

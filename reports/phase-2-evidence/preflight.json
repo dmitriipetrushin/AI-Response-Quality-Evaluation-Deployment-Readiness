@@ -1,0 +1,22 @@
+{
+  "original_commit": "931e1acbaa04b05e8569771dc090360756d37415",
+  "initial_worktree": "clean before phase-2 evidence creation",
+  "python": "3.12.3",
+  "os": "Linux",
+  "machine": "x86_64",
+  "cpu": "Intel Core i5-13420H; 12 logical CPUs; CPU inference selected",
+  "ram_total_gib": 15.34,
+  "ram_available_gib_at_check": 7.43,
+  "disk_free_gib": 326.44,
+  "native_ollama_installed": false,
+  "original_tests": {
+    "passed": 28,
+    "failed": 0
+  },
+  "original_input_sha256": {
+    "data/company-policies.md": "5a28ad8938965e45ba0c8622ab0ce8cbd18747bf7cb51e21d144bc946f9e4350",
+    "data/test-cases.json": "05c26d114817291afb70a3887524931c2438af73769bb2d60da802ed1d2e275c",
+    "data/candidate-responses.json": "4aae55f3a7d3e9f80cda7938f07f36a33a1244b8ace132f49244ff50bbd3d878",
+    "data/evaluation-results.csv": "f0e978aadd147f2cfdd90ae4ef994e6fab850cc87bbac5be39b5eccdd18ffd73"
+  }
+}
