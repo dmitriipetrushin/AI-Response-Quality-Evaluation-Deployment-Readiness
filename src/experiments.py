@@ -70,6 +70,9 @@ def validate_dataset(root=ROOT):
         raise ValueError('Original cases must remain unchanged development examples')
     for name,expected in manifest['frozen_prompt_sha256'].items():
         if sha(root/'prompts/phase-3'/(name+'.txt'))!=expected:raise ValueError('Frozen prompt version changed: '+name)
+    from .assistant import SYSTEM_INSTRUCTIONS
+    if hashlib.sha256(SYSTEM_INSTRUCTIONS.encode()).hexdigest()!=manifest['frozen_prompt_sha256']['baseline']:
+        raise ValueError('Historical baseline system instructions changed')
     return manifest,all_cases
 
 

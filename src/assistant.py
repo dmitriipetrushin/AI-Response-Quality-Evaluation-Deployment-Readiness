@@ -86,8 +86,9 @@ class PolicyAssistant:
             except ModelProtocolError as exc:
                 attempts[-1]['validation_error'] = str(exc)
                 if index == self.config.get('structured_retries', 1):
-                    exc.attempts = attempts
-                    raise
+                    failure = ModelProtocolError('The model could not return a usable answer after a bounded format retry. Please try again.')
+                    failure.attempts = attempts
+                    raise failure from exc
                 request_messages = messages + [{'role': 'user', 'content': 'Technical format repair: return only the required JSON object with a nonempty answer, valid response_type, and an array of supplied policy IDs. Do not change the employee request or invent information.'}]
         generated_content = result['answer']
         if parsed is not None:
