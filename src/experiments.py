@@ -254,7 +254,7 @@ def summarize(experiment_id,root=ROOT,only_split=None):
         for value in sorted({r[key] for r in records}):
             groupids={r['test_id'] for r in records if r[key]==value};rs=[r for r in reviews if r['test_id'] in groupids]
             result[value]={'total':len(groupids),'reviewed':len(rs),'correct':sum(r['classification']=='Correct' for r in rs),
-                           'correct_rate':100*sum(r['classification']=='Correct' for r in rs)/len(groupids)}
+                           'correct_rate':100*sum(r['classification']=='Correct' for r in rs)/len(groupids) if rs else None}
         return result
     return {'experiment_id':experiment_id,'model':metadata['config']['model'],'prompt':metadata['config'].get('prompt_version','baseline'),
         'split':only_split or metadata['split'],'purpose':metadata['purpose'],'total':total,'successful':len(success),'failed':total-len(success),
@@ -268,7 +268,8 @@ def summarize(experiment_id,root=ROOT,only_split=None):
         'unknown_id_answers':sum(bool(r['response']['invalid_policy_references']) for r in success),
         'truncated_answers':sum(r['response'].get('done_reason')=='length' for r in success),
         'retry_requests':sum(max(0,len(r['response'].get('generation_attempts',[]))-1) for r in success),
-        'config':metadata['config'],'runtime':json.loads((experiment_dir(experiment_id,root)/'runtime.json').read_text()),
+        'config':metadata['config'],'model_metadata':success[0]['response'].get('model_metadata',{}) if success else {},
+        'runtime':json.loads((experiment_dir(experiment_id,root)/'runtime.json').read_text()),
         'judgment_status':'provisional_agent_assisted; no independent human validation'}
 
 
@@ -290,8 +291,17 @@ def freeze_selection(experiment_ids,root=ROOT):
         return (s['critical_failures'],s['failed'],violations,-s['counts']['Correct'],s['counts']['Unsupported'],s['mean_latency'],memory)
     ranked=sorted(summaries,key=rank)
     best=ranked[0]
+    baseline=next((s for s in summaries if s['model']=='qwen2.5:3b' and s['prompt']=='baseline'),None)
+    retention_reason=None
+    if baseline and best['experiment_id']!=baseline['experiment_id']:
+        if (best['counts']['Correct']-baseline['counts']['Correct']<2
+            or best['critical_failures']>baseline['critical_failures']
+            or best['counts']['Unsupported']>baseline['counts']['Unsupported']):
+            best=baseline
+            retention_reason='No candidate met the predeclared minimum of two additional Correct validation cases without more critical or Unsupported outcomes.'
     selection={'frozen_at':datetime.now(timezone.utc).isoformat(),'dataset_sha256':digest(manifest),
        'selected_experiment':best['experiment_id'],'config':best['config'],
+       'minimum_meaningful_gain_correct_cases':2,'baseline_retention_reason':retention_reason,
        'rank_order':'critical failures; request failures; number of violated Correct/Unsupported/latency targets; descending Correct count; Unsupported count; mean latency; loaded-model bytes',
        'validation_experiments':[s['experiment_id'] for s in ranked],
        'validation_evidence':{s['experiment_id']:{'responses':sha(experiment_dir(s['experiment_id'],root)/'responses.jsonl'),'reviews':sha(experiment_dir(s['experiment_id'],root)/'reviews.csv')} for s in ranked},

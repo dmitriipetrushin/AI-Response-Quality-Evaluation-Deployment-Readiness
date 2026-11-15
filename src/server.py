@@ -106,7 +106,7 @@ class Handler(BaseHTTPRequestHandler):
         try:
             result = self.server.assistant.answer(question)
             # Preserve exact raw responses in evaluation artifacts, not in the browser payload.
-            self._send(200, {k: v for k, v in result.items() if k != 'raw_response'})
+            self._send(200, {k: v for k, v in result.items() if k not in {'raw_response', 'generation_attempts', 'generated_content'}})
         except ModelError as exc:
             self._send(504 if exc.code == 'inference_timeout' else 503, {'error': str(exc), 'code': exc.code})
         finally:

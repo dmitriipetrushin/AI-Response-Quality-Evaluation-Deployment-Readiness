@@ -25,7 +25,9 @@ def verify_phase2(root=ROOT):
     metadata = run.get('model_metadata') or {}
     if not metadata.get('digest') or metadata['supported_context_length'] < run['generation_options']['num_ctx']:
         raise ValueError('Missing model identity or context verification.')
-    assistant = PolicyAssistant(root=root)
+    from src.assistant import load_config
+    baseline_path = root / 'config/assistant-baseline.json'
+    assistant = PolicyAssistant(load_config(baseline_path if baseline_path.exists() else None), root=root)
     for row in run['responses']:
         if row['status'] != 'success': continue
         response = row['response']

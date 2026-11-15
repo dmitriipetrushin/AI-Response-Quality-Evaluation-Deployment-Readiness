@@ -81,7 +81,7 @@ def main():
     parser.add_argument('--resume', action='store_true')
     args = parser.parse_args()
     try:
-        assistant = PolicyAssistant(load_config(args.config))
+        assistant = PolicyAssistant(load_config(args.config or ROOT / 'config/assistant-baseline.json'))
         run = run_evaluation(assistant, load_dataset().cases, args.output, resume=args.resume)
     except (ValueError, OSError) as exc:
         print(str(exc), file=sys.stderr); return 1

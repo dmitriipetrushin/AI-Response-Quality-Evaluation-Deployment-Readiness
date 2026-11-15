@@ -45,5 +45,17 @@
   "review": "provisional agent-assisted review with exact answer hashes; deterministic technical checks remain separate; no independent human validation",
   "intervals": "nominal Wilson 95% intervals conditional on provisional labels; not population guarantees for a nonrandom authored question set",
   "no_prompt_tuning_after_freeze": true,
-  "no_hardcoded_answers": true
+  "no_hardcoded_answers": true,
+  "selection_amendment_before_validation": {
+    "registered_at": "2026-11-15T11:56:03.581020+00:00",
+    "minimum_correct_case_gain": 2,
+    "no_increase_in_critical_or_unsupported": true,
+    "reason": "Retain the baseline if a tiny validation change is not a meaningful practical improvement; this is not a statistical significance claim."
+  },
+  "model_candidates": [
+    "qwen2.5:3b",
+    "qwen3:4b-instruct-2507-q4_K_M",
+    "llama3.2:3b"
+  ],
+  "screen_latency_caveat": "Early development screens overlapped the final model download. Use non-overlapping validation/final runs for latency comparisons."
 }
